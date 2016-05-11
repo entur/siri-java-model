@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" id="siri_facilities">
+    <xsd:annotation>
+        <xsd:appinfo xmlns:gms="http://www.govtalk.gov.uk/CM/gms">
+            <Metadata xmlns="http://www.govtalk.gov.uk/CM/gms-xs">
+                <Aggregation>main schema</Aggregation>
+                <Audience>e-service developers</Audience>
+                <Contributor>Add names </Contributor>
+                <Coverage>Europe</Coverage>
+                <Creator>>Drafted for version 1.0  XTIS Kizoom Incident Schema Nicholas Knowles, Kizoom. mailto:schemer@kizoom.org.uk</Creator>
+                <Date>
+                    <Created>2004-09-29</Created>
+                </Date>
+                <Date>
+                    <Modified>2004-10-01</Modified>
+                </Date>
+                <Date>
+                    <Modified>2005-11-18</Modified>
+                </Date>
+                <Description>
+                    <p>SIRI is a European CEN standard for the exchange of real time information .
+                    This subschema describes recommende values for facility and feature  codes to use in the ServiceFeatureRef and VehicleFeatureRef and FeatureRef values.   </p>
+                </Description>
+                <Format>
+                    <MediaType>text/xml</MediaType>
+                    <Syntax>http://www.w3.org/2001/XMLSchema</Syntax>
+                    <Description>XML schema, W3C Recommendation 2001</Description>
+                </Format>
+                <Identifier>{http://www.siri.org.uk/schemas/0.1}reasons.xsd</Identifier>
+                <Language>[ISO 639-2/B] ENG</Language>
+                <Publisher>CEN</Publisher>
+                <Relation> 
+                </Relation>
+                <Rights>Unclassified
+                            <Copyright>Kizoom 2000-2005</Copyright>
+                </Rights>
+                <Source>
+                    <ul>
+                        <li>Derived from the TPEG Categories  schema as encoded in the Kizoom XTIS schema.</li>
+                    </ul>
+                </Source>
+                <Status>Version 1.1 Draft l</Status>
+                <Subject>
+                    <Category>Arts, recreation and travel, Tourism, Travel (tourism), Transport,
+Air transport, Airports,
+Ports and maritime transport, Ferries (marine),
+Public transport, Bus services, Coach services, Bus stops and stations,
+Rail transport, Railway stations and track, Train services, Underground trains,
+Business and industry, Transport, Air transport , Ports and maritime transport, Public transport,
+Rail transport, Roads and road transport
+</Category>
+                    <Project>Cen TC278 WG3 SG7</Project>
+                </Subject>
+                <Title>SIRI XML schema. Facility code subschema </Title>
+                <Type>Standard</Type>
+            </Metadata>
+        </xsd:appinfo>
+    </xsd:annotation>
+    <!-- ======================================================================= -->
+    <xsd:group name="CommonFacilityGroup">
+        <xsd:annotation>
+            <xsd:documentation>tructured Classification Elements. Corresponds to TPEG 18 Event Reason</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="FareClassFacility" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element ref="TicketingFacility" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element ref="NuisanceFacility" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element ref="MobilityFacility" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element ref="PassengerInfoFacility" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element ref="PassengerCommsFacility" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element ref="RefreshmentFacility" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element ref="SanitaryFacility" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element ref="LuggageFacility" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:group>
+    <xsd:group name="AllFacilitiesGroup">
+        <xsd:annotation>
+            <xsd:documentation>Facilities that apply to stops.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:group ref="ServiceFacilityGroup"/>
+            <xsd:element ref="AssistanceFacility" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element ref="HireFacility" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:group>
+    <xsd:group name="StopFacilityGroup">
+        <xsd:annotation>
+            <xsd:documentation>Facilities that apply to stops.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:group ref="CommonFacilityGroup"/>
+            <xsd:element ref="AssistanceFacility" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element ref="HireFacility" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:group>
+    <xsd:group name="ServiceFacilityGroup">
+        <xsd:annotation>
+            <xsd:documentation>Facilities that apply to services.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:group ref="CommonFacilityGroup"/>
+            <xsd:element ref="AccommodationFacility" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:group>
+    <!-- ===FareClass FACILITY====================================== -->
+    <xsd:element name="FareClassFacility" type="FareClassFacilityEnumeration" default="unknown">
+        <xsd:annotation>
+            <xsd:documentation>Classification of FareClass Facility  type - Tpeg  pti23.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:simpleType name="FareClassFacilityEnumeration">
+        <xsd:annotation>
+            <xsd:documentation>Values for FareClass Facility:  TPEG pti_table 23.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+            <xsd:enumeration value="unknown"/>
+            <xsd:enumeration value="pti23_0"/>
+            <xsd:enumeration value="unknown"/>
+            <xsd:enumeration value="pti23_6"/>
+            <xsd:enumeration value="firstClass"/>
+            <xsd:enumeration value="pti23_7"/>
+            <xsd:enumeration value="secondClass"/>
+            <xsd:enumeration value="pti23_8"/>
+            <xsd:enumeration value="thirdClass"/>
+            <xsd:enumeration value="pti23_9"/>
+            <xsd:enumeration value="economyClass"/>
+            <xsd:enumeration value="pti23_10"/>
+            <xsd:enumeration value="businessClass"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <!-- ===Accomodation FACILITY====================================== -->
+    <xsd:element name="AccommodationFacility" type="AccommodationFacilityEnumeration" default="unknown">
+        <xsd:annotation>
+            <xsd:documentation>Classification of Accomodation Facility  type - Tpeg  pti23.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:simpleType name="AccommodationFacilityEnumeration">
+        <xsd:annotation>
+            <xsd:documentation>Values for Accomodation Facility:  TPEG pti_table 23.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+            <xsd:enumeration value="unknown"/>
+            <xsd:enumeration value="pti23_3"/>
+            <xsd:enumeration value="sleeper"/>
+            <xsd:enumeration value="pti23_4"/>
+            <xsd:enumeration value="couchette"/>
+            <xsd:enumeration value="pti23_5"/>
+            <xsd:enumeration value="specialSeating"/>
+            <xsd:enumeration value="pti23_11"/>
+            <xsd:enumeration value="freeSeating"/>
+            <xsd:enumeration value="pti23_12"/>
+            <xsd:enumeration value="recliningSeats"/>
+            <xsd:enumeration value="pti23_13"/>
+            <xsd:enumeration value="babyCompartment"/>
+            <xsd:enumeration value="facacm_1"/>
+            <xsd:enumeration value="familyCarriage"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <!-- ===Mobility FACILITY====================================== -->
+    <xsd:complexType name="MobilityDisruptionStructure">
+        <xsd:annotation>
+            <xsd:documentation>Effect of equipment availability change on impaired access users.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="MobilityImpairedAccess" type="xsd:boolean">
+                <xsd:annotation>
+                    <xsd:documentation>Whether stop or service is accessible to mobility impaired users. This may be further qualified by one ore more MobilityFacility instances  to specify which types of mobilitay access are available (true) or not available (false). For example 'suitableForWheelChair', or 'stepFreeAccess'.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element ref="MobilityFacility" minOccurs="0" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation>Classification of Mobility Facility  type -  Based on Tpeg  pti23.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="MobilityFacility" type="MobilityFacilityEnumeration" default="unknown">
+        <xsd:annotation>
+            <xsd:documentation>Classification of Mobility Facility  type - Tpeg  pti23.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:simpleType name="MobilityFacilityEnumeration">
+        <xsd:annotation>
+            <xsd:documentation>Values for Mobility Facility:  TPEG pti_table 23.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+            <xsd:enumeration value="pti23_255_4"/>
+            <xsd:enumeration value="unknown"/>
+            <xsd:enumeration value="pti23_16"/>
+            <xsd:enumeration value="suitableForWheelChairs"/>
+            <xsd:enumeration value="pti23_16_1"/>
+            <xsd:enumeration value="lowFloor"/>
+            <xsd:enumeration value="pti23_16_2"/>
+            <xsd:enumeration value="boardingAssistance"/>
+            <xsd:enumeration value="pti23_16_3"/>
+            <xsd:enumeration value="stepFreeAccess"/>
+            <xsd:enumeration value="facmob_1"/>
+            <xsd:enumeration value="tactilePatformEdges"/>
+            <xsd:enumeration value="facmob_2"/>
+            <xsd:enumeration value="onboardAssistance"/>
+            <xsd:enumeration value="facmob_3"/>
+            <xsd:enumeration value="unaccompaniedMinorAssistance"/>
+            <xsd:enumeration value="facmob_4"/>
+            <xsd:enumeration value="audioInformation"/>
+            <xsd:enumeration value="facmob_5"/>
+            <xsd:enumeration value="visualInformation"/>
+            <xsd:enumeration value="facmob_6"/>
+            <xsd:enumeration value="displaysForVisuallyImpaired"/>
+            <xsd:enumeration value="facmob_7"/>
+            <xsd:enumeration value="audioForHearingImpaired"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <!-- ===Luggage  FACILITY====================================== -->
+    <xsd:element name="LuggageFacility" type="LuggageFacilityEnumeration" default="unknown">
+        <xsd:annotation>
+            <xsd:documentation>Classification of Luggage Facility  type - Tpeg  pti23.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:simpleType name="LuggageFacilityEnumeration">
+        <xsd:annotation>
+            <xsd:documentation>Values for Luggage Facility:  TPEG pti_table 23.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+            <xsd:enumeration value="unknown"/>
+            <xsd:enumeration value="pti23_17"/>
+            <xsd:enumeration value="bikeCarriage"/>
+            <xsd:enumeration value="faclug_1"/>
+            <xsd:enumeration value="baggageStorage"/>
+            <xsd:enumeration value="faclug_2"/>
+            <xsd:enumeration value="leftLuggage"/>
+            <xsd:enumeration value="faclug_4"/>
+            <xsd:enumeration value="porterage"/>
+            <xsd:enumeration value="faclug_5"/>
+            <xsd:enumeration value="baggageTrolleys"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <!-- === PassengerInfo FACILITY====================================== -->
+    <xsd:element name="PassengerInfoFacility" type="PassengerInfoFacilityEnumeration" default="unknown">
+        <xsd:annotation>
+            <xsd:documentation>Classification of PassengerInfo Facility  type - Tpeg  pti23.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:simpleType name="PassengerInfoFacilityEnumeration">
+        <xsd:annotation>
+            <xsd:documentation>Values for PassengerInfo Facility:  TPEG pti_table 23.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+            <xsd:enumeration value="unknown"/>
+            <xsd:enumeration value="facinfo_1"/>
+            <xsd:enumeration value="nextStopIndicator"/>
+            <xsd:enumeration value="facinfo_1"/>
+            <xsd:enumeration value="stopAnnouncements"/>
+            <xsd:enumeration value="facinfo_1"/>
+            <xsd:enumeration value="passengerInformationDisplay"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <!-- ===Refreshment  FACILITY====================================== -->
+    <xsd:element name="RefreshmentFacility" type="RefreshmentFacilityEnumeration" default="unknown">
+        <xsd:annotation>
+            <xsd:documentation>Classification of Refreshment Facility  type - Tpeg  pti23.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:simpleType name="RefreshmentFacilityEnumeration">
+        <xsd:annotation>
+            <xsd:documentation>Values for Refreshment Facility:  TPEG pti_table 23.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+            <xsd:enumeration value="unknown"/>
+            <xsd:enumeration value="pti23_1"/>
+            <xsd:enumeration value="restaurantService"/>
+            <xsd:enumeration value="pti23_2"/>
+            <xsd:enumeration value="snacksService"/>
+            <xsd:enumeration value="pti23"/>
+            <xsd:enumeration value="trolley"/>
+            <xsd:enumeration value="pti23_18"/>
+            <xsd:enumeration value="bar"/>
+            <xsd:enumeration value="pti23_19"/>
+            <xsd:enumeration value="foodNotAvailable"/>
+            <xsd:enumeration value="pti23_20"/>
+            <xsd:enumeration value="beveragesNotAvailable"/>
+            <xsd:enumeration value="pti23_26"/>
+            <xsd:enumeration value="bistro"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <!-- ===Nuisance  FACILITY====================================== -->
+    <xsd:element name="NuisanceFacility" type="NuisanceFacilityEnumeration" default="unknown">
+        <xsd:annotation>
+            <xsd:documentation>Classification of Nuisance Facility  type - Tpeg  pti23.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:simpleType name="NuisanceFacilityEnumeration">
+        <xsd:annotation>
+            <xsd:documentation>Values for Nuisance Facility:  TPEG pti_table 23.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+            <xsd:enumeration value="unknown"/>
+            <xsd:enumeration value="facnui_1"/>
+            <xsd:enumeration value="smoking"/>
+            <xsd:enumeration value="facnui_2"/>
+            <xsd:enumeration value="noSmoking"/>
+            <xsd:enumeration value="facnui_3"/>
+            <xsd:enumeration value="mobilePhoneUseZone"/>
+            <xsd:enumeration value="facnui_4"/>
+            <xsd:enumeration value="mobilePhoneFreeZone"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <!-- ===Sanitary  FACILITY====================================== -->
+    <xsd:element name="SanitaryFacility" type="SanitaryFacilityEnumeration" default="unknown">
+        <xsd:annotation>
+            <xsd:documentation>Calssification of Sanitary Facility  type - Tpeg  pti23.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:simpleType name="SanitaryFacilityEnumeration">
+        <xsd:annotation>
+            <xsd:documentation>Values for Sanitary Facility:  TPEG pti_table 23.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+            <xsd:enumeration value="unknown"/>
+            <xsd:enumeration value="pti23_22"/>
+            <xsd:enumeration value="toilet"/>
+            <xsd:enumeration value="pti23_23"/>
+            <xsd:enumeration value="noToilet"/>
+            <xsd:enumeration value="fsan_3"/>
+            <xsd:enumeration value="shower"/>
+            <xsd:enumeration value="fsan_4"/>
+            <xsd:enumeration value="wheelchairAcccessToilet"/>
+            <xsd:enumeration value="fsan_5"/>
+            <xsd:enumeration value="babyChange"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <!-- ===Assistance  FACILITY====================================== -->
+    <xsd:element name="AssistanceFacility" type="AssistanceFacilityEnumeration" default="unknown">
+        <xsd:annotation>
+            <xsd:documentation>Classification of Assistance Facility  type - Tpeg  pti23.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:simpleType name="AssistanceFacilityEnumeration">
+        <xsd:annotation>
+            <xsd:documentation>Values for Assistance Facility:  TPEG pti_table 23.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+            <xsd:enumeration value="unknown"/>
+            <xsd:enumeration value="fachlp_1"/>
+            <xsd:enumeration value="police"/>
+            <xsd:enumeration value="fachlp_2"/>
+            <xsd:enumeration value="firstAid"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <!-- ===PassengerComms FACILITY====================================== -->
+    <xsd:element name="PassengerCommsFacility" type="PassengerCommsFacilityEnumeration" default="unknown">
+        <xsd:annotation>
+            <xsd:documentation>Classification of PassengerComms Facility  type - Tpeg  pti23.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:simpleType name="PassengerCommsFacilityEnumeration">
+        <xsd:annotation>
+            <xsd:documentation>Values for PassengerComms Facility:  TPEG pti_table 23.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+            <xsd:enumeration value="unknown"/>
+            <xsd:enumeration value="faccomms_1"/>
+            <xsd:enumeration value="passengerWifi"/>
+            <xsd:enumeration value="pti23_21"/>
+            <xsd:enumeration value="telephone"/>
+            <xsd:enumeration value="pti23_14"/>
+            <xsd:enumeration value="audioServices"/>
+            <xsd:enumeration value="pti23_15"/>
+            <xsd:enumeration value="videoServices"/>
+            <xsd:enumeration value="pti23_25"/>
+            <xsd:enumeration value="businessServices"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <!-- ===Hire FACILITY====================================== -->
+    <xsd:element name="HireFacility" type="HireFacilityEnumeration" default="unknown">
+        <xsd:annotation>
+            <xsd:documentation>Classification of Hire Facility  type - Tpeg  pti23.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:simpleType name="HireFacilityEnumeration">
+        <xsd:annotation>
+            <xsd:documentation>Values for Hire Facility:  TPEG pti_table 23.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+            <xsd:enumeration value="unknown"/>
+            <xsd:enumeration value="faccom_1"/>
+            <xsd:enumeration value="carHire"/>
+            <xsd:enumeration value="faccom_2"/>
+            <xsd:enumeration value="taxi"/>
+            <xsd:enumeration value="faccom_3"/>
+            <xsd:enumeration value="cycleHire"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <!-- ===Ticketing  FACILITY====================================== -->
+    <xsd:element name="TicketingFacility" type="TicketingFacilityEnumeration" default="unknown">
+        <xsd:annotation>
+            <xsd:documentation>Classification of Ticketing Facility  type - Tpeg  pti23.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:simpleType name="TicketingFacilityEnumeration">
+        <xsd:annotation>
+            <xsd:documentation>Values for Ticketing Facility:  TPEG pti_table 23.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+            <xsd:enumeration value="unknown"/>
+            <xsd:enumeration value="factkt_1"/>
+            <xsd:enumeration value="ticketMachines"/>
+            <xsd:enumeration value="factkt_2"/>
+            <xsd:enumeration value="ticketOffice"/>
+            <xsd:enumeration value="factkt_3"/>
+            <xsd:enumeration value="ticketOnDemandMachines"/>
+            <xsd:enumeration value="factkt_4"/>
+            <xsd:enumeration value="ticketSales"/>
+            <xsd:enumeration value="factkt_5"/>
+            <xsd:enumeration value="mobileTicketing"/>
+            <xsd:enumeration value="factkt_6"/>
+            <xsd:enumeration value="ticketCollection"/>
+            <xsd:enumeration value="factkt_7"/>
+            <xsd:enumeration value="centralReservations"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <!-- ===================================================== -->
+</xsd:schema>

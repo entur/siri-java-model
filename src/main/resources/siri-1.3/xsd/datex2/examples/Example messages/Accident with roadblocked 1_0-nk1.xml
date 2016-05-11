@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<d2LogicalModel modelBaseVersion="1.0" xmlns="http://datex2.eu/schema/1_0/1_0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://datex2.eu/schema/1_0/1_0
+http://datex2.eu/schema/1_0/1_0/DATEXIISchema_1_0_1_0.xsd">
+	<exchange>
+		<supplierIdentification>
+			<country>se</country>
+			<nationalIdentifier>SRA</nationalIdentifier>
+		</supplierIdentification>
+	</exchange>
+	<payloadPublication xsi:type="SituationPublication" lang="se">
+		<publicationTime>2006-09-28T16:00:00+01:00</publicationTime>
+		<publicationCreator>
+			<country>se</country>
+			<nationalIdentifier>SRA</nationalIdentifier>
+		</publicationCreator>
+		<situation id="GUID2A22530C-D452-4ae8-B942-993BC2923D13">
+			<headerInformation>
+				<confidentiality>noRestriction</confidentiality>
+				<informationStatus>real</informationStatus>
+				<urgency>normalUrgency</urgency>
+			</headerInformation>
+			<situationRecord xsi:type="Accident" id="GUID2A22530C-D452-4ae8-B942-993BC2923D14">
+				<situationRecordCreationTime>2006-09-28T16:00:00+01:00</situationRecordCreationTime>
+				<situationRecordVersion>1</situationRecordVersion>
+				<situationRecordVersionTime>2006-09-28T16:05:00+00:00</situationRecordVersionTime>
+				<situationRecordFirstSupplierVersionTime>2006-09-28T16:05:00+00:00</situationRecordFirstSupplierVersionTime>
+				<probabilityOfOccurrence>certain</probabilityOfOccurrence>
+				<sourceInformation>
+					<sourceIdentification>SRA</sourceIdentification>
+					<sourceName>
+						<value lang="se">Vägverket</value>
+						<value lang="en">Swedish Road Administration</value>
+					</sourceName>
+					<sourceType>roadAuthorities</sourceType>
+				</sourceInformation>
+				<validity>
+					<validityStatus>definedByValidityTimeSpec</validityStatus>
+					<validityTimeSpecification>
+						<overallStartTime>2006-10-17T14:00:00+02:00</overallStartTime>
+						<overallEndTime>2006-10-17T16:00:00+02:00</overallEndTime>
+					</validityTimeSpecification>
+				</validity>
+				<impact>
+					<impactDetails>
+						<numberOfLanesRestricted>1</numberOfLanesRestricted>
+						<numberOfOperationalLanes>3</numberOfOperationalLanes>
+						<originalNumberOfLanes>4</originalNumberOfLanes>
+						<trafficRestrictionType>roadBlocked</trafficRestrictionType>
+					</impactDetails>
+				</impact>
+				<advice xsi:type="LaneUsage">
+					<laneUsageAdvice>keepToTheLeft</laneUsageAdvice>
+				</advice>
+				<generalPublicComment>
+					<comment>
+						<value lang="se">Detta är en svensk olycka</value>
+						<value lang="en">This is a swedish accident</value>
+					</comment>
+				</generalPublicComment>
+				<groupOfLocations>
+					<locationContainedInGroup xsi:type="Linear">
+						<alertCLinear xsi:type="AlertCMethod4Linear">
+							<alertCLocationCountryCode>E</alertCLocationCountryCode>
+							<alertCLocationTableNumber>33</alertCLocationTableNumber>
+							<alertCLocationTableVersion>1</alertCLocationTableVersion>
+							<alertCDirection>
+								<alertCDirectionCoded>positive</alertCDirectionCoded>
+							</alertCDirection>
+							<alertCMethod4PrimaryPointLocation>
+								<alertCLocation>
+									<specificLocation>2030</specificLocation>
+								</alertCLocation>
+								<offsetDistance>
+									<offsetDistance>10</offsetDistance>
+								</offsetDistance>
+							</alertCMethod4PrimaryPointLocation>
+							<alertCMethod4SecondaryPointLocation>
+								<alertCLocation>
+									<specificLocation>2033</specificLocation>
+								</alertCLocation>
+								<offsetDistance>
+									<offsetDistance>20</offsetDistance>
+								</offsetDistance>
+							</alertCMethod4SecondaryPointLocation>
+						</alertCLinear>
+					</locationContainedInGroup>
+				</groupOfLocations>
+				<accidentType>accident</accidentType>
+			</situationRecord>
+		</situation>
+	</payloadPublication>
+</d2LogicalModel>

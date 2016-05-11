@@ -1,0 +1,40 @@
+<jaxb:bindings version="2.1"
+               xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+               xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+               xmlns:xs="http://www.w3.org/2001/XMLSchema" >
+
+    <jaxb:globalBindings generateElementProperty="false" enableJavaNamingConventions="true" >
+
+        <jaxb:javaType name="java.time.ZonedDateTime" xmlType="xs:dateTime"
+                       printMethod="java.time.format.DateTimeFormatter.ISO_OFFSET_DATE_TIME.format"
+                       parseMethod="java.time.ZonedDateTime.parse"/>
+    </jaxb:globalBindings>
+
+    <jaxb:bindings schemaLocation="../xsd/siri.xsd">
+        <jaxb:schemaBindings >
+            <jaxb:package name="uk.org.siri.siri13" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="../xsd/ifopt/ifopt_administration-v0.3.xsd">
+        <jaxb:schemaBindings >
+            <jaxb:package name="uk.org.ifopt.siri13" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="../xsd/acsb/acsb_all-v0.3.xsd">
+        <jaxb:schemaBindings >
+            <jaxb:package name="uk.org.acbs.siri13" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="../xsd/datex2/DATEXIISchema_1_0_1_0.xsd">
+        <jaxb:schemaBindings >
+            <jaxb:package name="eu.datex2.siri13.schema._1_0._1_0" />
+        </jaxb:schemaBindings>
+        <jaxb:bindings node="//xs:complexType[@name='Comment']">
+            <jaxb:class name="CommentStructure"/>
+        </jaxb:bindings>
+    </jaxb:bindings>
+
+</jaxb:bindings>
