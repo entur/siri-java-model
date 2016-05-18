@@ -1,19 +1,42 @@
 <jaxb:bindings version="2.1"
                xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
                xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
-               xmlns:xs="http://www.w3.org/2001/XMLSchema" >
+               xmlns:xsd="http://www.w3.org/2001/XMLSchema" >
 
-    <jaxb:globalBindings generateElementProperty="false" enableJavaNamingConventions="true" >
+    <jaxb:globalBindings generateElementProperty="false">
 
-        <jaxb:javaType name="java.time.ZonedDateTime" xmlType="xs:dateTime"
+        <jaxb:javaType name="java.time.ZonedDateTime" xmlType="xsd:dateTime"
                        printMethod="java.time.format.DateTimeFormatter.ISO_OFFSET_DATE_TIME.format"
                        parseMethod="java.time.ZonedDateTime.parse"/>
+        <jaxb:javaType name="java.time.ZonedDateTime" xmlType="xsd:time"
+                       printMethod="java.time.format.DateTimeFormatter.ISO_OFFSET_TIME.format"
+                       parseMethod="java.time.ZonedDateTime.parse"/>
+        <xjc:simple/>
     </jaxb:globalBindings>
 
     <jaxb:bindings schemaLocation="../xsd/siri.xsd">
         <jaxb:schemaBindings >
             <jaxb:package name="uk.org.siri.siri13" />
         </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="../xsd/siri_productionTimetable_service.xsd">
+        <jaxb:bindings node="/xsd:schema/xsd:group[@name='DatedCallsAsFlatGroup']">
+            <jaxb:bindings node=".//xsd:sequence">
+                <jaxb:bindings node=".//xsd:element[@ref='DatedCall']">
+                    <jaxb:property name="DateCallsList"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="../xsd/siri_estimatedTimetable_service.xsd">
+        <!-- rename the value element -->
+        <jaxb:bindings node="/xsd:schema/xsd:group[@name='EstimatedCallsAsFlatGroup']">
+            <jaxb:bindings node=".//xsd:sequence">
+                <jaxb:bindings node=".//xsd:element[@ref='EstimatedCall']">
+                    <jaxb:property name="EstimatedCallsList"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
     </jaxb:bindings>
 
     <jaxb:bindings schemaLocation="../xsd/ifopt/ifopt_administration-v0.3.xsd">
@@ -32,7 +55,7 @@
         <jaxb:schemaBindings >
             <jaxb:package name="eu.datex2.siri13.schema._1_0._1_0" />
         </jaxb:schemaBindings>
-        <jaxb:bindings node="//xs:complexType[@name='Comment']">
+        <jaxb:bindings node="//xsd:complexType[@name='Comment']">
             <jaxb:class name="CommentStructure"/>
         </jaxb:bindings>
     </jaxb:bindings>
