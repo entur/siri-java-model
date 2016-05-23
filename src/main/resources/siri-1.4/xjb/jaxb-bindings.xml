@@ -1,7 +1,8 @@
 <jaxb:bindings version="2.1"
                xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
                xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
-               xmlns:xs="http://www.w3.org/2001/XMLSchema" >
+               xmlns:xs="http://www.w3.org/2001/XMLSchema"
+               xmlns:xsd="http://www.w3.org/2001/XMLSchema" >
 
 
     <jaxb:globalBindings generateElementProperty="false" >
@@ -19,6 +20,18 @@
         <jaxb:schemaBindings >
             <jaxb:package name="uk.org.siri.siri14" />
         </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="../xsd/siri/siri_journey-v1.3.xsd">
+        <jaxb:bindings node="//xsd:simpleType[@name='ProgressStatusEnumeration']">
+            <jaxb:typesafeEnumClass name="CallStatusEnumeration"/>
+        </jaxb:bindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="../xsd/siri_discovery.xsd">
+        <jaxb:bindings node="//xsd:complexType[@name='VehicleFeaturesDiscoveryRequestStructure']">
+            <jaxb:class name="VehicleFeaturesRequestStructure"/>
+        </jaxb:bindings>
     </jaxb:bindings>
 
     <jaxb:bindings schemaLocation="../xsd/ifopt/ifopt_administration-v0.3.xsd">

@@ -18,6 +18,20 @@
             <jaxb:package name="uk.org.siri.siri10" />
         </jaxb:schemaBindings>
     </jaxb:bindings>
+
+
+    <jaxb:bindings schemaLocation="../xsd/ref/siri_journey-v1.0.xsd">
+        <jaxb:bindings node="//xsd:simpleType[@name='ProgressStatusEnumeration']">
+            <jaxb:typesafeEnumClass name="CallStatusEnumeration"/>
+        </jaxb:bindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="../xsd/siri_discovery.xsd">
+        <jaxb:bindings node="//xsd:complexType[@name='VehicleFeaturesDiscoveryRequestStructure']">
+            <jaxb:class name="VehicleFeaturesRequestStructure"/>
+        </jaxb:bindings>
+    </jaxb:bindings>
+
     <jaxb:bindings schemaLocation="../xsd/siri_productionTimetable_service.xsd">
         <jaxb:bindings node="/xsd:schema/xsd:group[@name='DatedCallsAsFlatGroup']">
                 <jaxb:bindings node=".//xsd:sequence">
