@@ -1,5 +1,6 @@
 package org.rutebanken.siri20.util;
 
+import com.sun.xml.internal.bind.marshaller.NamespacePrefixMapper;
 import org.xml.sax.SAXException;
 import uk.org.siri.siri20.Siri;
 
@@ -37,17 +38,28 @@ public class SiriXml {
     }
 
     public static String toXml(Siri siri) throws JAXBException {
+        return toXml(siri, null);
+    }
+
+    public static String toXml(Siri siri, NamespacePrefixMapper customNamespacePrefixMapper) throws JAXBException {
+
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
+        if (customNamespacePrefixMapper != null) {
+            jaxbMarshaller.setProperty("com.sun.xml.bind.namespacePrefixMapper", customNamespacePrefixMapper);
+        }
         StringWriter sw = new StringWriter();
         jaxbMarshaller.marshal(siri, sw);
 
         return sw.toString();
     }
 
-    public static void toXml(Siri siri, OutputStream out) throws JAXBException, IOException {
+    public static void toXml(Siri siri, NamespacePrefixMapper customNamespacePrefixMapper, OutputStream out) throws JAXBException, IOException {
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
+        if (customNamespacePrefixMapper != null) {
+            jaxbMarshaller.setProperty("com.sun.xml.bind.namespacePrefixMapper", customNamespacePrefixMapper);
+        }
         jaxbMarshaller.marshal(siri, out);
         out.flush();
         out.close();

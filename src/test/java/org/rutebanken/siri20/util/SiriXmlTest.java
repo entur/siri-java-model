@@ -2,7 +2,6 @@ package org.rutebanken.siri20.util;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.xml.sax.SAXException;
 import uk.org.siri.siri20.Siri;
 
 import java.io.File;
@@ -23,6 +22,8 @@ public class SiriXmlTest {
     public static void init() throws IOException {
 
         xml = readFile("src/test/resources/vm.xml");
+
+        //Removing indentation and newlines to match unformatted xml
         xml = xml.replace("\n", "");
         while (xml.indexOf("  ") > 0) {
             xml = xml.replace("  ", "");
@@ -39,7 +40,10 @@ public class SiriXmlTest {
 
         long t1 = System.currentTimeMillis();
         Siri s = parseXml(xml);
-        System.out.println("Parsing xml: " + (System.currentTimeMillis() - t1));
+        System.out.println("Parsing xml - coldstart - took: " + (System.currentTimeMillis() - t1));
+        t1 = System.currentTimeMillis();
+        s = parseXml(xml);
+        System.out.println("Parsing xml - warmstart - took: " + (System.currentTimeMillis() - t1));
 
         long t2 = System.currentTimeMillis();
         String jaxbXml = toXml(s);
