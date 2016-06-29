@@ -1,6 +1,6 @@
 package org.rutebanken.siri20.util;
 
-import com.sun.xml.internal.bind.marshaller.NamespacePrefixMapper;
+import com.sun.xml.bind.marshaller.NamespacePrefixMapper;
 import org.xml.sax.SAXException;
 import uk.org.siri.siri20.Siri;
 
