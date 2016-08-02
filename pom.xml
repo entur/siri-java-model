@@ -9,8 +9,8 @@
     <packaging>jar</packaging>
 
     <scm>
-         <connection>scm:git:ssh://git@github.com:rutebanken/siri-java-model.git</connection>
-         <developerConnection>scm:git:ssh://git@github.com:rutebanken/siri-java-model.git</developerConnection>
+         <connection>scm:git:ssh://git@github.com/rutebanken/siri-java-model.git</connection>
+         <developerConnection>scm:git:ssh://git@github.com/rutebanken/siri-java-model.git</developerConnection>
      </scm>
 
     <dependencies>
