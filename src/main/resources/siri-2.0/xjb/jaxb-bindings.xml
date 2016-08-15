@@ -12,6 +12,7 @@
                        printMethod="java.time.format.DateTimeFormatter.ISO_OFFSET_TIME.format"
                        parseMethod="org.rutebanken.siri20.adapter.ZonedDateTimeAdapter.parse"/>
         <xjc:simple/>
+        <jaxb:serializable/>
     </jaxb:globalBindings>
 
     <jaxb:bindings schemaLocation="../xsd/siri.xsd">
