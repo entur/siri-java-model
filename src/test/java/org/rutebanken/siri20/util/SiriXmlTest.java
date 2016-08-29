@@ -58,13 +58,13 @@ public class SiriXmlTest {
         File tmpFile = File.createTempFile("tmp-siri-xml", ".xml");
         FileOutputStream fos = new FileOutputStream(tmpFile);
 
-        boolean isValid = validate(xml, "siri-2.0/xsd/siri.xsd", System.out);
+        boolean isValid = validate(xml, SiriXml.VERSION.VERSION_2_0, System.out);
         assertTrue("Example-file is not valid", isValid);
 
         Siri s = parseXml(xml);
         String generatedXml = toXml(s);
 
-        isValid = validate(generatedXml, "siri-2.0/xsd/siri.xsd", System.out);
+        isValid = validate(generatedXml, SiriXml.VERSION.VERSION_2_0, System.out);
         assertTrue("Generated XML is not valid", isValid);
     }
 

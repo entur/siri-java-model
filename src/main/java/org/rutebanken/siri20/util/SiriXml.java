@@ -12,6 +12,7 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import java.io.*;
+import java.net.URL;
 
 public class SiriXml {
 
@@ -71,13 +72,13 @@ public class SiriXml {
      * Result is printed to System.out
      *
      * @param xml
-     * @param xsdPathName
+     * @param version
      * @return
      * @throws JAXBException
      * @throws SAXException
      */
-    public static boolean validate(String xml, String xsdPathName) throws JAXBException, SAXException {
-        return validate(xml, xsdPathName, System.out);
+    public static boolean validate(String xml, VERSION version) throws JAXBException, SAXException {
+        return validate(xml, version, System.out);
     }
 
     /**
@@ -86,16 +87,16 @@ public class SiriXml {
      * Result is printed to provided PrintStream
      *
      * @param xml
-     * @param xsdRelativePath
+     * @param version
      * @param out
      * @return
      * @throws JAXBException
      * @throws SAXException
      */
-    public static boolean validate(String xml, String xsdRelativePath, PrintStream out) throws JAXBException, SAXException {
+    public static boolean validate(String xml, VERSION version, PrintStream out) throws JAXBException, SAXException {
         SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 
-        Schema schema = sf.newSchema(new SiriXml().getClass().getClassLoader().getResource(xsdRelativePath));
+        Schema schema = sf.newSchema(getXsdRelativePath(version));
 
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
         unmarshaller.setSchema(schema);
@@ -123,5 +124,29 @@ public class SiriXml {
         return handler.events.size() == 0;
 
     }
+
+    private static URL getXsdRelativePath(VERSION version) {
+
+        String path = "";
+        switch (version) {
+            case VERSION_1_0:
+                path = "siri-1.0/xsd/siri.xsd";
+                break;
+            case VERSION_1_3:
+                path = "siri-1.3/xsd/siri.xsd";
+                break;
+            case VERSION_1_4:
+                path = "siri-1.4/xsd/siri.xsd";
+                break;
+            case VERSION_2_0:
+            default:
+            path = "siri-2.0/xsd/siri.xsd";
+        }
+
+        return new SiriXml().getClass().getClassLoader().getResource(path);
+    }
+
+    public static enum VERSION {VERSION_1_0, VERSION_1_3, VERSION_1_4, VERSION_2_0}
+
 }
 
