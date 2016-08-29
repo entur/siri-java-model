@@ -86,16 +86,16 @@ public class SiriXml {
      * Result is printed to provided PrintStream
      *
      * @param xml
-     * @param xsdPathName
+     * @param xsdRelativePath
      * @param out
      * @return
      * @throws JAXBException
      * @throws SAXException
      */
-    public static boolean validate(String xml, String xsdPathName, PrintStream out) throws JAXBException, SAXException {
+    public static boolean validate(String xml, String xsdRelativePath, PrintStream out) throws JAXBException, SAXException {
         SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 
-        Schema schema = sf.newSchema(new File(xsdPathName));
+        Schema schema = sf.newSchema(new SiriXml().getClass().getClassLoader().getResource(xsdRelativePath));
 
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
         unmarshaller.setSchema(schema);
