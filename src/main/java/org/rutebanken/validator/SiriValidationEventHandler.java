@@ -1,4 +1,4 @@
-package org.rutebanken.siri20.util;
+package org.rutebanken.validator;
 
 import javax.xml.bind.ValidationEvent;
 import javax.xml.bind.ValidationEventHandler;
