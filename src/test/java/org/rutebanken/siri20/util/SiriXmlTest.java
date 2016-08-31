@@ -56,16 +56,13 @@ public class SiriXmlTest {
     @Test
     public void testValidate() throws Exception {
 
-        File tmpFile = File.createTempFile("tmp-siri-xml", ".xml");
-        FileOutputStream fos = new FileOutputStream(tmpFile);
-
-        boolean isValid = validate(xml, SiriValidator.VERSION.VERSION_2_0, System.out);
+        boolean isValid = validate(xml, SiriValidator.Version.VERSION_2_0, System.out);
         assertTrue("Example-file is not valid", isValid);
 
         Siri s = parseXml(xml);
         String generatedXml = toXml(s);
 
-        isValid = validate(generatedXml, SiriValidator.VERSION.VERSION_2_0, System.out);
+        isValid = validate(generatedXml, SiriValidator.Version.VERSION_2_0, System.out);
         assertTrue("Generated XML is not valid", isValid);
     }
 

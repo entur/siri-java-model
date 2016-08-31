@@ -52,7 +52,7 @@ public class SiriValidator {
      * @throws JAXBException
      * @throws SAXException
      */
-    public static boolean validate(String xml, VERSION version) throws JAXBException, SAXException {
+    public static boolean validate(String xml, Version version) throws JAXBException, SAXException {
         return validate(xml, version, System.out);
     }
 
@@ -68,7 +68,7 @@ public class SiriValidator {
      * @throws JAXBException
      * @throws SAXException
      */
-    public static boolean validate(String xml, VERSION version, PrintStream out) throws JAXBException, SAXException {
+    public static boolean validate(String xml, Version version, PrintStream out) throws JAXBException, SAXException {
         SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 
         Schema schema = sf.newSchema(getXsdRelativePath(version));
@@ -100,7 +100,7 @@ public class SiriValidator {
 
     }
 
-    private static Unmarshaller getVersionSpecificUnmarshaller(VERSION version) throws JAXBException {
+    private static Unmarshaller getVersionSpecificUnmarshaller(Version version) throws JAXBException {
         switch (version) {
             case VERSION_1_0:
                 return siri10jaxbContext.createUnmarshaller();
@@ -114,7 +114,7 @@ public class SiriValidator {
         }
     }
 
-    private static URL getXsdRelativePath(VERSION version) {
+    private static URL getXsdRelativePath(Version version) {
 
         String path;
         switch (version) {
@@ -135,5 +135,5 @@ public class SiriValidator {
         return new SiriValidator().getClass().getClassLoader().getResource(path);
     }
 
-    public static enum VERSION {VERSION_1_0, VERSION_1_3, VERSION_1_4, VERSION_2_0}
+    public static enum Version {VERSION_1_0, VERSION_1_3, VERSION_1_4, VERSION_2_0}
 }
