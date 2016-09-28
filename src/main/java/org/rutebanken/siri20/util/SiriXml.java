@@ -57,8 +57,6 @@ public class SiriXml {
             jaxbMarshaller.setProperty("com.sun.xml.bind.namespacePrefixMapper", customNamespacePrefixMapper);
         }
         jaxbMarshaller.marshal(siri, out);
-        out.flush();
-        out.close();
     }
 
 }
