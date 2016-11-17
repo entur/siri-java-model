@@ -125,7 +125,7 @@
         <repository>
             <id>rutebanken-repository</id>
             <name>Rutebanken Repository</name>
-            <url>scpexe://nexus/opt/mavenrepo</url>
+            <url>scpexe://localhost:2223/usr/share/nginx/html</url>
         </repository>
     </distributionManagement>
 </project>
