@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v2011 (http://www.xmlspy.com) by Christophe Duquesne (Aurige- www.aurigetech.com) -->
+<xsd:schema xmlns="http://wsdl.siri.org.uk/siri" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:siri="http://www.siri.org.uk/siri" targetNamespace="http://wsdl.siri.org.uk/siri" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="2.4" id="FR-IDF">
+	<xsd:import namespace="http://www.siri.org.uk/siri" schemaLocation="siri.xsd"/>
+	
+	<xsd:annotation>
+		<xsd:appinfo>
+			<Metadata xmlns="http://www.govtalk.gov.uk/CM/gms-xs">
+				<Audience>e-service developers</Audience>
+                <Creator>Christophe Duquesne, Aurige, Guyancourt FRANCE </Creator>
+				<Contributor>Robin Vettier, RATP, Paris FRANCE</Contributor>
+				<Coverage>Ile-de-France</Coverage>
+				<Creator>Christophe Duquesne, Aurige, Guyancourt FRANCE </Creator>
+				<Date>
+					<Created>2013-05-22</Created>
+				</Date>
+				<Description>
+					<p>Profil IDF (Ile-de-France) de SIRI, version 2.4</p>
+				</Description>
+				<Format>
+					<MediaType>text/xml</MediaType>
+					<Syntax>http://www.w3.org/2001/XMLSchema</Syntax>
+					<Description>XML schema, W3C Recommendation 2001</Description>
+				</Format>
+				<Language>[ISO 639-2/B] ENG</Language>
+				<Publisher>STIF </Publisher>
+				<Relation>
+					<Requires>http://www.siri.org.uk/schema/2.0/siri.xsd</Requires>
+				</Relation>
+				<Rights>Unclassified
+                                      <Copyright>STIF 2013</Copyright>
+				</Rights>
+				<Source>
+					<ul>
+						<li>Profile of SIRI 2 standards.</li>
+					</ul>
+				</Source>
+				<Status>Version 2.4 </Status>
+				<Subject>
+					<Category>Tourism, Travel (tourism), Transport,
+Public transport, Bus services, Coach services, Bus stops and stations,
+Rail transport, Railway stations and track, Train services, Underground trains,
+Business and industry, Transport, Public transport,
+Rail transport, Roads and road transport.
+</Category>
+					<Project>Échange d’information voyageurs temps réel</Project>
+				</Subject>
+				<Title>XSD des spécificités du Profil IDF 2.4 (STIF), dédiés aux WSDLs pour l'échange d’information voyageurs temps réel en Ile-de-France</Title>
+				<Type>Standard</Type>
+			</Metadata>
+		</xsd:appinfo>
+	</xsd:annotation>	
+	
+	
+	<xsd:annotation>
+		<xsd:documentation>
+		 
+	</xsd:documentation>
+	</xsd:annotation>
+	<xsd:element name="IDFMessage" type="IDFMessageStructure">
+		<xsd:annotation>
+			<xsd:documentation>Message (for General Message Service) defined for the the STIF/IDF Local Agreement. This element is intended to be used in the "Content" field (type "any") in the InfoMessageStructure. </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<!-- =Type definition =========================================================== -->
+	<xsd:simpleType name="IDFMessageTypeEnumeration">
+		<xsd:annotation>
+			<xsd:documentation>Values for IDF Message Type</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="shortMessage"/>
+			<xsd:enumeration value="longMessage"/>
+			<xsd:enumeration value="codedMessage"/>
+			<xsd:enumeration value="textOnly"/>
+			<xsd:enumeration value="formattedText"/>
+			<xsd:enumeration value="HTML"/>
+			<xsd:enumeration value="RTF"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="IDFMessageStructure">
+		<xsd:annotation>
+			<xsd:documentation>Message (for General Message Service) defined for the the STIF/IDF Local Agreement. </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<!-- RV20100725: ajout du minOccurs=0 pour rendre ce champ facultatif  -->
+			<xsd:element name="MessageType" type="IDFMessageTypeEnumeration" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Type de message (long/short/coded/...)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="NumberOfLines" type="xsd:positiveInteger" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Type de message (long/short/coded)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="NumberOfCharPerLine" type="xsd:positiveInteger" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Type de message (long/short/coded)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MessageText" type="siri:NaturalLanguageStringStructure">
+				<xsd:annotation>
+					<xsd:documentation>Text of the message itself</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="IDFLineSectionStructure">
+		<xsd:annotation>
+			<xsd:documentation>Description of a Line Section defined for the the STIF/IDF Local Agreement. </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="FirstStop" type="siri:StopPointRefStructure">
+				<xsd:annotation>
+					<xsd:documentation>Identifier of the first Stop Point of the line section</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LastStop" type="siri:StopPointRefStructure">
+				<xsd:annotation>
+					<xsd:documentation>Identifier of the last Stop Point of the line section</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element ref="siri:LineRef"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="IDFGeneralMessageStructure">
+		<xsd:annotation>
+			<xsd:documentation>Message (for General Message Service) defined for the the STIF/IDF Local Agreement. </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element ref="siri:LineRef" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="siri:StopPointRef" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="siri:JourneyPatternRef" minOccurs="0" maxOccurs="unbounded"/>
+			<!-- SFO - ajout du DirectionRef -->
+			<xsd:element ref="siri:DestinationRef" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="RouteRef" type="siri:RouteRefStructure" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Reference to a Route</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="GroupOfLinesRef" type="siri:GroupOfLinesRefStructure" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Filter based on Goup of Lines (network or any othe predefined group oif lines)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LineSection" type="IDFLineSectionStructure" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="Message" type="IDFMessageStructure" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- ======================================================================= -->
+	<!-- Filtre pour les requetes (adapte aux  structures de message IDF) -->
+	<!-- Si plusieurs filitres sont demandés (plusieurs identifiants de ligne, L1, L2 par exemple), cela correspond a une demande de tous les message concernant la ligne L1 OU la ligne L2 (c'est bien un OU et non un ET) -->
+	<xsd:complexType name="IDFGeneralMessageRequestFilterStructure">
+		<xsd:annotation>
+			<xsd:documentation>Filter for General Message Service) defined for the the STIF/IDF Local Agreement. </xsd:documentation>
+		</xsd:annotation>
+		<xsd:choice>
+			<xsd:element ref="siri:LineRef" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="siri:StopPointRef" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="siri:JourneyPatternRef" minOccurs="0" maxOccurs="unbounded"/>
+			<!-- SFO - ajout du DirectionRef -->
+			<xsd:element ref="siri:DestinationRef" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="RouteRef" type="siri:RouteRefStructure" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Reference to a Route</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="GroupOfLinesRef" type="siri:GroupOfLinesRefStructure" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Filter based on Goup of Lines (network or any othe predefined group oif lines)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:choice>
+	</xsd:complexType>
+	<xsd:element name="IDFGeneralMessageRequestFilter" type="IDFGeneralMessageRequestFilterStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type definition for extension in MonitoredCall element (for Stop Monitoring Service) to be defined in future STIF/IDF Local Agreement. This element is intended to be used under (as a child element) of the "Extensions" element (type "any") in the MonitoredCall element. </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+</xsd:schema>
