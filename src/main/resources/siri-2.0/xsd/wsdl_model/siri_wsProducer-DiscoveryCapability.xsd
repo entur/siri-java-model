@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSpy v2011 rel. 2 sp1 (x64) (http://www.altova.com) by Christophe Duquesne (Dryade) -->
-<xsd:schema xmlns="http://wsdl.siri.org.uk/siri" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:siri="http://www.siri.org.uk/siri" targetNamespace="http://wsdl.siri.org.uk/siri" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="1.3" id="siriWS">
+<xsd:schema xmlns="http://wsdl.siri.org.uk" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:siri="http://www.siri.org.uk/siri" targetNamespace="http://wsdl.siri.org.uk" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="1.3" id="siriWS">
 	<xsd:import namespace="http://www.siri.org.uk/siri" schemaLocation="../siri.xsd"/>
 	<xsd:annotation>
 		<xsd:appinfo>
@@ -86,7 +86,7 @@ Rail transport, Roads and road transport.
 			<xsd:element name="AnswerExtension" type="siri:ExtensionsStructure" minOccurs="1" maxOccurs="1"/>
 		</xsd:sequence>
 	</xsd:complexType>
-	<xsd:element name="GetCapabilities" type="WsGetCapabilitiesAnswerStructure"/>
+	<xsd:element name="GetCapabilities" type="WsGetCapabilitiesRequestStructure"/>
 	<xsd:element name="GetCapabilitiesResponse" type="WsGetCapabilitiesAnswerStructure"/>
 	<!-- Discovery -->
 	<xsd:complexType name="WsStopPointsDiscoveryStructure">
@@ -97,13 +97,26 @@ Rail transport, Roads and road transport.
 	</xsd:complexType>
 	<xsd:complexType name="WsStopPointsDiscoveryAnswerStructure">
 		<xsd:sequence>
-			<xsd:element name="StopPointsDiscoveryAnswerInfo" type="siri:ProducerResponseEndpointStructure" minOccurs="1" maxOccurs="1"/>
 			<xsd:element name="Answer" type="siri:StopPointsDeliveryStructure" minOccurs="1" maxOccurs="1"/>
 			<xsd:element name="AnswerExtension" type="siri:ExtensionsStructure" minOccurs="1" maxOccurs="1"/>
 		</xsd:sequence>
 	</xsd:complexType>
 	<xsd:element name="StopPointsDiscovery" type="WsStopPointsDiscoveryStructure"/>
 	<xsd:element name="StopPointsDiscoveryResponse" type="WsStopPointsDiscoveryAnswerStructure"/>
+	<xsd:complexType name="WsConnectionLinksDiscoveryStructure">
+		<xsd:sequence>
+			<xsd:element name="Request" type="siri:ConnectionLinksDiscoveryRequestStructure" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="RequestExtension" type="siri:ExtensionsStructure" minOccurs="1" maxOccurs="1"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="WsConnectionLinksDiscoveryAnswerStructure">
+		<xsd:sequence>
+			<xsd:element name="Answer" type="siri:ConnectionLinksDeliveryStructure" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="AnswerExtension" type="siri:ExtensionsStructure" minOccurs="1" maxOccurs="1"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ConnectionLinksDiscovery" type="WsConnectionLinksDiscoveryStructure"/>
+	<xsd:element name="ConnectionLinksDiscoveryResponse" type="WsConnectionLinksDiscoveryAnswerStructure"/>
 	<xsd:complexType name="WsLinesDiscoveryStructure">
 		<xsd:sequence>
 			<xsd:element name="Request" type="siri:LinesDiscoveryRequestStructure" minOccurs="1" maxOccurs="1"/>
@@ -112,7 +125,6 @@ Rail transport, Roads and road transport.
 	</xsd:complexType>
 	<xsd:complexType name="WsLinesDiscoveryAnswerStructure">
 		<xsd:sequence>
-			<xsd:element name="LinesDiscoveryAnswerInfo" type="siri:ProducerResponseEndpointStructure" minOccurs="1" maxOccurs="1"/>
 			<xsd:element name="Answer" type="siri:LinesDeliveryStructure" minOccurs="1" maxOccurs="1"/>
 			<xsd:element name="AnswerExtension" type="siri:ExtensionsStructure" minOccurs="1" maxOccurs="1"/>
 		</xsd:sequence>

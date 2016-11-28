@@ -3,7 +3,7 @@ Server Interface for Real-time Information
 
 v2.0 As CEN draft European Standard
 	prCEN/EN EN 00278181
-	prCEN/EN EN 15531 
+	prCEN/EN EN 15531  
 
 v1.0 As CEN Technical Standard
 	CEN/TS 00278181
@@ -20,6 +20,91 @@ This ReadMe describes Changes to the SIRI schema up to  v2.0 version 2.0   since
 ========================
 Changes to  SIRI schema v2.0   since v1.4
 
+ 2015.05.13 Bug fix (from french feedback) SIRI 2.0p
+	* replacement of "NotifyExtension" (appearing 10 times) with "SiriExtension" in siri_wsConsumer.wsdl in order to ensure compatibility with the Document version
+
+ 2015.05.13 Bug fix (from SG7 feedback) SIRI 2.0o
+ 	* update annotation in siri.xsd and and siri_all_functionalService.xsd (to add <Requires> siri__facilityMonitoring_service.xsd ...)
+	* siri.xsd: move of a SituationExchangeDelivery, renamed IncludedSituationExchangeDelivery, before other complemented service deliveries.
+	* siri_situationExchange_service.xsd: addition of IncludedSituationExchangeDelivery element
+
+ 2015.05.11 Bug fix (from SG7 skype meeting on May 11th 2015) SIRI 2.0o
+ 	* Allow multiple tags within an extension (reapply lost chnage from 2012.06.18 SIRI 2.0d) - siri_utility-v1.1.xsd
+	* siri_estimatedVehicleJourney-v2.0.xsd : in EstimatedTimetableAlterationGroup, addition of FramedVehicleJourneyRef as an alternative to DatedVehicleJourneyRef (choice) and deprecation of DatedVehicleJourneyRef and EstimatedVehicleJourneyCode
+	* siri_datedVehicleJourney-v2.0.xsd : DatedVehicleJourneyCode is now optional
+	* siri.xsd: SituationExchangeDelivery now can be provided as a complement to any other Service delivery (and can still be provided standalone)... note that the SituationExchangeDelivery must be after the other Delivery to get a validating, non-ambiguous XSD.
+	* siri_estimatedVehicleJourney-v2.0.xsd : EstimatedVehicleJourneyStructure brought back to SIRI 2.0k situation
+		* Replacement of EstimatedJourneyInfoGroup by JourneyEndTimesGroup 
+		* Replacement of inclusion of siri_journey-v2.0.xsd by siri_monitoredVehicleJourney-v2.0.xsd
+		* Replacement of EstimatedRealtimeInfoGroup by journeyProgressGroup
+		* Replacement of OperationalInfoGroup by TrainOperationalInfoGroup
+
+
+ 2015.02.10 Bug fix (from french feedback)
+ 	* [fr] siri_wsProducer-Framework.xsd: use of siri:CheckStatusRequestStructure instead of siri:RequestStructure for checkStatus (one addition non mandatory version attribute)
+ 	* [fr] siri_wsProducer.wsdl: use of siri:CheckStatusRequestStructure instead of siri:RequestStructure for checkStatus (one addition non mandatory version attribute)
+ 	* [fr] siri_wsConsumer-Framework.xsd: update type of NotifySubscriptionTerminated to siri:SubscriptionTerminatedNotificationStructure (instead of TerminateSubbscriptionREquest !)
+
+ 2014.11.17 Correction (from french feedback)
+ 	* [fr] fix RPC-Document compatibility issue for GetSiri in Document WSDL  (siri_wsProducer-Services.xsd): addition of Request/Answer wrapper
+ 	* [fr] fix WSDL Document issue: GetCapability was using Answer instead of Request (siri_wsProducer-DiscoveryCapability.xsd)
+ 	* [fr] fix RPC-Document compatibility issue for LinesDiscovery,ConnectionLinksDiscovery,StopPointsDiscovery in Document WSDL (siri_wsProducer-DiscoveryCapability.xsd): deletion of useless «xxxAnswerInfo» wrapper
+
+ 2014.06.20 Correction and revisions from Stenungsund 
+       [Part2]
+        * [fx] Document SubscriptionTerminatedNotification and add error code. (siri-requests-v2.0.xsd)
+        * [fx] StopDiscovery response. Add RouteDirection. Rename JourneyPattern/Stops to JourneyPattern/StopsInPattern  SubscriptionTerminatedNotification and add error code. (siri-requests-v2.0.xsd)
+        * [de] Add Extensions to discovery requests. (siri_discovery-v2.0.xsd)
+
+       [Part3]
+        * [ch] Add origin display whereever destination display as per Cologne meeting (siri-Journey-v2.0.xsd,   siri-DatedVehicleJourney-v2.0.xsd, 
+        * [xh[ Add OriginAtDestination    wherever destination display as per Cologne meeting (siri-Journey-v2.0.xsd) 
+        * [fx] Set default on new DetailLevels on ConnectionMonitoring and EstimatedJourney for backwards compatability. (siri_connectionMonitoring_ervice-v2.0.xsd siri_EstimatedTimetable_service-v2.0.xsd
+        * [ch] Add recordedCall to Estimated jouernesy to allow times for passed stops to be included.  iri_EstimatedVehicleJourney-v2.0.xsd
+       [Part5 SituationExchange]
+        * [de] Add missing AffectedFacility that was in document but missing from schema. VehicleJourney, STop & StopComponent siri_situationAffects-v2.0.xsd.
+emporal filter siri_situationExchaneg_service.xsd.
+        * [de] Add temporal filter to request with ValidityPeriod in   siri_situationExchange_service.xsd.  
+	* [se] Add end time precision to halfopen time rangefor  input a siri_time-v2.0.xsd.
+	* [se] Add end time status  to halfopen time range output  siri_time-v2.0.xsd.
+        * [fr] Add additional small delay bands siri_situation-v2.0.xsd
+        * [de] Add IncludeOnly-IfInPublicationWindow to situation request temporal filter siri_situationExchange_service.xsd.
+        * [fx] StopPlaceFilterGroup: add missing component ref and facility that was in doc but missing from schema  siri_situationExchange_service.xsd.
+        * [fx] Add missing AccessFeature type to AFfectedStopPlaceComponent   siri_situationAffects-v2.0.xsd.
+        * [fx] Correct cardinality on FacilitRef on request to match doc siri_situationExchaneg_service.xsd.
+        * [fx] Correct spec to include projection attributes for AFfectedStopPlaceComponent  doc.
+        * [doc] Document FacilityRef as part of request doc
+        * [doc] Document Access Mode as part of request doc
+        * [doc] Document Scope as part of request doc
+        * [doc] Document RoadFilter and Accessibility need filter  as part of request doc
+        * [doc] Correct Documentation of AfFfectedRoads as part of Delivery doc
+        * [doc/fx] Correct Documentation of capability Matrix and update in schemas well siri_situationExchange_service.xsd.
+        * [doc/fx] Correct Documentation of Reason codes and correct in schemas siri_reasons-v2.0.xml
+        * [doc] Add Annex D to Doc on GTFS real-time mapping
+        
+ 2014.05.26 Changes to answer comment from the EU ballot
+	* [fr]  Addition of SubscriptionTerminatedNotification (XSD and WSDL SOAP Web Services(RPC/Document & WSDL2))
+			- File siri_common_services-v2.0.xsd: Addition of SubscriptionTerminatedNotification (SubscriptionTerminatedNotification element + SubscriptionTerminatedNotificationStructure )
+			- File siri.xsd: addition of SubscriptionTerminatedNotification in servicesResponseGroup
+			- Update of siri_wsConsumer-Document.wsdl, siri_wsConsumer.wsdl, siri_wsConsumer-WSDL2.wsdl to add a NotifyTerminateSubscription
+			- File siri_wsConsumer-Framework.xsd: Addition of  WsSubscriptionTerminatedNotificationStructure and NotifySubscriptionTerminated
+	* [fr]  Added ParameterName [0..*] to ParametersIgnoredErrorStructure (siri_request_errorConditions-v2.0.xsd)
+	* [fr]  Added ExtensionName [0..*] to UnknownExtensionsErrorStructure (siri_request_errorConditions-v2.0.xsd)
+	* [fr]  Added InvalidRef [0..*] to InvalidDataReferencesErrorStructure (siri_request_errorConditions-v2.0.xsd)
+	* [fr]  Added Vesion attribute (non mandatory) to CheckStatus request (siri_common_services-v2.0.xsd)
+	* [fr]  ChangeBeforeUpdates not anymore mandatory in EstimatedTimetableSubscriptionPolicyGroup
+	* [fr]  added optional RecordedAtTime to EstimatedVehicleJourney
+	* [fr]  added ConnectionLinksDiscovery service to WSDL (RPC/Document & WSDL2) (and siri_wsProducerDicoveryCapability.xsd)
+	
+
+ 2013.06.26 French comments (compatibility issue)
+	* [fr]  Change SOAP Web Service namesapce to http://wsdl.siri.org.uk (previously http://wsdl.siri.org.uk/siri)
+
+	* [fr]  update EstimatedVehicleJourney in order to have it consistent with MonitoredVehicleJourney and Siri 2.0 
+    		- use JourneyEndTimesGroup  in place of EstimatedJourneyInfoGroup
+    		- use JourneyProgressGroup in place of EstimatedRealtimeInfoGroup
+    		- use TrainOperationalInfoGroup in place of OperationalInfoGroup
+    		- addCallRailGroup (containing PlateformTraversal ) and CallRealTime to EstimatedCall
  2013.02.20 WG3 SG meeting Munich
 	* [se]  Add JourneyEndNamesInfoGroup to EstimatedDirectionAtStop to DestinationDisplayAtStop
 	        This makes destination name available on EstimatedJourney.
@@ -33,7 +118,7 @@ Changes to  SIRI schema v2.0   since v1.4
 	* [de]  ArrivalTimesDepartureGroup - add ExpectedArrivalPredictionQuality element.
 	* [fr] MonitoredStopVisit Cancellation make VisitNo LineRef DirectionRef optional.
 	* [fr] EstimatedTimetable, COnnectionMonitoring  add detailed level to reqyest
-	* [fr] Make Version number optional with default 2.0.
+
 	* [fr] Make AdditionalVersionRefS to OperationalInfoGroup.
 	* [fr] Add JourneyPatternName The JourneyPatternInfoGroup.  
 	

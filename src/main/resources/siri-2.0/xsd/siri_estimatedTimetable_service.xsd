@@ -186,9 +186,9 @@ Rail transport, Roads and road transport
 				</xsd:annotation>
 			</xsd:element>
 			<xsd:element ref="IncludeTranslations" minOccurs="0"/>
-			<xsd:element name="EstimatedTimetableDetailLevel" type="EstimatedTimetableDetailEnumeration" minOccurs="0">
+			<xsd:element name="EstimatedTimetableDetailLevel" type="EstimatedTimetableDetailEnumeration" default="calls" minOccurs="0">
 				<xsd:annotation>
-					<xsd:documentation>Level of detail to include in response. Default is 'normal'.</xsd:documentation>
+					<xsd:documentation>Level of detail to include in response. Default is 'normal'. (SIRI 2.0)</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
 		</xsd:sequence>
@@ -215,12 +215,12 @@ Rail transport, Roads and road transport
 			</xsd:enumeration>
 			<xsd:enumeration value="calls">
 				<xsd:annotation>
-					<xsd:documentation>Return in addition to normal data, the CALL data for each Stop Visit, including PREVIOUS and ONWARD CALLs with passing times.</xsd:documentation>
+					<xsd:documentation>Return in addition to normal data, the estimated call data  i .</xsd:documentation>
 				</xsd:annotation>
 			</xsd:enumeration>
 			<xsd:enumeration value="full">
 				<xsd:annotation>
-					<xsd:documentation>Return all available data for each Stop Visit, including calls.</xsd:documentation>
+					<xsd:documentation>Return all available data for each   including calls.</xsd:documentation>
 				</xsd:annotation>
 			</xsd:enumeration>
 		</xsd:restriction>
@@ -239,12 +239,12 @@ Rail transport, Roads and road transport
 			<xsd:element name="IncrementalUpdates" type="xsd:boolean" default="true" minOccurs="0">
 				<xsd:annotation>
 					<xsd:documentation>Whether the producer should return the complete set of data, or only provide updates to the previously returned data i.e. changes to the expected deviation (delay or early time). Default is 'true'. If true only changes at the first stop will be returned and the client must interpolate the 
-If false each subscription response will contain the full information as specified in this request.</xsd:documentation>
+If false each subscription response will contain the full information as specified in this request (++SIRI 2.0).</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
-			<xsd:element name="ChangeBeforeUpdates" type="DurationType">
+			<xsd:element name="ChangeBeforeUpdates" type="DurationType" minOccurs="0">
 				<xsd:annotation>
-					<xsd:documentation>The amount of change to the arrival or departure time that can happen before an update is sent (i.e. if ChangeBeforeUpdate is set to 2 minutes, the subscriber will not be told that a timetable is changed by 30 seconds - an update will only be sent when the timetable is changed by at least least 2 minutes.</xsd:documentation>
+					<xsd:documentation>The amount of change to the arrival or departure time that can happen before an update is sent (i.e. if ChangeBeforeUpdate is set to 2 minutes, the subscriber will not be told that a timetable is changed by 30 seconds - an update will only be sent when the timetable is changed by at least least 2 minutes. (OPtional from SIRI 2.0)</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
 		</xsd:sequence>

@@ -16,6 +16,6 @@
 	<xsd:include schemaLocation="siri_monitoredVehicleJourney-v2.0.xsd"/>
 	<xsd:include schemaLocation="siri_operator_support-v2.0.xsd"/>
 	<xsd:include schemaLocation="siri_reference-v2.0.xsd"/>
-	<xsd:include schemaLocation="siri_time-v1.2.xsd"/>
+	<xsd:include schemaLocation="siri_time-v2.0.xsd"/>
 	<!-- ======================================================================= -->
 </xsd:schema>

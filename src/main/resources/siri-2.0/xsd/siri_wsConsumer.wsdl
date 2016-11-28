@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSpy v2011 rel. 2 sp1 (x64) (http://www.altova.com) by Christophe Duquesne (Dryade) -->
 <!-- edited with XMLSPY v2004 rel. 3 U (http://www.xmlspy.com) by Christophe Duquesne (DRYADE SARL) -->
-<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:siriWS="http://wsdl.siri.org.uk/siri" xmlns:siri="http://www.siri.org.uk/siri" targetNamespace="http://wsdl.siri.org.uk/siri">
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:siriWS="http://wsdl.siri.org.uk" xmlns:siri="http://www.siri.org.uk/siri" xmlns:ns="http://datex2.eu/schema/2_0RC1/2_0" xmlns:ns1="http://www.ifopt.org.uk/acsb" xmlns:ns2="http://www.ifopt.org.uk/ifopt" targetNamespace="http://wsdl.siri.org.uk">
 	<types>
 		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.siri.org.uk/siri">
 			<xsd:include schemaLocation="siri.xsd"/>
@@ -16,63 +16,69 @@
 		<part name="Notification" type="siri:DataReadyRequestStructure"/>
 		<part name="SiriExtension" type="siri:ExtensionsStructure"/>
 	</message>
+	<message name="SubscriptionTerminatedNotify">
+		<part name="Notification" type="siri:SubscriptionTerminatedNotificationStructure"/>
+		<part name="SiriExtension" type="siri:ExtensionsStructure"/>
+	</message>
 	<message name="ProductionTimetableNotify">
 		<part name="ServiceDeliveryInfo" type="siri:ProducerResponseEndpointStructure"/>
 		<part name="Notification" type="siri:ProductionTimetableDeliveriesStructure"/>
-		<part name="NotifyExtension" type="siri:ExtensionsStructure"/>
+		<part name="SiriExtension" type="siri:ExtensionsStructure"/>
 	</message>
 	<message name="EstimatedTimetableNotify">
 		<part name="ServiceDeliveryInfo" type="siri:ProducerResponseEndpointStructure"/>
 		<part name="Notification" type="siri:EstimatedTimetableDeliveriesStructure"/>
-		<part name="NotifyExtension" type="siri:ExtensionsStructure"/>
+		<part name="SiriExtension" type="siri:ExtensionsStructure"/>
 	</message>
 	<message name="StopTimetableNotify">
 		<part name="ServiceDeliveryInfo" type="siri:ProducerResponseEndpointStructure"/>
 		<part name="Notification" type="siri:StopTimetableDeliveriesStructure"/>
-		<part name="NotifyExtension" type="siri:ExtensionsStructure"/>
+		<part name="SiriExtension" type="siri:ExtensionsStructure"/>
 	</message>
 	<message name="StopMonitoringNotify">
 		<part name="ServiceDeliveryInfo" type="siri:ProducerResponseEndpointStructure"/>
 		<part name="Notification" type="siri:StopMonitoringDeliveriesStructure"/>
-		<part name="NotifyExtension" type="siri:ExtensionsStructure"/>
+		<part name="SiriExtension" type="siri:ExtensionsStructure"/>
 	</message>
 	<message name="VehicleMonitoringNotify">
 		<part name="ServiceDeliveryInfo" type="siri:ProducerResponseEndpointStructure"/>
 		<part name="Notification" type="siri:VehicleMonitoringDeliveriesStructure"/>
-		<part name="NotifyExtension" type="siri:ExtensionsStructure"/>
+		<part name="SiriExtension" type="siri:ExtensionsStructure"/>
 	</message>
 	<message name="ConnectionTimetableNotify">
 		<part name="ServiceDeliveryInfo" type="siri:ProducerResponseEndpointStructure"/>
 		<part name="Notification" type="siri:ConnectionTimetableDeliveriesStructure"/>
-		<part name="NotifyExtension" type="siri:ExtensionsStructure"/>
+		<part name="SiriExtension" type="siri:ExtensionsStructure"/>
 	</message>
 	<message name="ConnectionMonitoringNotify">
 		<part name="ServiceDeliveryInfo" type="siri:ProducerResponseEndpointStructure"/>
 		<part name="Notification" type="siri:ConnectionMonitoringDeliveriesStructure"/>
-		<part name="NotifyExtension" type="siri:ExtensionsStructure"/>
+		<part name="SiriExtension" type="siri:ExtensionsStructure"/>
 	</message>
 	<message name="GeneralMessageNotify">
 		<part name="ServiceDeliveryInfo" type="siri:ProducerResponseEndpointStructure"/>
 		<part name="Notification" type="siri:GeneralMessageDeliveriesStructure"/>
-		<part name="NotifyExtension" type="siri:ExtensionsStructure"/>
+		<part name="SiriExtension" type="siri:ExtensionsStructure"/>
 	</message>
 	<message name="FacilityMonitoringNotify">
 		<part name="ServiceDeliveryInfo" type="siri:ProducerResponseEndpointStructure"/>
 		<part name="Notification" type="siri:FacilityMonitoringDeliveriesStructure"/>
-		<part name="NotifyExtension" type="siri:ExtensionsStructure"/>
+		<part name="SiriExtension" type="siri:ExtensionsStructure"/>
 	</message>
 	<message name="SituationExchangeNotify">
 		<part name="ServiceDeliveryInfo" type="siri:ProducerResponseEndpointStructure"/>
 		<part name="Notification" type="siri:SituationExchangeDeliveriesStructure"/>
-		<part name="NotifyExtension" type="siri:ExtensionsStructure"/>
+		<part name="SiriExtension" type="siri:ExtensionsStructure"/>
 	</message>
-
 	<portType name="SiriConsumerRpcPort">
 		<operation name="NotifyDataReady">
 			<input message="siriWS:DataReadyNotify"/>
 		</operation>
 		<operation name="NotifyHeartbeat">
 			<input message="siriWS:HeartbeatNotify"/>
+		</operation>
+		<operation name="NotifySubscriptionTerminated">
+			<input message="siriWS:SubscriptionTerminatedNotify"/>
 		</operation>
 		<!-- == Service Specific == -->
 		<operation name="NotifyProductionTimetable">
@@ -111,73 +117,79 @@
 		<operation name="NotifyDataReady">
 			<soap:operation soapAction="NotifyDataReady"/>
 			<input>
-				<soap:body use="literal" namespace="http://wsdl.siri.org.uk/siri"/>
+				<soap:body use="literal" namespace="http://wsdl.siri.org.uk"/>
 			</input>
 		</operation>
 		<operation name="NotifyHeartbeat">
 			<soap:operation soapAction="NotifyHeartbeat"/>
 			<input>
-				<soap:body use="literal" namespace="http://wsdl.siri.org.uk/siri"/>
+				<soap:body use="literal" namespace="http://wsdl.siri.org.uk"/>
+			</input>
+		</operation>
+		<operation name="NotifySubscriptionTerminated">
+			<soap:operation soapAction="NotifySubscriptionTerminate"/>
+			<input>
+				<soap:body use="literal" namespace="http://wsdl.siri.org.uk"/>
 			</input>
 		</operation>
 		<operation name="NotifyProductionTimetable">
 			<soap:operation soapAction="GetProductionTimetable"/>
 			<input>
-				<soap:body use="literal" namespace="http://wsdl.siri.org.uk/siri"/>
+				<soap:body use="literal" namespace="http://wsdl.siri.org.uk"/>
 			</input>
 		</operation>
 		<operation name="NotifyEstimatedTimetable">
 			<soap:operation soapAction="GetEstimatedTimetable"/>
 			<input>
-				<soap:body use="literal" namespace="http://wsdl.siri.org.uk/siri"/>
+				<soap:body use="literal" namespace="http://wsdl.siri.org.uk"/>
 			</input>
 		</operation>
 		<operation name="NotifyStopTimetable">
 			<soap:operation soapAction="GetStopTimetable"/>
 			<input>
-				<soap:body use="literal" namespace="http://wsdl.siri.org.uk/siri"/>
+				<soap:body use="literal" namespace="http://wsdl.siri.org.uk"/>
 			</input>
 		</operation>
 		<operation name="NotifyStopMonitoring">
 			<soap:operation soapAction="GetStopMonitoring"/>
 			<input>
-				<soap:body use="literal" namespace="http://wsdl.siri.org.uk/siri"/>
+				<soap:body use="literal" namespace="http://wsdl.siri.org.uk"/>
 			</input>
 		</operation>
 		<operation name="NotifyVehicleMonitoring">
 			<soap:operation soapAction="GetVehicleMonitoring"/>
 			<input>
-				<soap:body use="literal" namespace="http://wsdl.siri.org.uk/siri"/>
+				<soap:body use="literal" namespace="http://wsdl.siri.org.uk"/>
 			</input>
 		</operation>
 		<operation name="NotifyConnectionTimetable">
 			<soap:operation soapAction="GetConnectionTimetable"/>
 			<input>
-				<soap:body use="literal" namespace="http://wsdl.siri.org.uk/siri"/>
+				<soap:body use="literal" namespace="http://wsdl.siri.org.uk"/>
 			</input>
 		</operation>
 		<operation name="NotifyConnectionMonitoring">
 			<soap:operation soapAction="GetConnectionMonitoring"/>
 			<input>
-				<soap:body use="literal" namespace="http://wsdl.siri.org.uk/siri"/>
+				<soap:body use="literal" namespace="http://wsdl.siri.org.uk"/>
 			</input>
 		</operation>
 		<operation name="NotifyGeneralMessage">
 			<soap:operation soapAction="GetGeneralMessage"/>
 			<input>
-				<soap:body use="literal" namespace="http://wsdl.siri.org.uk/siri"/>
+				<soap:body use="literal" namespace="http://wsdl.siri.org.uk"/>
 			</input>
 		</operation>
 		<operation name="NotifyFacilityMonitoring">
 			<soap:operation soapAction="GetFacilityMonitoring"/>
 			<input>
-				<soap:body use="literal" namespace="http://wsdl.siri.org.uk/siri"/>
+				<soap:body use="literal" namespace="http://wsdl.siri.org.uk"/>
 			</input>
 		</operation>
 		<operation name="NotifySituationExchange">
 			<soap:operation soapAction="GetSituationExchange"/>
 			<input>
-				<soap:body use="literal" namespace="http://wsdl.siri.org.uk/siri"/>
+				<soap:body use="literal" namespace="http://wsdl.siri.org.uk"/>
 			</input>
 		</operation>
 	</binding>

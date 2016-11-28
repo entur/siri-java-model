@@ -118,7 +118,6 @@
                 <file name="ifopt/ifopt_checkpoint-v0.3.xsd"/>
                 <file name="ifopt/ifopt_countries-v0.2.xsd"/>
                 <file name="ifopt/ifopt_equipment-v0.3.xsd"/>
-                <file name="ifopt/ifopt_feature-v0.2.xsd"/>
                 <file name="ifopt/ifopt_location-v0.3.xsd"/>
                 <file name="ifopt/ifopt_modes-v0.2.xsd"/>
                 <file name="ifopt/ifopt_modification-v0.3.xsd"/>
@@ -142,7 +141,7 @@
             </folder>
             <folder name="siri">
                 <file name="siri/siri_all_framework-v2.0.xsd"/>
-                <file name="siri/siri_base-v1.3.xsd"/>
+                <file name="siri/siri_base-v2.0.xsd"/>
                 <file name="siri/siri_common_services-v2.0.xsd"/>
                 <file name="siri/siri_request_errorConditions-v2.0.xsd"/>
                 <file name="siri/siri_requests-v2.0.xsd"/>

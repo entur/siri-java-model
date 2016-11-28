@@ -188,7 +188,7 @@ Rail transport, Roads and road transport
 				</xsd:annotation>
 			</xsd:element>
 			<xsd:element ref="IncludeTranslations" minOccurs="0"/>
-			<xsd:element name="ConnectionMonitoringDetailLevel" type="ConnectionMonitoringDetailEnumeration" minOccurs="0">
+			<xsd:element name="ConnectionMonitoringDetailLevel" type="ConnectionMonitoringDetailEnumeration" default="normal" minOccurs="0">
 				<xsd:annotation>
 					<xsd:documentation>Level of detail to include in response. Default is 'normal'.</xsd:documentation>
 				</xsd:annotation>

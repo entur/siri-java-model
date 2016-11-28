@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.siri.org.uk/siri" targetNamespace="http://www.siri.org.uk/siri" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0" id="siri_stopPoint">
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.siri.org.uk/siri" xmlns:ifopt="http://www.ifopt.org.uk/ifopt" targetNamespace="http://www.siri.org.uk/siri" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0" id="siri_stopPoint">
 	<xsd:annotation>
 		<xsd:appinfo>
 			<Metadata xmlns="http://www.govtalk.gov.uk/CM/gms-xs">
@@ -81,6 +81,7 @@ Rail transport, Roads and road transport
 	</xsd:annotation>
 	<!-- ======================================================================= -->
 	<xsd:include schemaLocation="../siri_model/siri_journey-v2.0.xsd"/>
+	<xsd:import namespace="http://www.ifopt.org.uk/ifopt" schemaLocation="../ifopt/ifopt_stop-v0.3.xsd"/>
 	<xsd:include schemaLocation="siri_stopPoint-v2.0.xsd"/>
 	<!-- ======================================================================= -->
 	<!-- === LINE =================================================== -->
@@ -144,16 +145,40 @@ Rail transport, Roads and road transport
 		<xsd:complexContent>
 			<xsd:extension base="DirectionStructure">
 				<xsd:sequence>
-					<xsd:element name="Stops" minOccurs="0">
+					<xsd:element name="JourneyPatterns" minOccurs="0">
 						<xsd:annotation>
-							<xsd:documentation>Ordered collection of STOP POINTs the LINE and direction . Detail level is  'stops'. +SIRI v2.0 </xsd:documentation>
+							<xsd:documentation>JourneyPatterns in  Direction of route (+SIRI 2.0)</xsd:documentation>
 						</xsd:annotation>
 						<xsd:complexType>
 							<xsd:sequence>
-								<xsd:element name="StopPointInPattern" type="StopPointInPatternStructure" minOccurs="2" maxOccurs="unbounded">
+								<xsd:element name="JourneyPattern" maxOccurs="unbounded">
 									<xsd:annotation>
-										<xsd:documentation>Stop within Route of LINE. Detail level is 'stop' +SIRI v2.0 </xsd:documentation>
+										<xsd:documentation>JourneyPattern. (+SIRI 2.0)</xsd:documentation>
 									</xsd:annotation>
+									<xsd:complexType>
+										<xsd:sequence>
+											<xsd:element ref="JourneyPatternRef" minOccurs="0"/>
+											<xsd:element name="Name" type="NaturalLanguageStringStructure" minOccurs="0" maxOccurs="unbounded">
+												<xsd:annotation>
+													<xsd:documentation>Name Of Journety Pattern (SIRI 2.0)</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="StopsInPattern" minOccurs="0">
+												<xsd:annotation>
+													<xsd:documentation>Ordered collection of STOP POINTs the LINE and direction . Detail level is  'stops'. +SIRI v2.0 </xsd:documentation>
+												</xsd:annotation>
+												<xsd:complexType>
+													<xsd:sequence>
+														<xsd:element name="StopPointInPattern" type="StopPointInPatternStructure" minOccurs="2" maxOccurs="unbounded">
+															<xsd:annotation>
+																<xsd:documentation>Stop within Route of LINE. Detail level is 'stop' +SIRI v2.0 </xsd:documentation>
+															</xsd:annotation>
+														</xsd:element>
+													</xsd:sequence>
+												</xsd:complexType>
+											</xsd:element>
+										</xsd:sequence>
+									</xsd:complexType>
 								</xsd:element>
 							</xsd:sequence>
 						</xsd:complexType>
@@ -178,6 +203,11 @@ Rail transport, Roads and road transport
 					<xsd:element name="OnwardLinkShape" type="LineShapeStructure" minOccurs="0">
 						<xsd:annotation>
 							<xsd:documentation>Plot of points from this stop to next Stop.  Detail level is 'full'. +SIRI v2.0 </xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="LinkProjectionToNextStopPoint" type="ifopt:LinkProjectionStructure" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>GIs projection of Link to the next provided StopPoint. NB Line here means Geometry Polyline, not Transmodel Transport Line.</xsd:documentation>
 						</xsd:annotation>
 					</xsd:element>
 					<xsd:element ref="Extensions" minOccurs="0"/>

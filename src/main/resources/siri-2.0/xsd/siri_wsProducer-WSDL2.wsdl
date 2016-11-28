@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSPY v2004 rel. 3 U (http://www.xmlspy.com) by Christophe Duquesne (DRYADE SA) -->
 <!-- edited with XMLSpy v2011 rel. 2 sp1 (x64) (http://www.altova.com) by Christophe Duquesne (Dryade) -->
-<description targetNamespace="http://wsdl.siri.org.uk/siri" xmlns="http://www.w3.org/ns/wsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:siriWS="http://wsdl.siri.org.uk/siri" xmlns:siri="http://www.siri.org.uk/siri" xmlns:ns="http://datex2.eu/schema/1_0/1_0" xmlns:ns1="http://www.ifopt.org.uk/acsb" xmlns:ns2="http://www.ifopt.org.uk/ifopt" xmlns:wsoap="http://www.w3.org/ns/wsdl/soap">
+<description targetNamespace="http://wsdl.siri.org.uk" xmlns="http://www.w3.org/ns/wsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:siriWS="http://wsdl.siri.org.uk" xmlns:siri="http://www.siri.org.uk/siri" xmlns:ns="http://datex2.eu/schema/1_0/1_0" xmlns:ns1="http://www.ifopt.org.uk/acsb" xmlns:ns2="http://www.ifopt.org.uk/ifopt" xmlns:wsoap="http://www.w3.org/ns/wsdl/soap">
 	<!--
 <xsd:annotation>
 		<xsd:appinfo xmlns:gms="http://www.govtalk.gov.uk/CM/gms">
@@ -88,7 +88,7 @@
 	<!-- ====General Message== -->
 	<!-- ====Capabilities management ======= -->
 	<types>
-		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://wsdl.siri.org.uk/siri">
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://wsdl.siri.org.uk">
 			<xsd:include schemaLocation="wsdl_model/siri_wsProducer-Framework.xsd"/>
 			<xsd:include schemaLocation="wsdl_model/siri_wsProducer-DiscoveryCapability.xsd"/>
 			<xsd:include schemaLocation="wsdl_model/siri_wsProducer-Services.xsd"/>
@@ -185,6 +185,11 @@
 		<operation name="LinesDiscovery" pattern="http://www.w3.org/ns/wsdl/in-out">
 			<input element="siriWS:LinesDiscovery"/>
 			<output element="siriWS:LinesDiscoveryResponse"/>
+			<outfault ref="siriWS:FaultName"/>
+		</operation>
+		<operation name="ConnectionLinksDiscovery" pattern="http://www.w3.org/ns/wsdl/in-out">
+			<input element="siriWS:ConnectionLinksDiscovery"/>
+			<output element="siriWS:ConnectionLinksDiscoveryResponse"/>
 			<outfault ref="siriWS:FaultName"/>
 		</operation>
 		<!-- SIRI 2.x addition : global SIRI service access (access to any SIRI services) -->
@@ -292,6 +297,11 @@
 			<outfault ref="siriWS:FaultName"/>
 		</operation>
 		<operation ref="siriWS:LinesDiscovery">
+			<input/>
+			<output/>
+			<outfault ref="siriWS:FaultName"/>
+		</operation>
+		<operation ref="siriWS:ConnectionLinksDiscovery">
 			<input/>
 			<output/>
 			<outfault ref="siriWS:FaultName"/>

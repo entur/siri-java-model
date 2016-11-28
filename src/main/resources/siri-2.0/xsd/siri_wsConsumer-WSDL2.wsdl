@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSpy v2011 rel. 2 sp1 (x64) (http://www.altova.com) by Christophe Duquesne (Dryade) -->
 <!-- edited with XMLSPY v2011 (http://www.xmlspy.com) by Christophe Duquesne (Aurige- www.aurigetech.com) -->
-<description targetNamespace="http://wsdl.siri.org.uk/siri" xmlns="http://www.w3.org/ns/wsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:siriWS="http://wsdl.siri.org.uk/siri" xmlns:siri="http://www.siri.org.uk/siri" xmlns:ns="http://datex2.eu/schema/1_0/1_0" xmlns:ns1="http://www.ifopt.org.uk/acsb" xmlns:ns2="http://www.ifopt.org.uk/ifopt" xmlns:wsoap="http://www.w3.org/ns/wsdl/soap">
+<description targetNamespace="http://wsdl.siri.org.uk" xmlns="http://www.w3.org/ns/wsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:siriWS="http://wsdl.siri.org.uk" xmlns:siri="http://www.siri.org.uk/siri" xmlns:ns="http://datex2.eu/schema/1_0/1_0" xmlns:ns1="http://www.ifopt.org.uk/acsb" xmlns:ns2="http://www.ifopt.org.uk/ifopt" xmlns:wsoap="http://www.w3.org/ns/wsdl/soap" xmlns:ns3="http://datex2.eu/schema/2_0RC1/2_0">
 	<!--
 	<xsd:annotation>
 		<xsd:appinfo>
@@ -142,7 +142,7 @@ Rail transport, Roads and road transport.
     </xsd:annotation>
  -->
 	<types>
-		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://wsdl.siri.org.uk/siri">
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://wsdl.siri.org.uk">
 			<xsd:include schemaLocation="wsdl_model/siri_wsConsumer-Framework.xsd"/>
 			<xsd:include schemaLocation="wsdl_model/siri_wsConsumer-Services.xsd"/>
 		</xsd:schema>
@@ -153,6 +153,9 @@ Rail transport, Roads and road transport.
 		</operation>
 		<operation name="NotifyHeartbeat" pattern="http://www.w3.org/ns/wsdl/in-only">
 			<input element="siriWS:NotifyHeartbeat"/>
+		</operation>
+		<operation name="NotifySubscriptionTerminated" pattern="http://www.w3.org/ns/wsdl/in-only">
+			<input element="siriWS:NotifySubscriptionTerminated"/>
 		</operation>
 		<!-- == Service Specific == -->
 		<operation name="NotifyProductionTimetable" pattern="http://www.w3.org/ns/wsdl/in-only">
@@ -191,6 +194,9 @@ Rail transport, Roads and road transport.
 			<input/>
 		</operation>
 		<operation ref="siriWS:NotifyHeartbeat">
+			<input/>
+		</operation>
+		<operation ref="siriWS:NotifySubscriptionTerminated">
 			<input/>
 		</operation>
 		<operation ref="siriWS:NotifyProductionTimetable">

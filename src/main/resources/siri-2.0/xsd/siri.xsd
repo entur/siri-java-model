@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2015 rel. 3 (x64) (http://www.altova.com) by Ulf Bjersing (Hogia Public Transport Systems AB) -->
 <xsd:schema xmlns="http://www.siri.org.uk/siri" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.siri.org.uk/siri" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0" id="siri">
 	<xsd:annotation>
 		<xsd:appinfo>
@@ -102,6 +103,11 @@ mailto:schemer@siri.org.uk</Creator>
 					 SIRI Version 2.0 
 					  Correct delegation elements 
 				</Date>
+				<Date>
+					<Modified>2014-03-31</Modified>
+					 +SIRI v2.0 Comments
+					   - Add terminate subscription notification
+				</Date>
 				<Description>
 					<p>SIRI is a European CEN technical standard for the exchange of real-time information.</p>
 					<p>SIRI is defined by XMLschemas and comprises a general protocol for communication, and a modular set of functional services as follows :
@@ -182,7 +188,7 @@ Rail transport, Roads and road transport.
 				<xsd:group ref="ResponseGroup"/>
 				<xsd:element ref="Extensions" minOccurs="0"/>
 			</xsd:choice>
-		<xsd:attribute name="version" type="VersionString" default="2.0"/>
+			<xsd:attribute name="version" type="VersionString" default="2.0"/>
 		</xsd:complexType>
 	</xsd:element>
 	<!--== Requests ===================================================================== -->
@@ -314,6 +320,7 @@ Rail transport, Roads and road transport.
 		<xsd:choice>
 			<xsd:element ref="SubscriptionResponse"/>
 			<xsd:element ref="TerminateSubscriptionResponse"/>
+			<xsd:element ref="SubscriptionTerminatedNotification"/>
 		</xsd:choice>
 	</xsd:group>
 	<!-- ===Data Delivery ============================================================== -->
@@ -386,45 +393,50 @@ Rail transport, Roads and road transport.
 		<xsd:annotation>
 			<xsd:documentation>Type for a SIRI SIRI Functional Service Delivery types.Used for WSDL.  </xsd:documentation>
 		</xsd:annotation>
-		<xsd:sequence>
+		<xsd:choice>
 			<xsd:group ref="SiriServiceDeliveryGroup"/>
-		</xsd:sequence>
+		</xsd:choice>
 	</xsd:complexType>
 	<xsd:group name="SiriServiceDeliveryGroup">
 		<xsd:annotation>
 			<xsd:documentation>SIRI Functional Service Delivery types.</xsd:documentation>
 		</xsd:annotation>
 		<xsd:choice>
-			<xsd:element ref="ProductionTimetableDelivery" maxOccurs="unbounded"/>
-			<xsd:element ref="EstimatedTimetableDelivery" maxOccurs="unbounded"/>
-			<xsd:element ref="StopTimetableDelivery" maxOccurs="unbounded"/>
-			<xsd:element ref="StopMonitoringDelivery" maxOccurs="unbounded">
-				<xsd:annotation>
-					<xsd:documentation>Delviery for Stop Event service.</xsd:documentation>
-				</xsd:annotation>
-			</xsd:element>
-			<xsd:element ref="VehicleMonitoringDelivery" maxOccurs="unbounded">
-				<xsd:annotation>
-					<xsd:documentation>Delviery for Vehicle Activity Service.</xsd:documentation>
-				</xsd:annotation>
-			</xsd:element>
-			<xsd:element ref="ConnectionTimetableDelivery" maxOccurs="unbounded"/>
-			<xsd:element ref="ConnectionMonitoringFeederDelivery" maxOccurs="unbounded">
-				<xsd:annotation>
-					<xsd:documentation>Delivery for Connection Protection Fetcher Service.</xsd:documentation>
-				</xsd:annotation>
-			</xsd:element>
-			<xsd:element ref="ConnectionMonitoringDistributorDelivery" maxOccurs="unbounded">
-				<xsd:annotation>
-					<xsd:documentation>Delivery for Connection Protection Fetcher Service.</xsd:documentation>
-				</xsd:annotation>
-			</xsd:element>
-			<xsd:element ref="GeneralMessageDelivery" maxOccurs="unbounded">
-				<xsd:annotation>
-					<xsd:documentation>Delivery for general Message service.</xsd:documentation>
-				</xsd:annotation>
-			</xsd:element>
-			<xsd:element ref="FacilityMonitoringDelivery" maxOccurs="unbounded"/>
+			<xsd:sequence>
+				<xsd:element ref="IncludedSituationExchangeDelivery" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:choice>
+					<xsd:element ref="ProductionTimetableDelivery" maxOccurs="unbounded"/>
+					<xsd:element ref="EstimatedTimetableDelivery" maxOccurs="unbounded"/>
+					<xsd:element ref="StopTimetableDelivery" maxOccurs="unbounded"/>
+					<xsd:element ref="StopMonitoringDelivery" maxOccurs="unbounded">
+						<xsd:annotation>
+							<xsd:documentation>Delviery for Stop Event service.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element ref="VehicleMonitoringDelivery" maxOccurs="unbounded">
+						<xsd:annotation>
+							<xsd:documentation>Delviery for Vehicle Activity Service.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element ref="ConnectionTimetableDelivery" maxOccurs="unbounded"/>
+					<xsd:element ref="ConnectionMonitoringFeederDelivery" maxOccurs="unbounded">
+						<xsd:annotation>
+							<xsd:documentation>Delivery for Connection Protection Fetcher Service.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element ref="ConnectionMonitoringDistributorDelivery" maxOccurs="unbounded">
+						<xsd:annotation>
+							<xsd:documentation>Delivery for Connection Protection Fetcher Service.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element ref="GeneralMessageDelivery" maxOccurs="unbounded">
+						<xsd:annotation>
+							<xsd:documentation>Delivery for general Message service.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element ref="FacilityMonitoringDelivery" maxOccurs="unbounded"/>
+				</xsd:choice>
+			</xsd:sequence>
 			<xsd:element ref="SituationExchangeDelivery" maxOccurs="unbounded"/>
 		</xsd:choice>
 	</xsd:group>
@@ -478,7 +490,7 @@ Rail transport, Roads and road transport.
 					</xsd:group>
 					<xsd:group ref="SiriServiceCapabilitiesRequestGroup"/>
 				</xsd:sequence>
-			<xsd:attribute name="version" type="VersionString" default="2.0"/>
+				<xsd:attribute name="version" type="VersionString" default="2.0"/>
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>

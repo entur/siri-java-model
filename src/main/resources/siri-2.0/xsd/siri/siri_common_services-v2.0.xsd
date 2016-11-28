@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 rel. 2 sp1 (x64) (http://www.altova.com) by Christophe Duquesne (Dryade) -->
 <xsd:schema xmlns="http://www.siri.org.uk/siri" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:acsb="http://www.ifopt.org.uk/acsb" targetNamespace="http://www.siri.org.uk/siri" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0" id="siri_common_services">
 	<xsd:annotation>
 		<xsd:appinfo>
@@ -7,7 +8,7 @@
 				<Audience>e-service developers</Audience>
 				<Contributor>CEN TC278 WG3 SG7 Team</Contributor>
 				<Coverage>Europe</Coverage>
-				<Creator>Drafted for version 1.0 CEN TC278 WG3 SG7 Editor Nicholas Knowles, Kizoom. mailto:schemer@siri.org.uk</Creator>
+				<Creator>First drafted for version 1.0 CEN TC278 WG3 SG7 Editor Nicholas Knowles, Kizoom. mailto:schemer@siri.org.uk</Creator>
 				<Date>
 					<Created>2004-09-29</Created>
 				</Date>
@@ -38,6 +39,16 @@
 					   - Add DataReady to Check Status
 					   - Add DistanceUnits and VelocityUnits to ServiceRequestContext
 					   - [FR]    Add Extensions tag to Terminate SubscriptionRequest
+				</Date>
+				<Date>
+					<Modified>2014-03-31</Modified>
+					 +SIRI v2.0 Comments
+					   - Add terminate subscription notification
+				</Date>
+				<Date>
+					<Modified>2014-06-23</Modified>
+					 +SIRI v2.0 Comments
+					   - Revise  terminate subscription erroc condition to be consistent with other services
 				</Date>
 				<Description>
 					<p>SIRI is a European CEN standard for the exchange of real-time information.</p>
@@ -100,7 +111,7 @@ Rail transport, Roads and road transport
 	<!-- ======================================================================= -->
 	<xsd:group name="SiriCommonIndexGroup">
 		<xsd:annotation>
-			<xsd:documentation>Convenience artefact to pick out main elements of the common requests .</xsd:documentation>
+			<xsd:documentation>Convenience artefact to pick out main elements of the common requests.</xsd:documentation>
 		</xsd:annotation>
 		<xsd:sequence>
 			<xsd:group ref="SubscriptionManagementGroup"/>
@@ -456,7 +467,7 @@ Rail transport, Roads and road transport
 	</xsd:complexType>
 	<xsd:complexType name="TerminationResponseStatusStructure">
 		<xsd:annotation>
-			<xsd:documentation>Type for Status of termination response</xsd:documentation>
+			<xsd:documentation>Type for Status of termination response.</xsd:documentation>
 		</xsd:annotation>
 		<xsd:sequence>
 			<xsd:element ref="ResponseTimestamp" minOccurs="0"/>
@@ -484,6 +495,30 @@ Rail transport, Roads and road transport
 				</xsd:complexType>
 			</xsd:element>
 		</xsd:sequence>
+	</xsd:complexType>
+	<!-- === GS: Terminate Subscription Notification ======================================================== -->
+	<xsd:element name="SubscriptionTerminatedNotification" type="SubscriptionTerminatedNotificationStructure" substitutionGroup="AbstractResponse">
+		<xsd:annotation>
+			<xsd:documentation>Notification from Subscriber to Subscription Manager to terminate a subscription.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="SubscriptionTerminatedNotificationStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for Notification to terminate a subscription or subscriptions.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="ProducerResponseStructure">
+				<xsd:sequence>
+					<xsd:group ref="SubscriptionIdentifierResourcePropertyGroup" maxOccurs="unbounded"/>
+					<xsd:element name="ErrrorCondition" type="ErrorConditionStructure" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>Text description providing additional information about the reason for the subscription termination.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element ref="Extensions" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
 	</xsd:complexType>
 	<!-- ===Responses==================================================================== -->
 	<xsd:group name="StatusResponseGroup">
@@ -738,6 +773,12 @@ Rail transport, Roads and road transport
 				<xsd:sequence>
 					<xsd:element ref="Extensions" minOccurs="0"/>
 				</xsd:sequence>
+				<xsd:attribute name="version" type="VersionString" default="2.0">
+					<xsd:annotation>
+						<xsd:documentation>Version number of request.  
+</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>

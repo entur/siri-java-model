@@ -114,7 +114,7 @@ Rail transport, Roads and road transport
 			<xsd:documentation>Type for Planned VEHICLE JOURNEY (Production Timetable Service).</xsd:documentation>
 		</xsd:annotation>
 		<xsd:sequence>
-			<xsd:element name="DatedVehicleJourneyCode" type="DatedVehicleJourneyCodeType">
+			<xsd:element name="DatedVehicleJourneyCode" type="DatedVehicleJourneyCodeType" minOccurs="0">
 				<xsd:annotation>
 					<xsd:documentation>Identifier for a VEHICLE JOURNEY.</xsd:documentation>
 				</xsd:annotation>
@@ -144,6 +144,11 @@ Rail transport, Roads and road transport
 			<xsd:documentation>General info elements that apply to all journeys of timetable version unless overriden.</xsd:documentation>
 		</xsd:annotation>
 		<xsd:sequence>
+			<xsd:element name="OriginDisplay" type="NaturalLanguageStringStructure" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Description of the origin stop (vehicle signage) to show on vehicle, Can be overwritten for a journey, and then also section by section by the entry in an Individual Call.  (+SIRI 2.0)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
 			<xsd:element name="DestinationDisplay" type="NaturalLanguageStringStructure" minOccurs="0" maxOccurs="unbounded">
 				<xsd:annotation>
 					<xsd:documentation>Description of the destination stop (vehicle signage) to show on vehicle, Can be overwritten for a journey, and then also section by section by the entry in an Individual Call.  (Unbounded since SIRI 2.0)</xsd:documentation>
@@ -172,7 +177,7 @@ Rail transport, Roads and road transport
 				</xsd:annotation>
 				<xsd:element name="FramedVehicleJourneyRef" type="FramedVehicleJourneyRefStructure">
 					<xsd:annotation>
-						<xsd:documentation>Refercence to a VEHICLE JOURENY framed by the day. SIRI 2.0 </xsd:documentation>
+						<xsd:documentation>Refecence to a VEHICLE JOURNEY framed by the day. SIRI 2.0 </xsd:documentation>
 					</xsd:annotation>
 				</xsd:element>
 				<xsd:element ref="VehicleJourneyRef"/>

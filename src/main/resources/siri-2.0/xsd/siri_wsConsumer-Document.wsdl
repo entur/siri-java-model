@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSpy v2011 rel. 2 sp1 (x64) (http://www.altova.com) by Christophe Duquesne (Dryade) -->
 <!-- edited with XMLSPY v2011 (http://www.xmlspy.com) by Christophe Duquesne (Aurige- www.aurigetech.com) -->
-<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:siriWS="http://wsdl.siri.org.uk/siri" xmlns:siri="http://www.siri.org.uk/siri" xmlns:ns="http://datex2.eu/schema/1_0/1_0" xmlns:ns1="http://www.ifopt.org.uk/acsb" xmlns:ns2="http://www.ifopt.org.uk/ifopt" targetNamespace="http://wsdl.siri.org.uk/siri">
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:siriWS="http://wsdl.siri.org.uk" xmlns:siri="http://www.siri.org.uk/siri" xmlns:ns="http://datex2.eu/schema/1_0/1_0" xmlns:ns1="http://www.ifopt.org.uk/acsb" xmlns:ns2="http://www.ifopt.org.uk/ifopt" xmlns:ns3="http://datex2.eu/schema/2_0RC1/2_0" targetNamespace="http://wsdl.siri.org.uk">
 	<types>
-		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://wsdl.siri.org.uk/siri">
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://wsdl.siri.org.uk">
 			<xsd:include schemaLocation="wsdl_model/siri_wsConsumer-Framework.xsd"/>
 			<xsd:include schemaLocation="wsdl_model/siri_wsConsumer-Services.xsd"/>
 		</xsd:schema>
@@ -13,6 +13,9 @@
 	</message>
 	<message name="DataReadyNotify">
 		<part name="DataReadyNotifyParameters" element="siriWS:NotifyDataReady"/>
+	</message>
+	<message name="SubscriptionTerminatedNotify">
+		<part name="SubscriptionTerminatedNotifyParameters" element="siriWS:NotifySubscriptionTerminated"/>
 	</message>
 	<message name="ProductionTimetableNotify">
 		<part name="ProductionTimetableNotifyParameters" element="siriWS:NotifyProductionTimetable"/>
@@ -52,6 +55,9 @@
 			<input message="siriWS:HeartbeatNotify"/>
 		</operation>
 		<!-- == Service Specific == -->
+		<operation name="NotifySubscriptionTerminated">
+			<input message="siriWS:SubscriptionTerminatedNotify"/>
+		</operation>
 		<operation name="NotifyProductionTimetable">
 			<input message="siriWS:ProductionTimetableNotify"/>
 		</operation>
@@ -85,6 +91,12 @@
 	</portType>
 	<binding name="SiriConsumerDocBinding" type="siriWS:SiriConsumerDocPort">
 		<soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="NotifySubscriptionTerminated">
+			<soap:operation soapAction="NotifySubscriptionTerminated"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+		</operation>
 		<operation name="NotifyDataReady">
 			<soap:operation soapAction="NotifyDataReady"/>
 			<input>
