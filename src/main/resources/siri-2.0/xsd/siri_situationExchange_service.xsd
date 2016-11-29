@@ -682,7 +682,7 @@ If false or omitted, each subscription response will contain the full informatio
 										<xsd:documentation>Whether results can be filtered by Specific Needs. Default is 'true'.</xsd:documentation>
 									</xsd:annotation>
 								</xsd:element>
-								<xsd:element name="FilterByKeword" type="xsd:boolean" default="true" minOccurs="0">
+								<xsd:element name="FilterByKeyword" type="xsd:boolean" default="true" minOccurs="0">
 									<xsd:annotation>
 										<xsd:documentation>Whether results can be filtered by Keywords. Default is 'false'</xsd:documentation>
 									</xsd:annotation>
