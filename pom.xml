@@ -10,7 +10,6 @@
     <scm>
          <connection>scm:git:ssh://git@github.com/rutebanken/siri-java-model.git</connection>
          <developerConnection>scm:git:ssh://git@github.com/rutebanken/siri-java-model.git</developerConnection>
-       <tag>siri-java-model-0.4</tag>
   </scm>
 
     <dependencies>
@@ -127,5 +126,9 @@
             <name>Rutebanken Repository</name>
             <url>scpexe://localhost:2223/usr/share/nginx/html</url>
         </repository>
+        <snapshotRepository>
+            <id>Nexus</id>
+            <url>https://nexus.rutebanken.org/content/repositories/snapshots</url>
+        </snapshotRepository>
     </distributionManagement>
 </project>
