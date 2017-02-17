@@ -4,12 +4,13 @@
 
     <groupId>org.rutebanken</groupId>
     <artifactId>siri-java-model</artifactId>
-    <version>0.9-SNAPSHOT</version>
+    <version>0.9</version>
     <packaging>jar</packaging>
 
     <scm>
          <connection>scm:git:ssh://git@github.com/rutebanken/siri-java-model.git</connection>
          <developerConnection>scm:git:ssh://git@github.com/rutebanken/siri-java-model.git</developerConnection>
+    <tag>siri-java-model-0.9</tag>
   </scm>
 
     <dependencies>
