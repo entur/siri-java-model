@@ -34,7 +34,7 @@ public class SiriJson {
             mapper.configure(DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES, true);
             mapper.configure(DeserializationFeature.FAIL_ON_NUMBERS_FOR_ENUMS, true);
             mapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
-            mapper.configure(DeserializationFeature.UNWRAP_SINGLE_VALUE_ARRAYS, false);
+            mapper.configure(DeserializationFeature.UNWRAP_ROOT_VALUE, true);
 
             // Configuration Serialization
             mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, true);
