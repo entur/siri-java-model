@@ -26,6 +26,6 @@ public class ZonedDateTimeAdapter {
             parsed =ZonedDateTime.ofLocal(parse1, ZoneId.systemDefault(), ZoneOffset.ofHours(0));
 
         }
-        return parsed;
+        return parsed.withZoneSameInstant(ZoneId.systemDefault());
     }
 }
