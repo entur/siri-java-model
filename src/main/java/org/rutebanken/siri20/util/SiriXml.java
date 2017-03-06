@@ -33,6 +33,12 @@ public class SiriXml {
         return (Siri) jaxbUnmarshaller.unmarshal(new StringReader(xml));
     }
 
+    public static Siri parseXml(InputStream inputStream) throws JAXBException {
+        Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+
+        return (Siri) jaxbUnmarshaller.unmarshal(inputStream);
+    }
+
     public static String toXml(Siri siri) throws JAXBException {
         return toXml(siri, null);
     }
