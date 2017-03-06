@@ -32,7 +32,7 @@ public class ZonedDateTimeAdapter {
 
     private static boolean isNumeric(String str)
     {
-        return str.matches("\\d+");  //match a number with optional '-' and decimal.
+        return str.matches("\\d+");
     }
 
     /**
