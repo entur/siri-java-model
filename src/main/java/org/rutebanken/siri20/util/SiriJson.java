@@ -2,6 +2,7 @@ package org.rutebanken.siri20.util;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.type.TypeFactory;
@@ -35,7 +36,7 @@ public class SiriJson {
             mapper.configure(DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES, true);
             mapper.configure(DeserializationFeature.FAIL_ON_NUMBERS_FOR_ENUMS, true);
             mapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
-            mapper.configure(DeserializationFeature.UNWRAP_ROOT_VALUE, true);
+            mapper.configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true);
 
             // Configuration Serialization
             mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, true);
