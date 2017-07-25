@@ -1,13 +1,22 @@
 package org.rutebanken.siri20.util;
 
-import com.sun.xml.bind.marshaller.NamespacePrefixMapper;
-import uk.org.siri.siri20.Siri;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.StringReader;
+import java.io.StringWriter;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
-import java.io.*;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
+
+import com.sun.xml.bind.marshaller.NamespacePrefixMapper;
+
+import uk.org.siri.siri20.Siri;
 
 public class SiriXml {
 
@@ -27,16 +36,21 @@ public class SiriXml {
         }
     }
 
-    public static Siri parseXml(String xml) throws JAXBException {
+    public static Siri parseXml(String xml) throws JAXBException, XMLStreamException {
         Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+        
+        XMLInputFactory xmlif = XMLInputFactory.newInstance();
+        XMLStreamReader xmler = xmlif.createXMLStreamReader(new StringReader(xml));
 
-        return (Siri) jaxbUnmarshaller.unmarshal(new StringReader(xml));
+        return (Siri) jaxbUnmarshaller.unmarshal(xmler);
     }
 
-    public static Siri parseXml(InputStream inputStream) throws JAXBException {
+    public static Siri parseXml(InputStream inputStream) throws JAXBException, XMLStreamException {
         Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+        XMLInputFactory xmlif = XMLInputFactory.newInstance();
+        XMLStreamReader xmler = xmlif.createXMLStreamReader(inputStream);
 
-        return (Siri) jaxbUnmarshaller.unmarshal(inputStream);
+        return (Siri) jaxbUnmarshaller.unmarshal(xmler);
     }
 
     public static String toXml(Siri siri) throws JAXBException {
