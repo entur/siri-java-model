@@ -2,16 +2,41 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.rutebanken</groupId>
+    <groupId>org.entur</groupId>
     <artifactId>siri-java-model</artifactId>
     <version>0.12-SNAPSHOT</version>
     <packaging>jar</packaging>
 
+    <name>siri-java-model</name>
+    <description>Java objects based on the public SIRI XSDs</description>
+    <url>https://github.com/entur/siri-java-model</url>
+    <licenses>
+        <license>
+            <name>EUPL-1.2 with modifications</name>
+            <url>https://joinup.ec.europa.eu/software/page/eupl</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Erlend Nossum</name>
+            <email>erlend.nossum@entur.org</email>
+            <organization>Entur</organization>
+            <organizationUrl>http://www.entur.org</organizationUrl>
+        </developer>
+    </developers>
+
     <scm>
-         <connection>scm:git:ssh://git@github.com/rutebanken/siri-java-model.git</connection>
-         <developerConnection>scm:git:ssh://git@github.com/rutebanken/siri-java-model.git</developerConnection>
-    <tag>HEAD</tag>
-  </scm>
+        <connection>scm:git:ssh://git@github.com/entur/siri-java-model.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/entur/siri-java-model.git</developerConnection>
+        <url>https://github.com/entur/siri-java-model/tree/master</url>
+    </scm>
+
+    <organization>
+        <name>Entur AS</name>
+        <url>http://www.entur.org/</url>
+    </organization>
 
     <dependencies>
         <dependency>
@@ -76,6 +101,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
@@ -137,14 +163,10 @@
     </build>
 
     <distributionManagement>
-        <repository>
-            <id>rutebanken-repository</id>
-            <name>Rutebanken Repository</name>
-            <url>scpexe://localhost:2223/usr/share/nginx/html</url>
-        </repository>
         <snapshotRepository>
             <id>Nexus</id>
             <url>https://nexus.rutebanken.org/content/repositories/snapshots</url>
         </snapshotRepository>
     </distributionManagement>
+
 </project>
