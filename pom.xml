@@ -4,7 +4,7 @@
 
     <groupId>org.entur</groupId>
     <artifactId>siri-java-model</artifactId>
-    <version>0.12-SNAPSHOT</version>
+    <version>0.12</version>
     <packaging>jar</packaging>
 
     <name>siri-java-model</name>
@@ -31,7 +31,8 @@
         <connection>scm:git:ssh://git@github.com/entur/siri-java-model.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/entur/siri-java-model.git</developerConnection>
         <url>https://github.com/entur/siri-java-model/tree/master</url>
-    </scm>
+      <tag>siri-java-model-0.12</tag>
+  </scm>
 
     <organization>
         <name>Entur AS</name>
