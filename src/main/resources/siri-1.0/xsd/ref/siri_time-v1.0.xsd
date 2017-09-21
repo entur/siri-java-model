@@ -1,186 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSpy v2005 sp2 U (http://www.altova.com) by Nick js knowles (Kizoom Ltd.) -->
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" id="siri_time">
-    <xsd:annotation>
-        <xsd:appinfo xmlns:gms="http://www.govtalk.gov.uk/CM/gms">
-            <Metadata xmlns="http://www.govtalk.gov.uk/CM/gms-xs">
-                <Aggregation>main schema</Aggregation>
-                <Audience>e-service developers</Audience>
-                <Coverage>Europe</Coverage>
-                <Creator>Drafted for version 1.0 Cen TC278 WG3 SG7 Editor Nicholas Knowles, Kizoom. mailto:schemer@siri.org.uk</Creator>
-                <Date>
-                    <Created>2005-10-03</Created>
-                </Date>
-                <Date>
-                    <Modified>2005-10-04</Modified>
-                </Date>
-                <Date>
-                    <Modified>2005-05-11</Modified>
-                </Date>
-                <Description>
-                    <p>SIRI is a European CEN standard for the exchange of real time information .</p>
-                </Description>
-                <Format>
-                    <MediaType>text/xml</MediaType>
-                    <Syntax>http://www.w3.org/2001/XMLSchema</Syntax>
-                    <Description>XML schema, W3C Recommendation 2001</Description>
-                </Format>
-                <Identifier>{http://www.siri.org.uk/schemas/1.0/ref}siri_reference-v1.0.xsd</Identifier>
-                <Language>[ISO 639-2/B] ENG</Language>
-                <Publisher>CEN - Add POSTAL ADDRESS </Publisher>
-                <Relation>
-                    <Requires>http://www.siri.org.uk/schemas/1.0/siri_time-v1.0.xsd</Requires>
-                </Relation>
-                <Rights>Unclassified
-                            <Copyright>CEN, VDV, RTIG  2004, 2005</Copyright>
-                </Rights>
-                <Source>
-                    <ul>
-                        <li>Derived from the VDV, RTIG CML and Trident standards.</li>
-                    </ul>
-                </Source>
-                <Status>Version 1.0 Draft for approval</Status>
-                <Subject>
-                    <Category>Arts, recreation and travel, Tourism, Travel (tourism), Transport,
-Air transport, Airports,
-Ports and maritime transport, Ferries (marine),
-Public transport, Bus services, Coach services, Bus stops and stations,
-Rail transport, Railway stations and track, Train services, Underground trains,
-Business and industry, Transport, Air transport , Ports and maritime transport, Public transport,
-Rail transport, Roads and road transport
-</Category>
-                    <Project>Cen TC278 WG3 SG7</Project>
-                </Subject>
-                <Title>SIRI XML schema. Service Interface for Real Time Information relating to Public Transport Operations.  Subschema of time types.</Title>
-                <Type>Standard</Type>
-            </Metadata>
-        </xsd:appinfo>
-    </xsd:annotation>
-    <!-- ======================================================================= -->
-    <!-- =====Times================================================================== -->
-    <xsd:complexType name="ClosedTimestampRangeStructure">
-        <xsd:annotation>
-            <xsd:documentation>Data Type for a range of date and times. Both start and end time are required.</xsd:documentation>
-        </xsd:annotation>
-        <xsd:sequence>
-            <xsd:element name="StartTime" type="xsd:dateTime">
-                <xsd:annotation>
-                    <xsd:documentation>The (inclusive) start date and time.</xsd:documentation>
-                </xsd:annotation>
-            </xsd:element>
-            <xsd:element name="EndTime" type="xsd:dateTime">
-                <xsd:annotation>
-                    <xsd:documentation>The (inclusive) end date and time.</xsd:documentation>
-                </xsd:annotation>
-            </xsd:element>
-        </xsd:sequence>
-    </xsd:complexType>
-    <xsd:complexType name="ClosedTimeRangeStructure">
-        <xsd:annotation>
-            <xsd:documentation>Data Type for a  range of times. Both start and end time are required.</xsd:documentation>
-        </xsd:annotation>
-        <xsd:sequence>
-            <xsd:element name="StartTime" type="xsd:time">
-                <xsd:annotation>
-                    <xsd:documentation>The (inclusive) start time.</xsd:documentation>
-                </xsd:annotation>
-            </xsd:element>
-            <xsd:element name="EndTime" type="xsd:time">
-                <xsd:annotation>
-                    <xsd:documentation>The (inclusive) end time.</xsd:documentation>
-                </xsd:annotation>
-            </xsd:element>
-        </xsd:sequence>
-    </xsd:complexType>
-    <xsd:complexType name="HalfOpenTimeRangeStructure">
-        <xsd:annotation>
-            <xsd:documentation>Data Type for a  range of times. Start time must be specified, end time is optional.</xsd:documentation>
-        </xsd:annotation>
-        <xsd:sequence>
-            <xsd:element name="StartTime" type="xsd:time">
-                <xsd:annotation>
-                    <xsd:documentation>The (inclusive) start time.</xsd:documentation>
-                </xsd:annotation>
-            </xsd:element>
-            <xsd:element name="EndTime" type="xsd:time" minOccurs="0">
-                <xsd:annotation>
-                    <xsd:documentation>The (inclusive) end time. If omitted, the range end is open-ended, that is, it should be interpreted as "forever".</xsd:documentation>
-                </xsd:annotation>
-            </xsd:element>
-        </xsd:sequence>
-    </xsd:complexType>
-    <xsd:complexType name="HalfOpenTimestampRangeStructure">
-        <xsd:annotation>
-            <xsd:documentation>Data Type for a  range of date times. Start time must be specified, end time is optional.</xsd:documentation>
-        </xsd:annotation>
-        <xsd:sequence>
-            <xsd:element name="StartTime" type="xsd:dateTime">
-                <xsd:annotation>
-                    <xsd:documentation>The (inclusive) start time stamp.</xsd:documentation>
-                </xsd:annotation>
-            </xsd:element>
-            <xsd:element name="EndTime" type="xsd:dateTime" minOccurs="0">
-                <xsd:annotation>
-                    <xsd:documentation>The (inclusive) end time stamp. If omitted, the range end is open-ended, that is, it should be interpreted as "forever".</xsd:documentation>
-                </xsd:annotation>
-            </xsd:element>
-        </xsd:sequence>
-    </xsd:complexType>
-    <!-- ======================================================================= -->
-    <xsd:element name="DayType" type="DayTypeEnumeration" default="everyDay">
-        <xsd:annotation>
-            <xsd:documentation>Tpeg DayType pti_table 34 </xsd:documentation>
-        </xsd:annotation>
-    </xsd:element>
-    <xsd:simpleType name="DayTypeEnumeration">
-        <xsd:annotation>
-            <xsd:documentation>Values for Day Type  TPEG pti_table 34</xsd:documentation>
-        </xsd:annotation>
-        <xsd:restriction base="xsd:NMTOKEN">
-            <xsd:enumeration value="pti34_0"/>
-            <xsd:enumeration value="unknown"/>
-            <xsd:enumeration value="pti34_1"/>
-            <xsd:enumeration value="monday"/>
-            <xsd:enumeration value="pti34_2"/>
-            <xsd:enumeration value="tuesday"/>
-            <xsd:enumeration value="pti34_3"/>
-            <xsd:enumeration value="wednesday"/>
-            <xsd:enumeration value="pti34_4"/>
-            <xsd:enumeration value="thursday"/>
-            <xsd:enumeration value="pti34_5"/>
-            <xsd:enumeration value="friday"/>
-            <xsd:enumeration value="pti34_6"/>
-            <xsd:enumeration value="saturday"/>
-            <xsd:enumeration value="pti34_7"/>
-            <xsd:enumeration value="sunday"/>
-            <xsd:enumeration value="pti34_8"/>
-            <xsd:enumeration value="weekdays"/>
-            <xsd:enumeration value="pti34_9"/>
-            <xsd:enumeration value="weekends"/>
-            <xsd:enumeration value="pti34_10"/>
-            <xsd:enumeration value="holiday"/>
-            <xsd:enumeration value="pti34_11"/>
-            <xsd:enumeration value="publicHoliday"/>
-            <xsd:enumeration value="pti34_12"/>
-            <xsd:enumeration value="religiousHoliday"/>
-            <xsd:enumeration value="pti34_13"/>
-            <xsd:enumeration value="federalHoliday"/>
-            <xsd:enumeration value="pti34_14"/>
-            <xsd:enumeration value="regionalHoliday"/>
-            <xsd:enumeration value="pti34_15"/>
-            <xsd:enumeration value="nationalHoliday"/>
-            <xsd:enumeration value="pti34_16"/>
-            <xsd:enumeration value="mondayToFriday"/>
-            <xsd:enumeration value="pti34_17"/>
-            <xsd:enumeration value="mondayToSaturday"/>
-            <xsd:enumeration value="pti34_18"/>
-            <xsd:enumeration value="sundaysAndPublicHolidays"/>
-            <xsd:enumeration value="pti34_19"/>
-            <xsd:enumeration value="schoolDays"/>
-            <xsd:enumeration value="pti34_20"/>
-            <xsd:enumeration value="everyDay"/>
-            <xsd:enumeration value="pti34_255"/>
-            <xsd:enumeration value="undefinedDayType"/>
-        </xsd:restriction>
-    </xsd:simpleType>
-</xsd:schema>
+<?xml version="1.0" encoding="UTF-8"?><!--  ~ Licensed under the EUPL, Version 1.2 or – as soon they will be approved by  ~ the European Commission - subsequent versions of the EUPL (the "Licence");  ~ You may not use this work except in compliance with the Licence.  ~ You may obtain a copy of the Licence at:  ~  ~   https://joinup.ec.europa.eu/software/page/eupl  ~  ~ Unless required by applicable law or agreed to in writing, software  ~ distributed under the Licence is distributed on an "AS IS" basis,  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  ~ See the Licence for the specific language governing permissions and  ~ limitations under the Licence.  --><!-- edited with XMLSpy v2005 sp2 U (http://www.altova.com) by Nick js knowles (Kizoom Ltd.) --><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" id="siri_time">    <xsd:annotation>        <xsd:appinfo xmlns:gms="http://www.govtalk.gov.uk/CM/gms">            <Metadata xmlns="http://www.govtalk.gov.uk/CM/gms-xs">                <Aggregation>main schema</Aggregation>                <Audience>e-service developers</Audience>                <Coverage>Europe</Coverage>                <Creator>Drafted for version 1.0 Cen TC278 WG3 SG7 Editor Nicholas Knowles, Kizoom. mailto:schemer@siri.org.uk</Creator>                <Date>                    <Created>2005-10-03</Created>                </Date>                <Date>                    <Modified>2005-10-04</Modified>                </Date>                <Date>                    <Modified>2005-05-11</Modified>                </Date>                <Description>                    <p>SIRI is a European CEN standard for the exchange of real time information .</p>                </Description>                <Format>                    <MediaType>text/xml</MediaType>                    <Syntax>http://www.w3.org/2001/XMLSchema</Syntax>                    <Description>XML schema, W3C Recommendation 2001</Description>                </Format>                <Identifier>{http://www.siri.org.uk/schemas/1.0/ref}siri_reference-v1.0.xsd</Identifier>                <Language>[ISO 639-2/B] ENG</Language>                <Publisher>CEN - Add POSTAL ADDRESS </Publisher>                <Relation>                    <Requires>http://www.siri.org.uk/schemas/1.0/siri_time-v1.0.xsd</Requires>                </Relation>                <Rights>Unclassified                            <Copyright>CEN, VDV, RTIG  2004, 2005</Copyright>                </Rights>                <Source>                    <ul>                        <li>Derived from the VDV, RTIG CML and Trident standards.</li>                    </ul>                </Source>                <Status>Version 1.0 Draft for approval</Status>                <Subject>                    <Category>Arts, recreation and travel, Tourism, Travel (tourism), Transport,Air transport, Airports,Ports and maritime transport, Ferries (marine),Public transport, Bus services, Coach services, Bus stops and stations,Rail transport, Railway stations and track, Train services, Underground trains,Business and industry, Transport, Air transport , Ports and maritime transport, Public transport,Rail transport, Roads and road transport</Category>                    <Project>Cen TC278 WG3 SG7</Project>                </Subject>                <Title>SIRI XML schema. Service Interface for Real Time Information relating to Public Transport Operations.  Subschema of time types.</Title>                <Type>Standard</Type>            </Metadata>        </xsd:appinfo>    </xsd:annotation>    <!-- ======================================================================= -->    <!-- =====Times================================================================== -->    <xsd:complexType name="ClosedTimestampRangeStructure">        <xsd:annotation>            <xsd:documentation>Data Type for a range of date and times. Both start and end time are required.</xsd:documentation>        </xsd:annotation>        <xsd:sequence>            <xsd:element name="StartTime" type="xsd:dateTime">                <xsd:annotation>                    <xsd:documentation>The (inclusive) start date and time.</xsd:documentation>                </xsd:annotation>            </xsd:element>            <xsd:element name="EndTime" type="xsd:dateTime">                <xsd:annotation>                    <xsd:documentation>The (inclusive) end date and time.</xsd:documentation>                </xsd:annotation>            </xsd:element>        </xsd:sequence>    </xsd:complexType>    <xsd:complexType name="ClosedTimeRangeStructure">        <xsd:annotation>            <xsd:documentation>Data Type for a  range of times. Both start and end time are required.</xsd:documentation>        </xsd:annotation>        <xsd:sequence>            <xsd:element name="StartTime" type="xsd:time">                <xsd:annotation>                    <xsd:documentation>The (inclusive) start time.</xsd:documentation>                </xsd:annotation>            </xsd:element>            <xsd:element name="EndTime" type="xsd:time">                <xsd:annotation>                    <xsd:documentation>The (inclusive) end time.</xsd:documentation>                </xsd:annotation>            </xsd:element>        </xsd:sequence>    </xsd:complexType>    <xsd:complexType name="HalfOpenTimeRangeStructure">        <xsd:annotation>            <xsd:documentation>Data Type for a  range of times. Start time must be specified, end time is optional.</xsd:documentation>        </xsd:annotation>        <xsd:sequence>            <xsd:element name="StartTime" type="xsd:time">                <xsd:annotation>                    <xsd:documentation>The (inclusive) start time.</xsd:documentation>                </xsd:annotation>            </xsd:element>            <xsd:element name="EndTime" type="xsd:time" minOccurs="0">                <xsd:annotation>                    <xsd:documentation>The (inclusive) end time. If omitted, the range end is open-ended, that is, it should be interpreted as "forever".</xsd:documentation>                </xsd:annotation>            </xsd:element>        </xsd:sequence>    </xsd:complexType>    <xsd:complexType name="HalfOpenTimestampRangeStructure">        <xsd:annotation>            <xsd:documentation>Data Type for a  range of date times. Start time must be specified, end time is optional.</xsd:documentation>        </xsd:annotation>        <xsd:sequence>            <xsd:element name="StartTime" type="xsd:dateTime">                <xsd:annotation>                    <xsd:documentation>The (inclusive) start time stamp.</xsd:documentation>                </xsd:annotation>            </xsd:element>            <xsd:element name="EndTime" type="xsd:dateTime" minOccurs="0">                <xsd:annotation>                    <xsd:documentation>The (inclusive) end time stamp. If omitted, the range end is open-ended, that is, it should be interpreted as "forever".</xsd:documentation>                </xsd:annotation>            </xsd:element>        </xsd:sequence>    </xsd:complexType>    <!-- ======================================================================= -->    <xsd:element name="DayType" type="DayTypeEnumeration" default="everyDay">        <xsd:annotation>            <xsd:documentation>Tpeg DayType pti_table 34 </xsd:documentation>        </xsd:annotation>    </xsd:element>    <xsd:simpleType name="DayTypeEnumeration">        <xsd:annotation>            <xsd:documentation>Values for Day Type  TPEG pti_table 34</xsd:documentation>        </xsd:annotation>        <xsd:restriction base="xsd:NMTOKEN">            <xsd:enumeration value="pti34_0"/>            <xsd:enumeration value="unknown"/>            <xsd:enumeration value="pti34_1"/>            <xsd:enumeration value="monday"/>            <xsd:enumeration value="pti34_2"/>            <xsd:enumeration value="tuesday"/>            <xsd:enumeration value="pti34_3"/>            <xsd:enumeration value="wednesday"/>            <xsd:enumeration value="pti34_4"/>            <xsd:enumeration value="thursday"/>            <xsd:enumeration value="pti34_5"/>            <xsd:enumeration value="friday"/>            <xsd:enumeration value="pti34_6"/>            <xsd:enumeration value="saturday"/>            <xsd:enumeration value="pti34_7"/>            <xsd:enumeration value="sunday"/>            <xsd:enumeration value="pti34_8"/>            <xsd:enumeration value="weekdays"/>            <xsd:enumeration value="pti34_9"/>            <xsd:enumeration value="weekends"/>            <xsd:enumeration value="pti34_10"/>            <xsd:enumeration value="holiday"/>            <xsd:enumeration value="pti34_11"/>            <xsd:enumeration value="publicHoliday"/>            <xsd:enumeration value="pti34_12"/>            <xsd:enumeration value="religiousHoliday"/>            <xsd:enumeration value="pti34_13"/>            <xsd:enumeration value="federalHoliday"/>            <xsd:enumeration value="pti34_14"/>            <xsd:enumeration value="regionalHoliday"/>            <xsd:enumeration value="pti34_15"/>            <xsd:enumeration value="nationalHoliday"/>            <xsd:enumeration value="pti34_16"/>            <xsd:enumeration value="mondayToFriday"/>            <xsd:enumeration value="pti34_17"/>            <xsd:enumeration value="mondayToSaturday"/>            <xsd:enumeration value="pti34_18"/>            <xsd:enumeration value="sundaysAndPublicHolidays"/>            <xsd:enumeration value="pti34_19"/>            <xsd:enumeration value="schoolDays"/>            <xsd:enumeration value="pti34_20"/>            <xsd:enumeration value="everyDay"/>            <xsd:enumeration value="pti34_255"/>            <xsd:enumeration value="undefinedDayType"/>        </xsd:restriction>    </xsd:simpleType></xsd:schema>
