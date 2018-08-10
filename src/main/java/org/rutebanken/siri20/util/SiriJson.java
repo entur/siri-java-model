@@ -27,7 +27,6 @@ import com.fasterxml.jackson.module.jaxb.JaxbAnnotationIntrospector;
 import uk.org.siri.siri20.Siri;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 
 public class SiriJson {
@@ -71,14 +70,6 @@ public class SiriJson {
             mapper.registerModule(new AfterburnerModule());
             mapper.setDateFormat(new ISO8601DateFormat());
         }
-    }
-
-    public static Siri parseJson(String json) throws IOException {
-        return mapper.readValue(json, Siri.class);
-    }
-
-    public static Siri parseJson(InputStream json) throws IOException {
-        return mapper.readValue(json, Siri.class);
     }
 
     public static String toJson(Siri siri) throws IOException {

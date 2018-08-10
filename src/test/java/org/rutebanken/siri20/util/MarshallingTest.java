@@ -22,9 +22,10 @@ import uk.org.siri.siri20.Siri;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
+import static junit.framework.TestCase.assertFalse;
+import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.rutebanken.siri20.util.SiriJson.parseJson;
 import static org.rutebanken.siri20.util.SiriJson.toJson;
 import static org.rutebanken.siri20.util.SiriXml.parseXml;
 import static org.rutebanken.siri20.util.SiriXml.toXml;
@@ -56,14 +57,12 @@ public class MarshallingTest {
         String json = toJson(s);
 
         assertNotNull(json);
+        assertFalse(json.isEmpty());
+        assertTrue(json.length() > xml.length()/2);
 
-        //Parse Json
-        Siri parsedSiri = parseJson(json);
-
-        assertNotNull(parsedSiri);
 
         // Convert to XML
-        String marshalledXml = toXml(parsedSiri);
+        String marshalledXml = toXml(s);
 
         // Compare
         assertEquals(xml, marshalledXml);

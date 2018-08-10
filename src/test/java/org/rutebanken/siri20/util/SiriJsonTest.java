@@ -24,7 +24,6 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 
 import static org.junit.Assert.*;
-import static org.rutebanken.siri20.util.SiriJson.parseJson;
 import static org.rutebanken.siri20.util.SiriJson.toJson;
 import static org.rutebanken.siri20.util.SiriXml.parseXml;
 
@@ -56,10 +55,8 @@ public class SiriJsonTest {
 
         assertNotNull(json);
         assertFalse(json.isEmpty());
+        assertTrue(json.length() > xml.length()/2);
 
-        Siri parsedSiri = parseJson(json);
-
-        assertNotNull(parsedSiri);
     }
 
 
