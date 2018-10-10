@@ -1,0 +1,57 @@
+version: 2
+jobs:
+  test:
+    docker:
+    - image: maven:3.5.4-jdk-8
+    environment:
+      MAVEN_OPTS: -Xmx3G
+    steps:
+    - checkout
+    - restore_cache:
+        key: dep-cache-{{ checksum "pom.xml" }}
+    - run: mvn org.apache.maven.plugins:maven-dependency-plugin:3.1.0:go-offline -s .circleci/settings.xml
+    - save_cache:
+        paths:
+        - ~/.m2
+        key: dep-cache-{{ checksum "pom.xml" }}
+    # Cannot use -o because of snapshot dependencies.
+    - run: mvn test -s .circleci/settings.xml
+    - run:
+        name: Save test results
+        command: |
+          mkdir -p ~/junit/
+          find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} ~/junit/ \;
+        when: always
+    - store_test_results:
+        path: ~/junit
+    - store_artifacts:
+        path: ~/junit
+  deploy-nexus:
+    docker:
+    - image: maven:3.5.4-jdk-8
+    environment:
+      MAVEN_OPTS: -Xmx3G
+    steps:
+    - checkout
+    - restore_cache:
+        key: dep-cache-{{ checksum "pom.xml" }}
+    - run: mvn org.apache.maven.plugins:maven-dependency-plugin:3.1.0:go-offline -s .circleci/settings.xml
+    - save_cache:
+        paths:
+        - ~/.m2
+        key: dep-cache-{{ checksum "pom.xml" }}
+    # Cannot use -o because of snapshot dependencies.
+    - run: mvn deploy -s .circleci/settings.xml -DskipTests
+workflows:
+  version: 2
+  build_test_deploy:
+    jobs:
+    - test:
+        context: org-carbon
+    - deploy-nexus:
+        context: org-carbon
+        requires:
+        - test
+        filters:
+          branches:
+            only: master
