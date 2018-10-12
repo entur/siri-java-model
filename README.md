@@ -1,4 +1,4 @@
-# siri-java-model
+# siri-java-model [![CircleCI](https://circleci.com/gh/entur/siri-java-model/tree/master.svg?style=svg)](https://circleci.com/gh/entur/siri-java-model/tree/master)
 ```mvn clean install```
 
 Generates Java API based on the xsds for SIRI Versions 
