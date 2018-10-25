@@ -3,9 +3,9 @@ jobs:
   test:
     docker:
     - image: eu.gcr.io/carbon-1287/circleci-toolbox-image
-        auth:
-          username: _json_key
-          password: $GCLOUD_SERVICE_KEY
+      auth:
+        username: _json_key
+        password: $GCLOUD_SERVICE_KEY
     environment:
       MAVEN_OPTS: -Xmx3G
     steps:
@@ -32,9 +32,9 @@ jobs:
   deploy-nexus:
     docker:
     - image: eu.gcr.io/carbon-1287/circleci-toolbox-image
-        auth:
-          username: _json_key
-          password: $GCLOUD_SERVICE_KEY
+      auth:
+        username: _json_key
+        password: $GCLOUD_SERVICE_KEY
     environment:
       MAVEN_OPTS: -Xmx3G
     steps:
