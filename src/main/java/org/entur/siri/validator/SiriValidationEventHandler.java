@@ -13,12 +13,20 @@
  * limitations under the Licence.
  */
 
-package org.rutebanken.validator;
+package org.entur.siri.validator;
 
-/**
- * @deprecated Moved to org.entur.siri.validator.SiriValidationEventHandler
- */
-@Deprecated
-class SiriValidationEventHandler extends org.entur.siri.validator.SiriValidationEventHandler {
+import javax.xml.bind.ValidationEvent;
+import javax.xml.bind.ValidationEventHandler;
+import java.util.ArrayList;
+import java.util.List;
+
+public class SiriValidationEventHandler implements ValidationEventHandler {
+
+    public List<ValidationEvent> events = new ArrayList<>();
+
+    public boolean handleEvent(ValidationEvent event) {
+        events.add(event);
+        return true;
+    }
 
 }

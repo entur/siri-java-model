@@ -178,6 +178,11 @@
                                     <bindingFile>${basedir}/src/main/resources/siri-2.0/xjb/jaxb-bindings.xml</bindingFile>
                                     <extension>true</extension>
                                 </xsdOption>
+                                <xsdOption>
+                                    <xsd>${basedir}/src/main/resources/siri-2.1/xsd/siri.xsd</xsd>
+                                    <bindingFile>${basedir}/src/main/resources/siri-2.1/xjb/jaxb-bindings.xml</bindingFile>
+                                    <extension>true</extension>
+                                </xsdOption>
                             </xsdOptions>
                         </configuration>
                     </execution>

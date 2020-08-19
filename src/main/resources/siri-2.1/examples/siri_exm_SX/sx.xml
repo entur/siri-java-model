@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Siri
+        xmlns="http://www.siri.org.uk/siri"
+        version="2.0">
+    <ServiceDelivery>
+        <ResponseTimestamp>2017-07-11T11:29:31</ResponseTimestamp>
+        <ProducerRef>RUT</ProducerRef>
+        <SituationExchangeDelivery version="2.0">
+            <ResponseTimestamp>2017-07-11T11:29:31</ResponseTimestamp>
+            <ValidUntil>2017-08-11T11:29:31</ValidUntil>
+            <Situations>
+                <PtSituationElement>
+                    <CreationTime>2018-04-10T18:27:21</CreationTime>
+                    <ParticipantRef>RUT</ParticipantRef>
+                    <SituationNumber>RUT:SituationNumber:50528</SituationNumber>
+                    <Version>1</Version>
+                    <Source>
+                        <SourceType>directReport</SourceType>
+                    </Source>
+                    <VersionedAtTime>2018-04-10T18:27:21</VersionedAtTime>
+                    <Progress>open</Progress>
+                    <ValidityPeriod>
+                        <StartTime>2018-05-01T12:30:00</StartTime>
+                        <EndTime>2018-05-01T15:30:00</EndTime>
+                    </ValidityPeriod>
+                    <UndefinedReason/>
+                    <Severity>normal</Severity>
+                    <ReportType>general</ReportType>
+                    <Summary>Ballong til alle som reiser med linje 11</Summary>
+                    <Description>Vi feirer at det er 50 år siden linje 11 ble startet.</Description>
+                    <Affects>
+                        <Networks>
+                            <AffectedNetwork>
+                                <NetworkRef>RUT:Network:1</NetworkRef>
+                                <AffectedLine>
+                                    <LineRef>RUT:Line:11</LineRef>
+                                </AffectedLine>
+                            </AffectedNetwork>
+                        </Networks>
+                    </Affects>
+                </PtSituationElement>
+            </Situations>
+        </SituationExchangeDelivery>
+    </ServiceDelivery>
+</Siri>

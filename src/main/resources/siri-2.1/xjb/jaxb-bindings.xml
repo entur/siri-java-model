@@ -32,25 +32,25 @@
 
     <jaxb:bindings schemaLocation="../xsd/siri.xsd">
         <jaxb:schemaBindings >
-            <jaxb:package name="uk.org.siri.siri20" />
+            <jaxb:package name="uk.org.siri.siri21" />
         </jaxb:schemaBindings>
     </jaxb:bindings>
 
     <jaxb:bindings schemaLocation="../xsd/ifopt/ifopt_administration-v0.3.xsd">
         <jaxb:schemaBindings >
-            <jaxb:package name="uk.org.ifopt.siri20" />
+            <jaxb:package name="uk.org.ifopt.siri21" />
         </jaxb:schemaBindings>
     </jaxb:bindings>
 
     <jaxb:bindings schemaLocation="../xsd/acsb/acsb_all-v0.3.xsd">
         <jaxb:schemaBindings >
-            <jaxb:package name="uk.org.acbs.siri20" />
+            <jaxb:package name="uk.org.acbs.siri21" />
         </jaxb:schemaBindings>
     </jaxb:bindings>
 
     <jaxb:bindings schemaLocation="../xsd/datex2/DATEXIISchema_2_0RC1_2_0.xsd">
         <jaxb:schemaBindings >
-            <jaxb:package name="eu.datex2.siri20.schema._2_0rc1._2_0" />
+            <jaxb:package name="eu.datex2.siri21.schema._2_0rc1._2_0" />
         </jaxb:schemaBindings>
     </jaxb:bindings>
 

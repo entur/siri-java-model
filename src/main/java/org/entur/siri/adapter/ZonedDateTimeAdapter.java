@@ -13,9 +13,13 @@
  * limitations under the Licence.
  */
 
-package org.rutebanken.siri20.adapter;
+package org.entur.siri.adapter;
 
-import java.time.*;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 

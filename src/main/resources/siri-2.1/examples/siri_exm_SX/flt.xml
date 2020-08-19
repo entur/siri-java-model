@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Siri xmlns="http://www.siri.org.uk/siri">
+    <ServiceDelivery>
+        <ResponseTimestamp>2019-05-02T14:52:35.2591709+02:00</ResponseTimestamp>
+        <ProducerRef>FLT</ProducerRef>
+        <SituationExchangeDelivery>
+            <ResponseTimestamp>2019-05-02T14:52:36.7671736+02:00</ResponseTimestamp>
+            <Situations>
+                <PtSituationElement>
+                    <CreationTime>2019-05-02T14:52:36.7561727+02:00</CreationTime>
+                    <ParticipantRef>FLT</ParticipantRef>
+                    <SituationNumber>FORS_00</SituationNumber>
+                    <Source>
+                        <SourceType>directReport</SourceType>
+                    </Source>
+                    <ValidityPeriod>
+                        <StartTime>2019-05-02T14:52:36.7581732+02:00</StartTime>
+                    </ValidityPeriod>
+                    <UndefinedReason>There is a failure related to the power supply between Drammen and Asker</UndefinedReason>
+                    <EnvironmentReason>pti22_0</EnvironmentReason>
+                    <EquipmentReason>pti21_0</EquipmentReason>
+                    <PersonnelReason>pti20_0</PersonnelReason>
+                    <MiscellaneousReason>pti19_0</MiscellaneousReason>
+                    <EnvironmentSubReason>unknown</EnvironmentSubReason>
+                    <EquipmentSubReason>unknown</EquipmentSubReason>
+                    <PersonnelSubReason>staffSickness</PersonnelSubReason>
+                    <MiscellaneousSubReason>unknown</MiscellaneousSubReason>
+                    <Summary xml:lang="NO">Det har oppstått en feil med strømtilførselen mellom Drammen og Asker</Summary>
+                    <Summary xml:lang="EN">There is a failure related to the power supply between Drammen and Asker</Summary>
+                    <Affects>
+<Networks>
+    <AffectedNetwork>
+        <NetworkRef>FLT</NetworkRef>
+        <AffectedLine>
+            <LineRef>FLT:Line:F2</LineRef>
+        </AffectedLine>
+    </AffectedNetwork>
+</Networks>
+                        <VehicleJourneys>
+                            <AffectedVehicleJourney>
+                                <FramedVehicleJourneyRef>
+                                    <DataFrameRef>2019-04-25</DataFrameRef>
+                                    <DatedVehicleJourneyRef>:ServiceJourney:3507_2019-04-25</DatedVehicleJourneyRef>
+                                </FramedVehicleJourneyRef>
+                                <DatedVehicleJourneyRef>3507_2019-04-25</DatedVehicleJourneyRef>
+                                <Operator>
+                                    <OperatorRef xsi:type="OperationalUnitRefStructure" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">FLY</OperatorRef>
+                                </Operator>
+                                <LineRef>FLY:Line:F1x</LineRef>
+                                <DirectionRef>GAR</DirectionRef>
+                                <Route>
+                                    <Direction>
+                                        <DirectionRef>GAR</DirectionRef>
+                                    </Direction>
+                                </Route>
+                            </AffectedVehicleJourney>
+                        </VehicleJourneys>
+                    </Affects>
+                </PtSituationElement>
+            </Situations>
+        </SituationExchangeDelivery>
+    </ServiceDelivery>
+</Siri>

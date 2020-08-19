@@ -13,7 +13,7 @@
  * limitations under the Licence.
  */
 
-package org.rutebanken.siri20.adapter;
+package org.entur.siri.adapter;
 
 import junit.framework.TestCase;
 

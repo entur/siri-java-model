@@ -13,8 +13,9 @@
  * limitations under the Licence.
  */
 
-package org.rutebanken.validator;
+package org.entur.siri.validator;
 
+import org.entur.siri.UnsupportedSiriVersionException;
 import org.xml.sax.SAXException;
 
 import javax.xml.XMLConstants;
@@ -27,16 +28,13 @@ import java.io.PrintStream;
 import java.io.StringReader;
 import java.net.URL;
 
-/**
- * @deprecated Moved to org.entur.siri.validator.SiriValidator
- */
-@Deprecated
 public class SiriValidator {
 
-    private static JAXBContext siri20jaxbContext;
     private static JAXBContext siri10jaxbContext;
     private static JAXBContext siri13jaxbContext;
     private static JAXBContext siri14jaxbContext;
+    private static JAXBContext siri20jaxbContext;
+    private static JAXBContext siri21jaxbContext;
 
     static {
         try {
@@ -58,6 +56,9 @@ public class SiriValidator {
         }
         if (siri20jaxbContext == null) {
             siri20jaxbContext = JAXBContext.newInstance(uk.org.siri.siri20.Siri.class);
+        }
+        if (siri21jaxbContext == null) {
+            siri21jaxbContext = JAXBContext.newInstance(uk.org.siri.siri21.Siri.class);
         }
     }
     /**
@@ -128,8 +129,11 @@ public class SiriValidator {
             case VERSION_1_4:
                 return siri14jaxbContext.createUnmarshaller();
             case VERSION_2_0:
-            default:
                 return siri20jaxbContext.createUnmarshaller();
+            case VERSION_2_1:
+                return siri21jaxbContext.createUnmarshaller();
+            default:
+                throw new UnsupportedSiriVersionException(version);
         }
     }
 
@@ -147,12 +151,17 @@ public class SiriValidator {
                 path = "siri-1.4/xsd/siri.xsd";
                 break;
             case VERSION_2_0:
-            default:
                 path = "siri-2.0/xsd/siri.xsd";
+                break;
+            case VERSION_2_1:
+                path = "siri-2.1/xsd/siri.xsd";
+                break;
+            default:
+                throw new UnsupportedSiriVersionException(version);
         }
 
-        return new SiriValidator().getClass().getClassLoader().getResource(path);
+        return SiriValidator.class.getClassLoader().getResource(path);
     }
 
-    public static enum Version {VERSION_1_0, VERSION_1_3, VERSION_1_4, VERSION_2_0}
+    public enum Version {VERSION_1_0, VERSION_1_3, VERSION_1_4, VERSION_2_0, VERSION_2_1}
 }
