@@ -29,4 +29,8 @@ public class SiriValidationEventHandler implements ValidationEventHandler {
         return true;
     }
 
+    public boolean isValid() {
+        return events.size() == 0;
+    }
+
 }
