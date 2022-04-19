@@ -19,7 +19,7 @@
 
     <groupId>org.entur</groupId>
     <artifactId>siri-java-model</artifactId>
-    <version>0.14-SNAPSHOT</version>
+    <version>0.14</version>
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -49,7 +49,7 @@
         <connection>scm:git:ssh://git@github.com/entur/siri-java-model.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/entur/siri-java-model.git</developerConnection>
         <url>https://github.com/entur/siri-java-model/tree/master</url>
-        <tag>HEAD</tag>
+        <tag>siri-java-model-0.14</tag>
     </scm>
 
     <organization>
