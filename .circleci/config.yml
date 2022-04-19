@@ -53,9 +53,9 @@ workflows:
   build_test_deploy:
     jobs:
     - test:
-        context: org-carbon
+        context: global
     - deploy-nexus:
-        context: org-carbon
+        context: global
         requires:
         - test
         filters:
