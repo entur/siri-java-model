@@ -79,6 +79,30 @@ public class SiriValidator {
     /**
      * Validates xml against xsd
      *
+     * Result is returned in EventHandler
+     *
+     * @param xml The XML string to be validated.
+     * @param version The Siri validator version to be used when validating the xml.
+     * @return SiriValidationEventHandler with the validation result.
+     * @throws JAXBException
+     * @throws SAXException
+     */
+    public static SiriValidationEventHandler validateAndGetHandler(String xml, Version version) throws JAXBException, SAXException {
+        SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+
+        Schema schema = sf.newSchema(getXsdRelativePath(version));
+
+        Unmarshaller unmarshaller = getVersionSpecificUnmarshaller(version);
+        unmarshaller.setSchema(schema);
+        SiriValidationEventHandler handler = new SiriValidationEventHandler();
+        unmarshaller.setEventHandler(handler);
+        unmarshaller.unmarshal(new StringReader(xml));
+        return handler;
+    }
+
+    /**
+     * Validates xml against xsd
+     *
      * Result is printed to provided PrintStream
      *
      * @param xml
@@ -89,15 +113,7 @@ public class SiriValidator {
      * @throws SAXException
      */
     public static boolean validate(String xml, Version version, PrintStream out) throws JAXBException, SAXException {
-        SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-
-        Schema schema = sf.newSchema(getXsdRelativePath(version));
-
-        Unmarshaller unmarshaller = getVersionSpecificUnmarshaller(version);
-        unmarshaller.setSchema(schema);
-        SiriValidationEventHandler handler = new SiriValidationEventHandler();
-        unmarshaller.setEventHandler(handler);
-        unmarshaller.unmarshal(new StringReader(xml));
+        SiriValidationEventHandler handler = validateAndGetHandler(xml, version);
 
         out.println("Found " + handler.events.size() + " errors");
 
@@ -117,7 +133,6 @@ public class SiriValidator {
         });
 
         return handler.events.size() == 0;
-
     }
 
     private static Unmarshaller getVersionSpecificUnmarshaller(Version version) throws JAXBException {
