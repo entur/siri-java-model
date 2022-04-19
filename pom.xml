@@ -14,12 +14,13 @@
   ~ limitations under the Licence.
   -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.entur</groupId>
     <artifactId>siri-java-model</artifactId>
-    <version>0.14-SNAPSHOT</version>
+    <version>0.13-SNAPSHOT</version>
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -49,7 +50,7 @@
         <connection>scm:git:ssh://git@github.com/entur/siri-java-model.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/entur/siri-java-model.git</developerConnection>
         <url>https://github.com/entur/siri-java-model/tree/master</url>
-        <tag>siri-java-model-0.13</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <organization>
@@ -103,12 +104,12 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-release-plugin</artifactId>
-                    <version>3.0.0-M5</version>
+                    <version>2.5.3</version>
                     <dependencies>
                         <dependency>
                             <groupId>org.apache.maven.scm</groupId>
                             <artifactId>maven-scm-provider-gitexe</artifactId>
-                            <version>1.11.2</version>
+                            <version>1.11.1</version>
                         </dependency>
                     </dependencies>
                 </plugin>
