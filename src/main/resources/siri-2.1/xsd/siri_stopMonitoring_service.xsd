@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSpy v2011 rel. 2 sp1 (x64) (http://www.altova.com) by Christophe Duquesne (Dryade) -->
-<xsd:schema xmlns="http://www.siri.org.uk/siri" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.siri.org.uk/siri" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0" id="siri_stopMonitoring_service">
+<xsd:schema xmlns="http://www.siri.org.uk/siri" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.siri.org.uk/siri" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.1" id="siri_stopMonitoring_service">
  <xsd:annotation>
   <xsd:appinfo>
    <Metadata xmlns="http://www.govtalk.gov.uk/CM/gms-xs">
@@ -83,18 +82,18 @@
     <Language>[ISO 639-2/B] ENG</Language>
     <Publisher>Kizoom, 109-123 Clifton Street, London EC4A 4LD </Publisher>
     <Relation>
-     <Requires>http://www.siri.org.uk/schema/2.0/xsd/siri/siri_requests-v2.0.xsd</Requires>
-     <Requires>http://www.siri.org.uk/schema/2.0/xsd/siri_model/siri_journey-v2.0.xsd</Requires>
+     <Requires>http://www.siri.org.uk/schema/2.0/xsd/siri/siri_requests.xsd</Requires>
+     <Requires>http://www.siri.org.uk/schema/2.0/xsd/siri_model/siri_journey.xsd</Requires>
     </Relation>
-    <Rights>Unclassified
-       <Copyright>CEN, VDV, RTIG 2004-2012</Copyright>
+    <Rights><!--Unclassified-->
+       <Copyright>CEN, VDV, RTIG 2004-2020</Copyright>
 				</Rights>
     <Source>
      <ul>
       <li>Derived from the VDV, RTIG XML and Trident standards.</li>
      </ul>
     </Source>
-    <Status>Version 2.0 Draft</Status>
+    <Status>Version 2.1</Status>
     <Subject>
      <Category>Arts, recreation and travel, Tourism, Travel (tourism), Transport,
 Air transport, Airports,
@@ -113,9 +112,9 @@ Rail transport, Roads and road transport
   <xsd:documentation>SIRI-SM Stop Monitoring Service.</xsd:documentation>
  </xsd:annotation>
  <!-- ======================================================================= -->
- <xsd:include schemaLocation="siri/siri_requests-v2.0.xsd"/>
- <xsd:include schemaLocation="siri_model/siri_monitoredVehicleJourney-v2.0.xsd"/>
- <xsd:include schemaLocation="siri_model/siri_modelPermissions-v2.0.xsd"/>
+ <xsd:include schemaLocation="siri/siri_requests.xsd"/>
+ <xsd:include schemaLocation="siri_model/siri_monitoredVehicleJourney.xsd"/>
+ <xsd:include schemaLocation="siri_model/siri_modelPermissions.xsd"/>
  <!-- ======================================================================= -->
  <xsd:group name="SiriStopMonitoringIndexGroup">
   <xsd:annotation>
@@ -228,7 +227,7 @@ Rail transport, Roads and road transport
      <xsd:documentation>Level of detail to include in response. Default is 'normal'.</xsd:documentation>
     </xsd:annotation>
    </xsd:element>
-   <xsd:element name="IncludeSituations" type="xsd:boolean" minOccurs="0">
+   <xsd:element name="IncludeSituations" type="xsd:boolean" minOccurs="0" default="false">
     <xsd:annotation>
      <xsd:documentation>Whether any related SITUATIONs should be included in the ServiceDelivery. Default is 'false'. +SIRI v2.0</xsd:documentation>
     </xsd:annotation>
@@ -299,7 +298,7 @@ Rail transport, Roads and road transport
      <xsd:group ref="StopMonitoringRequestPolicyGroup"/>
      <xsd:element ref="Extensions" minOccurs="0"/>
     </xsd:sequence>
-    <xsd:attribute name="version" type="VersionString" default="2.0">
+    <xsd:attribute name="version" type="VersionString" default="2.1">
      <xsd:annotation>
       <xsd:documentation>Version number of request.  
 </xsd:documentation>
@@ -326,7 +325,7 @@ Rail transport, Roads and road transport
       </xsd:annotation>
      </xsd:element>
     </xsd:sequence>
-    <xsd:attribute name="version" type="VersionString" use="optional" default="2.0"/>
+    <xsd:attribute name="version" type="VersionString" use="optional" default="2.1"/>
    </xsd:extension>
   </xsd:complexContent>
  </xsd:complexType>
@@ -408,7 +407,7 @@ If false each subscription response will contain the full information as specifi
      </xsd:element>
      <xsd:element ref="Extensions" minOccurs="0"/>
     </xsd:sequence>
-    <xsd:attribute name="version" type="VersionString" default="2.0">
+    <xsd:attribute name="version" type="VersionString" default="2.1">
      <xsd:annotation>
       <xsd:documentation>Version number of response. Fixed 
 </xsd:documentation>
@@ -622,7 +621,7 @@ If false each subscription response will contain the full information as specifi
  </xsd:complexType>
  <xsd:complexType name="DeliveryVariantStructure">
   <xsd:annotation>
-   <xsd:documentation>Type for Delviery Variant +SIRI v2.0</xsd:documentation>
+   <xsd:documentation>Type for Delivery Variant +SIRI v2.0</xsd:documentation>
   </xsd:annotation>
   <xsd:sequence>
    <xsd:element name="VariantType" type="xsd:normalizedString" minOccurs="0">
@@ -840,7 +839,7 @@ If false each subscription response will contain the full information as specifi
      <xsd:element ref="StopMonitoringPermissions" minOccurs="0"/>
      <xsd:element ref="Extensions" minOccurs="0"/>
     </xsd:sequence>
-    <xsd:attribute name="version" type="VersionString" default="2.0">
+    <xsd:attribute name="version" type="VersionString" default="2.1">
      <xsd:annotation>
       <xsd:documentation>Version number of response. Fixed 
 </xsd:documentation>
@@ -874,7 +873,7 @@ If false each subscription response will contain the full information as specifi
         </xsd:element>
         <xsd:element name="ByStartTime" type="xsd:boolean" default="true" minOccurs="0">
          <xsd:annotation>
-          <xsd:documentation>Whether a start time other than now can be specified for preview interval. Default  is 'truet.</xsd:documentation>
+          <xsd:documentation>Whether a start time other than now can be specified for preview interval. Default  is 'true'.</xsd:documentation>
          </xsd:annotation>
         </xsd:element>
         <xsd:element ref="FilterByMonitoringRef"/>

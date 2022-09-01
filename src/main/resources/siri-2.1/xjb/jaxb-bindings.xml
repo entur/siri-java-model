@@ -36,13 +36,13 @@
         </jaxb:schemaBindings>
     </jaxb:bindings>
 
-    <jaxb:bindings schemaLocation="../xsd/ifopt/ifopt_administration-v0.3.xsd">
+    <jaxb:bindings schemaLocation="../xsd/ifopt/ifopt_administration.xsd">
         <jaxb:schemaBindings >
             <jaxb:package name="uk.org.ifopt.siri21" />
         </jaxb:schemaBindings>
     </jaxb:bindings>
 
-    <jaxb:bindings schemaLocation="../xsd/acsb/acsb_all-v0.3.xsd">
+    <jaxb:bindings schemaLocation="../xsd/acsb/acsb_all.xsd">
         <jaxb:schemaBindings >
             <jaxb:package name="uk.org.acbs.siri21" />
         </jaxb:schemaBindings>
