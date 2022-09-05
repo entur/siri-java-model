@@ -16,11 +16,14 @@
 package org.entur.siri.adapter;
 
 import junit.framework.TestCase;
+import org.junit.Test;
 
+import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
 public class ZonedDateTimeAdapterTest extends TestCase {
 
+    @Test
     public void testParseDifferentZones() {
 
         ZonedDateTime utcTime = ZonedDateTimeAdapter.parse("2017-02-24T12:58:00Z");
@@ -29,14 +32,15 @@ public class ZonedDateTimeAdapterTest extends TestCase {
 
         ZonedDateTime otherZoneTime = ZonedDateTimeAdapter.parse("2017-02-24T16:58:00+04:00");
 
-        assertEquals(2017, localZoneTime.getYear());
-        assertEquals(2, localZoneTime.getMonthValue());
-        assertEquals(24, localZoneTime.getDayOfMonth());
-        assertEquals(13, localZoneTime.getHour());
-        assertEquals(58, localZoneTime.getMinute());
-        assertEquals(0, localZoneTime.getSecond());
+        ZoneId zone = ZoneId.of("+01:00");
+        assertEquals(2017, localZoneTime.withZoneSameInstant(zone).getYear());
+        assertEquals(2, localZoneTime.withZoneSameInstant(zone).getMonthValue());
+        assertEquals(24, localZoneTime.withZoneSameInstant(zone).getDayOfMonth());
+        assertEquals(13, localZoneTime.withZoneSameInstant(zone).getHour());
+        assertEquals(58, localZoneTime.withZoneSameInstant(zone).getMinute());
+        assertEquals(0, localZoneTime.withZoneSameInstant(zone).getSecond());
 
-        assertEquals(localZoneTime, utcTime);
-        assertEquals(localZoneTime, otherZoneTime);
+        assertTrue(localZoneTime.isEqual(utcTime));
+        assertTrue(localZoneTime.isEqual(otherZoneTime));
     }
 }
