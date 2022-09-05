@@ -22,7 +22,7 @@ aliases:
     command: |
       echo $SONATYPE_GPG_KEY_BASE64 | base64 --decode | gpg --batch --no-tty --import --yes
 jobs:
-  deploy-nexus:
+  deploy:
     docker:
       - image: cimg/openjdk:11.0
         auth:
@@ -44,7 +44,7 @@ jobs:
       - run:
           name: Refresh cache
           command: mvn org.apache.maven.plugins:maven-dependency-plugin:3.1.0:go-offline -s .circleci/settings.xml
-      - run: mvn package -s .circleci/settings.xml
+      - run: mvn package -s .circleci/settings.xml -Dmaven.test.skip=true
       - run:
           name: Save test results
           command: |
@@ -70,7 +70,7 @@ workflows:
   version: 2
   build_deploy:
     jobs:
-      - deploy-nexus:
+      - deploy:
           context: global
           filters:
             branches:
