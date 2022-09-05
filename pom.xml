@@ -215,7 +215,7 @@
         </profile>
 
         <profile>
-            <id>sign</id>
+            <id>release</id>
             <activation>
                 <activeByDefault>false</activeByDefault>
             </activation>
@@ -236,19 +236,6 @@
                         </executions>
                     </plugin>
 
-                    <plugin>
-                        <groupId>com.amashchenko.maven.plugin</groupId>
-                        <artifactId>gitflow-maven-plugin</artifactId>
-                        <version>1.18.0</version>
-                        <configuration>
-                            <allowSnapshots>false</allowSnapshots>
-                            <verbose>true</verbose>
-                            <commitMessagePrefix>[ci skip]</commitMessagePrefix>
-                            <gitFlowConfig>
-                                <developmentBranch>master</developmentBranch>
-                            </gitFlowConfig>
-                        </configuration>
-                    </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-source-plugin</artifactId>
@@ -287,28 +274,24 @@
                             <serverId>ossrh</serverId>
                             <nexusUrl>https://oss.sonatype.org/</nexusUrl>
                             <!-- Set this to true and the release will automatically proceed and sync to Central Repository will follow  -->
-                            <autoReleaseAfterClose>false</autoReleaseAfterClose>
+                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>com.amashchenko.maven.plugin</groupId>
+                        <artifactId>gitflow-maven-plugin</artifactId>
+                        <version>1.18.0</version>
+                        <configuration>
+                            <allowSnapshots>false</allowSnapshots>
+                            <verbose>true</verbose>
+                            <commitMessagePrefix>[ci skip]</commitMessagePrefix>
+                            <gitFlowConfig>
+                                <developmentBranch>master</developmentBranch>
+                            </gitFlowConfig>
                         </configuration>
                     </plugin>
                 </plugins>
             </build>
-        </profile>
-
-        <profile>
-            <id>release</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <distributionManagement>
-                <!--snapshotRepository>
-                    <id>ossrh</id>
-                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-                </snapshotRepository-->
-                <repository>
-                    <id>ossrh</id>
-                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-                </repository>
-            </distributionManagement>
         </profile>
     </profiles>
 
