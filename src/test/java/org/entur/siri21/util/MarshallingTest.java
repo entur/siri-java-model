@@ -37,7 +37,7 @@ public class MarshallingTest {
     @BeforeClass
     public static void init() throws IOException {
 
-        xml = readFile("src/test/resources/vm.xml");
+        xml = readFile("src/test/resources/vm-2_1.xml");
 
         //Removing indentation and newlines to match unformatted xml
         xml = xml.replace("\n", "");

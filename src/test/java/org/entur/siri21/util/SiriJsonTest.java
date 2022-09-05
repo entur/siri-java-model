@@ -36,7 +36,7 @@ public class SiriJsonTest {
     @BeforeClass
     public static void init() throws IOException {
 
-        xml = readFile("src/test/resources/vm-small.xml");
+        xml = readFile("src/test/resources/vm-2_1.xml");
 
         //Removing indentation and newlines to match unformatted xml
         xml = xml.replace("\n", "");

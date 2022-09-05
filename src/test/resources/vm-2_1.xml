@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Siri xmlns="http://www.siri.org.uk/siri">
+    <ServiceDelivery>
+        <ResponseTimestamp>2016-06-28T10:32:58.343+02:00</ResponseTimestamp>
+        <VehicleMonitoringDelivery>
+            <ResponseTimestamp>2016-06-28T10:32:58.343+02:00</ResponseTimestamp>
+            <VehicleActivity>
+                <RecordedAtTime>2016-06-28T09:38:47+02:00</RecordedAtTime>
+                <ValidUntilTime>2016-06-28T10:38:55.9658895+02:00</ValidUntilTime>
+                <ProgressBetweenStops>
+                    <LinkDistance>1130</LinkDistance>
+                    <Percentage>95.76271186440677966101694915</Percentage>
+                </ProgressBetweenStops>
+                <MonitoredVehicleJourney>
+                    <LineRef>3083</LineRef>
+                    <DirectionRef>go</DirectionRef>
+                    <VehicleMode>bus</VehicleMode>
+                    <PublishedLineName>6</PublishedLineName>
+                    <OriginRef>11466529</OriginRef>
+                    <OriginName>Hestaberg</OriginName>
+                    <DestinationRef>11065653</DestinationRef>
+                    <DestinationName>Haugesund bussterminal spor 5</DestinationName>
+                    <OriginAimedDepartureTime>2016-06-28T09:30:00+02:00</OriginAimedDepartureTime>
+                    <DestinationAimedArrivalTime>2016-06-28T10:06:00+02:00</DestinationAimedArrivalTime>
+                    <Monitored>true</Monitored>
+                    <VehicleLocation>
+                        <Longitude>5.446452</Longitude>
+                        <Latitude>59.42178</Latitude>
+                    </VehicleLocation>
+                    <Delay>PT173S</Delay>
+                    <CourseOfJourneyRef>30831003</CourseOfJourneyRef>
+                    <VehicleRef>142</VehicleRef>
+                    <MonitoredCall>
+                        <StopPointRef>11465644</StopPointRef>
+                        <VisitNumber>1</VisitNumber>
+                        <StopPointName>Aksdal hpl. 2</StopPointName>
+                    </MonitoredCall>
+                </MonitoredVehicleJourney>
+            </VehicleActivity>
+            <VehicleActivity>
+                <RecordedAtTime>2016-06-28T09:42:46+02:00</RecordedAtTime>
+                <ValidUntilTime>2016-06-28T10:42:54.4248637+02:00</ValidUntilTime>
+                <MonitoredVehicleJourney>
+                    <VehicleMode>bus</VehicleMode>
+                    <Monitored>true</Monitored>
+                    <VehicleLocation>
+                        <Longitude>10.45333</Longitude>
+                        <Latitude>63.44272</Latitude>
+                    </VehicleLocation>
+                    <VehicleRef>133</VehicleRef>
+                    <MonitoredCall/>
+                </MonitoredVehicleJourney>
+            </VehicleActivity>
+        </VehicleMonitoringDelivery>
+    </ServiceDelivery>
+</Siri>
