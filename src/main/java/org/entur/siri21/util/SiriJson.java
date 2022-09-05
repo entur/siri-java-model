@@ -22,7 +22,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 import com.fasterxml.jackson.databind.util.ISO8601DateFormat;
-import com.fasterxml.jackson.module.afterburner.AfterburnerModule;
 import com.fasterxml.jackson.module.jaxb.JaxbAnnotationIntrospector;
 import uk.org.siri.siri21.Siri;
 
@@ -67,7 +66,7 @@ public class SiriJson {
             mapper.setAnnotationIntrospector(new JaxbAnnotationIntrospector(TypeFactory.defaultInstance()));
 
             mapper.setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
-            mapper.registerModule(new AfterburnerModule());
+//            mapper.registerModule(new AfterburnerModule());
             mapper.setDateFormat(new ISO8601DateFormat());
         }
     }

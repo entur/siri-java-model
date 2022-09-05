@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Siri version="2.1" xmlns="http://www.siri.org.uk/siri">
+    <ServiceDelivery>
+        <ResponseTimestamp>2022-08-22T08:07:35.864742884+02:00</ResponseTimestamp>
+        <ProducerRef>ENT</ProducerRef>
+        <MoreData>false</MoreData>
+        <SituationExchangeDelivery>
+            <ResponseTimestamp>2022-08-22T08:07:35.864749302+02:00</ResponseTimestamp>
+            <Situations>
+                <PtSituationElement>
+                    <CreationTime>2022-06-21T11:14:05.414+02:00</CreationTime>
+                    <ParticipantRef>GOA</ParticipantRef>
+                    <SituationNumber>GOA:SituationNumber:AV22-0358</SituationNumber>
+                    <Source>
+                        <SourceType>directReport</SourceType>
+                    </Source>
+                    <VersionedAtTime>2022-08-20T18:41:15.470076+02:00</VersionedAtTime>
+                    <Progress>open</Progress>
+                    <ValidityPeriod>
+                        <StartTime>2022-08-08T04:31:00+02:00</StartTime>
+                        <EndTime>2022-09-17T11:45:00+02:00</EndTime>
+                    </ValidityPeriod>
+                    <UndefinedReason></UndefinedReason>
+                    <Severity>noImpact</Severity>
+                    <Priority>3</Priority>
+                    <ReportType>general</ReportType>
+                    <Planned>false</Planned>
+                    <Summary xml:lang="EN">Sørtoget: Bane NOR utfører vedlikeholdsarbeid på strekningen Snartemo – Kristiansand </Summary>
+                    <Summary xml:lang="NO">Sørtoget: Bane NOR utfører vedlikeholdsarbeid på strekningen Snartemo – Kristiansand </Summary>
+                    <Description xml:lang="NO">Bane NOR utfører vedlikeholdsarbeid på strekningen mellom Snartemo og Kristiansand i tidsrommet mellom kl. 04:31 og 11:45 mandag til torsdag og lørdag i perioden 8. august til 17. september. Strekningen vil i dette tidsrommet bli stengt for togtrafikk. Det settes opp alternativ transport mellom Stavanger og Kristiansand. Se reiseplanleggeren for oppdatert informasjon.</Description>
+                    <InfoLinks>
+                        <InfoLink>
+                            <Uri>https://trafikk.gan.no/avvik/AV22-0358</Uri>
+                            <Label xml:lang="no">Se detaljert informasjon</Label>
+                        </InfoLink>
+                        <InfoLink>
+                            <Uri>https://trafikk.gan.no/avvik/AV22-0358</Uri>
+                            <Label xml:lang="en">See detailed information</Label>
+                        </InfoLink>
+                    </InfoLinks>
+                    <Affects>
+                        <VehicleJourneys>
+                            <AffectedVehicleJourney>
+                                <FramedVehicleJourneyRef>
+                                    <DataFrameRef>2022-08-31</DataFrameRef>
+                                    <DatedVehicleJourneyRef>GOA:ServiceJourney:705-LOD_255-R</DatedVehicleJourneyRef>
+                                </FramedVehicleJourneyRef>
+                                <Route>
+                                    <Sections>
+                                        <AffectedSection>
+                                            <IndirectSectionRef>
+                                                <FirstStopPlaceRef>NSR:StopPlace:337</FirstStopPlaceRef>
+                                                <LastStopPlaceRef>NSR:StopPlace:609</LastStopPlaceRef>
+                                            </IndirectSectionRef>
+                                        </AffectedSection>
+                                    </Sections>
+                                </Route>
+                            </AffectedVehicleJourney>
+                        </VehicleJourneys>
+                    </Affects>
+                </PtSituationElement>
+            </Situations>
+        </SituationExchangeDelivery>
+    </ServiceDelivery>
+</Siri>
