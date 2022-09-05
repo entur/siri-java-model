@@ -232,6 +232,20 @@
                             </execution>
                         </executions>
                     </plugin>
+
+                    <plugin>
+                        <groupId>com.amashchenko.maven.plugin</groupId>
+                        <artifactId>gitflow-maven-plugin</artifactId>
+                        <version>1.18.0</version>
+                        <configuration>
+                            <allowSnapshots>false</allowSnapshots>
+                            <verbose>true</verbose>
+                            <commitMessagePrefix>[ci skip]</commitMessagePrefix>
+                            <gitFlowConfig>
+                                <developmentBranch>master</developmentBranch>
+                            </gitFlowConfig>
+                        </configuration>
+                    </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-source-plugin</artifactId>
