@@ -29,6 +29,7 @@
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jdk.version>11</jdk.version>
     </properties>
 
     <name>siri-java-model</name>
@@ -72,24 +73,40 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
-            <version>2.13.2</version>
+            <version>2.14.0</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.module</groupId>
-            <artifactId>jackson-module-jaxb-annotations</artifactId>
-            <version>2.13.3</version>
+            <artifactId>jackson-module-jakarta-xmlbind-annotations</artifactId>
+            <version>2.14.1</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.threeten-jaxb</groupId>
+            <artifactId>threeten-jaxb-core</artifactId>
+            <version>2.1.0</version>
         </dependency>
         <dependency>
             <groupId>com.sun.xml.bind</groupId>
             <artifactId>jaxb-core</artifactId>
-            <version>2.3.0</version>
+            <version>3.0.2</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.sun.xml.bind</groupId>
             <artifactId>jaxb-impl</artifactId>
-            <version>2.3.3</version>
+            <version>3.0.2</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.activation</groupId>
+            <artifactId>jakarta.activation-api</artifactId>
+            <scope>test</scope>
+            <version>2.1.0</version>
         </dependency>
         <!-- Test -->
         <dependency>
@@ -139,8 +156,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.0</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -154,10 +171,10 @@
             <plugin>
                 <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-xjc-plugin</artifactId>
-                <version>3.3.0</version>
+                <version>4.0.0</version>
                 <configuration>
                     <extensions>
-                        <extension>org.apache.cxf.xjcplugins:cxf-xjc-dv:3.3.0</extension>
+                        <extension>org.apache.cxf.xjcplugins:cxf-xjc-dv:4.0.0</extension>
                     </extensions>
                 </configuration>
                 <executions>
