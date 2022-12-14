@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Siri xmlns="http://www.siri.org.uk/siri" xmlns:ns2="http://www.ifopt.org.uk/acsb" xmlns:ns4="http://datex2.eu/schema/2_0RC1/2_0" xmlns:ns3="http://www.ifopt.org.uk/ifopt">
+<Siri xmlns="http://www.siri.org.uk/siri">
   <ServiceDelivery>
     <ResponseTimestamp>2016-06-28T10:32:58.343+02:00</ResponseTimestamp>
     <VehicleMonitoringDelivery>
@@ -27,7 +27,7 @@
             <Longitude>5.446452</Longitude>
             <Latitude>59.42178</Latitude>
           </VehicleLocation>
-          <Delay>PT173S</Delay>
+          <Delay>PT2M53S</Delay>
           <CourseOfJourneyRef>30831003</CourseOfJourneyRef>
           <VehicleRef>142</VehicleRef>
           <MonitoredCall>
