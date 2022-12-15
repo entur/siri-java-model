@@ -89,8 +89,12 @@ workflows:
   version: 2
   build_test_deploy:
     jobs:
+      - test:
+          context: global
       - build:
           context: global
+          requires:
+            - test
       - deploy:
           context: global
           requires:
