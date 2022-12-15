@@ -74,4 +74,4 @@ workflows:
           context: global
           filters:
             branches:
-              only: master
+              only: 0.x
