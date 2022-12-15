@@ -20,12 +20,11 @@ import org.junit.Test;
 import org.rutebanken.validator.SiriValidator;
 import uk.org.siri.siri20.Siri;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
-import static org.junit.Assert.*;
+import static org.entur.helper.XmlAssertion.assertXml;
+import static org.junit.Assert.assertTrue;
 import static org.rutebanken.siri20.util.SiriXml.parseXml;
 import static org.rutebanken.siri20.util.SiriXml.toXml;
 import static org.rutebanken.validator.SiriValidator.validate;
@@ -65,7 +64,7 @@ public class SiriXmlTest {
         String jaxbXml = toXml(s);
         System.out.println("to xml: " + (System.currentTimeMillis() - t2));
 
-        assertEquals(xml, jaxbXml);
+        assertXml(xml, jaxbXml);
     }
 
     @Test
