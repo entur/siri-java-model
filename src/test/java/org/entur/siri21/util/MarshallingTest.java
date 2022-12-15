@@ -24,10 +24,10 @@ import java.io.RandomAccessFile;
 
 import static junit.framework.TestCase.assertFalse;
 import static junit.framework.TestCase.assertTrue;
+import static org.entur.helper.XmlAssertion.assertXml;
 import static org.entur.siri21.util.SiriJson.toJson;
 import static org.entur.siri21.util.SiriXml.parseXml;
 import static org.entur.siri21.util.SiriXml.toXml;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 public class MarshallingTest {
@@ -65,7 +65,7 @@ public class MarshallingTest {
         String marshalledXml = toXml(s);
 
         // Compare
-        assertEquals(xml, marshalledXml);
+        assertXml(xml, marshalledXml);
     }
 
 

@@ -23,10 +23,10 @@ import uk.org.siri.siri21.Siri;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
+import static org.entur.helper.XmlAssertion.assertXml;
 import static org.entur.siri.validator.SiriValidator.validate;
 import static org.entur.siri21.util.SiriXml.parseXml;
 import static org.entur.siri21.util.SiriXml.toXml;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class SiriXmlTest {
@@ -64,7 +64,7 @@ public class SiriXmlTest {
         String jaxbXml = toXml(s);
         System.out.println("to xml: " + (System.currentTimeMillis() - t2));
 
-        assertEquals(xml, jaxbXml);
+        assertXml(xml, jaxbXml);
     }
 
     @Test
