@@ -15,13 +15,16 @@
 
 package org.entur.siri.adapter;
 
-import junit.framework.TestCase;
 import org.junit.Test;
 
+import java.time.Month;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeParseException;
 
-public class ZonedDateTimeAdapterTest extends TestCase {
+import static org.junit.Assert.*;
+
+public class ZonedDateTimeAdapterTest {
 
     @Test
     public void testParseDifferentZones() {
@@ -43,4 +46,31 @@ public class ZonedDateTimeAdapterTest extends TestCase {
         assertTrue(localZoneTime.isEqual(utcTime));
         assertTrue(localZoneTime.isEqual(otherZoneTime));
     }
+
+    @Test
+    public void testParseTimestamps() {
+        ZonedDateTime utcTime = ZonedDateTimeAdapter.parse("1690419600");
+        assertEquals(2023, utcTime.getYear());
+        assertEquals(Month.JULY, utcTime.getMonth());
+        assertEquals(27, utcTime.getDayOfMonth());
+
+    }
+
+    @Test
+    public void testParseInvalid() {
+        assertThrows(DateTimeParseException.class, ()-> ZonedDateTimeAdapter.parse("XXX"));
+    }
+
+    @Test
+    public void testParseEmpty() {
+        assertThrows(DateTimeParseException.class, ()-> ZonedDateTimeAdapter.parse(""));
+    }
+
+    @Test
+    public void testParseNull() {
+        assertThrows(NullPointerException.class, ()-> ZonedDateTimeAdapter.parse(null));
+    }
+
+
+
 }
