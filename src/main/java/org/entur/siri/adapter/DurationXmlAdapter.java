@@ -33,7 +33,7 @@ public class DurationXmlAdapter extends XmlAdapter<String, Duration> {
                 );
                 return xmlDurationStr.toString();
             } else {
-                duration.toString();
+                return duration.toString();
             }
         }
         return null;
