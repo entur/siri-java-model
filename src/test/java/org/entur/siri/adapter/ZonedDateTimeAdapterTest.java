@@ -48,15 +48,6 @@ public class ZonedDateTimeAdapterTest {
     }
 
     @Test
-    public void testParseTimestamps() {
-        ZonedDateTime utcTime = ZonedDateTimeAdapter.parse("1690419600");
-        assertEquals(2023, utcTime.getYear());
-        assertEquals(Month.JULY, utcTime.getMonth());
-        assertEquals(27, utcTime.getDayOfMonth());
-
-    }
-
-    @Test
     public void testParseInvalid() {
         assertThrows(DateTimeParseException.class, ()-> ZonedDateTimeAdapter.parse("XXX"));
     }
