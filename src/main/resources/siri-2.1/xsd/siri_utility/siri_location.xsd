@@ -49,7 +49,7 @@
     <Language>[ISO 639-2/B] ENG</Language>
     <Publisher>CEN</Publisher>
     <Rights><!--Unclassified-->
-        <Copyright>CEN, VDV, RTIG 2004-2020</Copyright>
+        <Copyright>CEN, VDV, RTIG 2004-2021</Copyright>
 				</Rights>
     <Source>
      <ul>
@@ -75,9 +75,9 @@ Rail transport, Roads and road transport
   <xsd:documentation>SIRI Framewrok Location Types.</xsd:documentation>
  </xsd:annotation>
  <!-- ======================================================================= -->
- <xsd:import namespace="http://www.opengis.net/gml/3.2" schemaLocation="../gml/gml_extract_all_objects_v_3_2_1.xsd"/>
+ <xsd:import namespace="http://www.opengis.net/gml/3.2" schemaLocation="../gml/gml_extract_all_objects.xsd"/>
  <!--Actual dependency-->
- <xsd:import namespace="http://www.opengis.net/gml/3.2" schemaLocation="../gml/gmlBasic2d-extract-v3_2_1-.xsd"/>
+ <xsd:import namespace="http://www.opengis.net/gml/3.2" schemaLocation="../gml/gmlBasic2d-extract.xsd"/>
  <!--======WGS84=======================================================================================-->
  <xsd:simpleType name="LongitudeType">
   <xsd:annotation>
@@ -182,7 +182,7 @@ Rail transport, Roads and road transport
  </xsd:complexType>
  <xsd:complexType name="BoundingBoxStructure">
   <xsd:annotation>
-   <xsd:documentation>Defines a bounding box using two corner points. GML terminology.  +SIRI v2.0</xsd:documentation>
+   <xsd:documentation>Defines a bounding box using two corner points. GML terminology.  (since SIRI 2.0)</xsd:documentation>
   </xsd:annotation>
   <xsd:sequence>
    <xsd:element name="UpperLeft" type="LocationStructure">
@@ -199,19 +199,19 @@ Rail transport, Roads and road transport
  </xsd:complexType>
  <xsd:complexType name="LineShapeStructure">
   <xsd:annotation>
-   <xsd:documentation>Defines a line shape +SIRI v2.0</xsd:documentation>
+   <xsd:documentation>Defines a line shape (since SIRI 2.0)</xsd:documentation>
   </xsd:annotation>
   <xsd:sequence>
    <xsd:element name="Point" type="LocationStructure" minOccurs="2" maxOccurs="unbounded">
     <xsd:annotation>
-     <xsd:documentation>A geospatial point. +SIRI v2.0</xsd:documentation>
+     <xsd:documentation>A geospatial point. (since SIRI 2.0)</xsd:documentation>
     </xsd:annotation>
    </xsd:element>
   </xsd:sequence>
  </xsd:complexType>
  <xsd:complexType name="CircularAreaStructure">
   <xsd:annotation>
-   <xsd:documentation>Type for a circular area centered around a point that may be expressed in concrete WGS 84 Coordinates or any gml compatible point coordinates format. +SIRI v2.1</xsd:documentation>
+   <xsd:documentation>Type for a circular area centered around a point that may be expressed in concrete WGS 84 Coordinates or any gml compatible point coordinates format. (since SIRI 2.1)</xsd:documentation>
   </xsd:annotation>
   <xsd:complexContent>
    <xsd:extension base="LocationStructure">
@@ -227,7 +227,7 @@ Rail transport, Roads and road transport
  </xsd:complexType>
  <xsd:complexType name="FlexibleAreaStructure">
   <xsd:annotation>
-   <xsd:documentation>Bounding box, circular area or gml:polyon of the area where stops of a flexible service are called. +SIRI v2.1
+   <xsd:documentation>Bounding box, circular area or gml:polyon of the area where stops of a flexible service are called. (since SIRI 2.1)
 A flexible area is used in cases where a pre-booked service allows pick-up/drop-off anywhere in a designated area and provides a possible interchange to a higher-frequency service.</xsd:documentation>
   </xsd:annotation>
   <xsd:choice>
