@@ -11,10 +11,10 @@
     <Coverage>Europe</Coverage>
     <Creator>Drafted for version 1.0 CEN TC278 WG3 SG7 Editor Nicholas Knowles, Kizoom. mailto:schemer@siri.org.uk</Creator>
     <Date><Created>2012-03-29</Created>
-					  Factored out of conection timnetable servcie
+					  <!--Factored out of conection timnetable servcie-->
 				</Date>
     <Date><Modified>2012-03-20</Modified>
-					 +SIRI v2.0
+					 (since SIRI 2.0)
 				</Date>
     <Description>
      <p>SIRI is a European CEN technical standard for the exchange of Public Transport real-time information.</p>
@@ -33,7 +33,7 @@
      <Requires>http://www.siri.org.uk/schema/2.0/xsd/siri_model/siri_journey.xsd</Requires>
     </Relation>
     <Rights><!--Unclassified-->
-        <Copyright>CEN, VDV, RTIG 2004-2020</Copyright>
+        <Copyright>CEN, VDV, RTIG 2004-2021</Copyright>
 				</Rights>
     <Source>
      <ul>
@@ -71,14 +71,14 @@ Rail transport, Roads and road transport
    <xsd:group ref="VehicleJourneyInfoGroup" minOccurs="0"/>
    <xsd:group ref="DisruptionGroup" minOccurs="0"/>
    <xsd:group ref="OperationalInfoGroup" minOccurs="0"/>
-   <xsd:element name="Monitored" type="xsd:boolean" minOccurs="0">
+   <xsd:element name="Monitored" type="xsd:boolean" default="true" minOccurs="0">
     <xsd:annotation>
-     <xsd:documentation>Whether there is real-time information available for journey; if not present, not known.</xsd:documentation>
+     <xsd:documentation>Whether there is real-time information available for journey. Default is 'true'.</xsd:documentation>
     </xsd:annotation>
    </xsd:element>
    <xsd:element name="AimedDepartureTime" type="xsd:dateTime" minOccurs="0">
     <xsd:annotation>
-     <xsd:documentation>On a Distributor journey , a Timetabled departure time of the VEHICLE JOURNEY from the CONNECTION LINK for the SERVICE JOURNEY INTERCHANGE. On a Feeder journey a Timetabled arrival time of the VEHICLE JOURNEY at the CONNECTION link for the SERVICE JOURNEY INTERCHANGE.</xsd:documentation>
+     <xsd:documentation>On a Distributor journey, a timetabled departure time of the VEHICLE JOURNEY from the CONNECTION LINK for the SERVICE JOURNEY INTERCHANGE. On a Feeder journey a Timetabled arrival time of the VEHICLE JOURNEY at the CONNECTION link for the SERVICE JOURNEY INTERCHANGE.</xsd:documentation>
     </xsd:annotation>
    </xsd:element>
    <xsd:element ref="Extensions" minOccurs="0"/>

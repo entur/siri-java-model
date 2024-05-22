@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<xs:schema xmlns:D2LogicalModel="http://datex2.eu/schema/2_0RC1/2_0" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" targetNamespace="http://datex2.eu/schema/2_0RC1/2_0">
+<xs:schema xmlns:D2LogicalModel="http://datex2.eu/schema/2_0RC1/2_0" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" targetNamespace="http://datex2.eu/schema/2_0RC1/2_0" version="2.0">
  <xs:complexType name="AbnormalTraffic">
   <xs:complexContent>
    <xs:extension base="D2LogicalModel:TrafficElement">
@@ -2641,14 +2641,17 @@
    <xs:enumeration value="inductionLoopMonitoringStation"/>
    <xs:enumeration value="infraredMonitoringStation"/>
    <xs:enumeration value="microwaveMonitoringStation"/>
+   <xs:enumeration value="microwavedMonitoringStation"/>
    <xs:enumeration value="mobileTelephoneCaller"/>
    <xs:enumeration value="nonPoliceEmergencyServicePatrol"/>
+   <xs:enumeration value="nonPoliceEmergencyServicesPatrol"/>
    <xs:enumeration value="otherInformation"/>
    <xs:enumeration value="otherOfficialVehicle"/>
    <xs:enumeration value="policePatrol"/>
    <xs:enumeration value="privateBreakdownService"/>
    <xs:enumeration value="publicAndPrivateUtilities"/>
    <xs:enumeration value="registeredMotoristObserver"/>
+   <xs:enumeration value="registeredMobileObserver"/>
    <xs:enumeration value="roadAuthorities"/>
    <xs:enumeration value="roadOperatorPatrol"/>
    <xs:enumeration value="roadsideTelephoneCaller"/>
