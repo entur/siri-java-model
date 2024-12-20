@@ -40,23 +40,8 @@ jobs:
             ${{ runner.os }}-
 
       - name: Run maven build
-        run: mvn package -s .github/workflows/settings.xml -PprettierCheck -Dprettier.nodePath=node -Dprettier.npmPath=npm
-      - name: Sonar Scan
-        env:
-          SONAR_TOKEN: ${{ secrets.ENTUR_SONAR_PASSWORD }}
-          SONAR_PROJECT_NAME: ${{ github.event.repository.name }}
-          SONAR_PROJECT_KEY: entur_${{ github.event.repository.name }}
-        run: |
-          mvn -s .github/workflows/settings.xml \
-                  org.jacoco:jacoco-maven-plugin:prepare-agent verify \
-                  org.jacoco:jacoco-maven-plugin:report sonar:sonar \
-                  -Dmaven.main.skip \
-                  -DskipTests \
-                  -Dsonar.projectKey=${SONAR_PROJECT_KEY} \
-                  -Dsonar.organization=enturas-github \
-                  -Dsonar.projectName=${SONAR_PROJECT_NAME} \
-                  -Dsonar.host.url=https://sonarcloud.io \
-                  -Dsonar.token=${SONAR_TOKEN}
+        run: mvn verify -s .github/workflows/settings.xml
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4.4.3
         with:
@@ -92,10 +77,9 @@ jobs:
           echo $SONATYPE_GPG_KEY_BASE64 | base64 --decode | gpg --batch --no-tty --import --yes
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git checkout main
+          git checkout master
           mvn gitflow:release-start gitflow:release-finish \
                   -DskipTests=true \
                   -Prelease \
-                  -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn \
                   -DpostReleaseGoals=deploy \
                   -DargLine='-Prelease -DskipTests -s .github/workflows/settings.xml' -B -s .github/workflows/settings.xml
