@@ -16,6 +16,7 @@
 package org.entur.siri21.util;
 
 import com.sun.xml.bind.marshaller.NamespacePrefixMapper;
+import org.entur.siri.XmlInputFactoryProvider;
 import uk.org.siri.siri21.Siri;
 
 import jakarta.xml.bind.JAXBContext;
@@ -51,8 +52,8 @@ public class SiriXml {
 
     public static Siri parseXml(String xml) throws JAXBException, XMLStreamException {
         Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-        
-        XMLInputFactory xmlif = XMLInputFactory.newInstance();
+
+        XMLInputFactory xmlif = XmlInputFactoryProvider.getXmlInputFactory();
         XMLStreamReader xmler = xmlif.createXMLStreamReader(new StringReader(xml));
 
         return (Siri) jaxbUnmarshaller.unmarshal(xmler);
@@ -60,7 +61,7 @@ public class SiriXml {
 
     public static Siri parseXml(InputStream inputStream) throws JAXBException, XMLStreamException {
         Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-        XMLInputFactory xmlif = XMLInputFactory.newInstance();
+        XMLInputFactory xmlif = XmlInputFactoryProvider.getXmlInputFactory();
         XMLStreamReader xmler = xmlif.createXMLStreamReader(inputStream);
 
         return (Siri) jaxbUnmarshaller.unmarshal(xmler);
