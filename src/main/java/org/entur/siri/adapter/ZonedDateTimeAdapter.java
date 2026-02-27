@@ -22,6 +22,9 @@ import java.util.Objects;
 
 public class ZonedDateTimeAdapter {
 
+    private static final ZoneId DEFAULT_ZONE = ZoneId.systemDefault();
+    private static final ZoneOffset ZERO_OFFSET = ZoneOffset.ofHours(0);
+
     /**
      * Parses dateTime to ZonedDateTime with optional zone.
      * If Zone is not provided, local system default is used.
@@ -35,10 +38,10 @@ public class ZonedDateTimeAdapter {
             parsed = ZonedDateTime.parse(dateTime);
         } catch (DateTimeParseException e) {
             LocalDateTime parse1 = LocalDateTime.parse(dateTime, DateTimeFormatter.ISO_LOCAL_DATE_TIME);
-            parsed = ZonedDateTime.ofLocal(parse1, ZoneId.systemDefault(), ZoneOffset.ofHours(0));
+            parsed = ZonedDateTime.ofLocal(parse1, DEFAULT_ZONE, ZERO_OFFSET);
 
         }
-        return parsed.withZoneSameInstant(ZoneId.systemDefault());
+        return parsed.withZoneSameInstant(DEFAULT_ZONE);
     }
 
 }
