@@ -54,5 +54,10 @@
             <jaxb:package name="eu.datex2.siri21.schema._2_0rc1._2_0" />
         </jaxb:schemaBindings>
     </jaxb:bindings>
+    <jaxb:bindings schemaLocation="../xsd/gml/gml_extract_all_objects.xsd">
+        <jaxb:schemaBindings >
+            <jaxb:package name="net.opengis.gml.siri" />
+        </jaxb:schemaBindings>
+     </jaxb:bindings>
 
 </jaxb:bindings>
