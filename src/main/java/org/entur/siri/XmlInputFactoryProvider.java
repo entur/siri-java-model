@@ -33,11 +33,19 @@ public class XmlInputFactoryProvider {
         if (SHARED_XML_INPUT_FACTORY != null) {
             return SHARED_XML_INPUT_FACTORY;
         }
-        return XMLInputFactory.newInstance();
+        XMLInputFactory factory = XMLInputFactory.newInstance();
+        hardenFactory(factory);
+        return factory;
+    }
+
+    private static void hardenFactory(XMLInputFactory factory) {
+        factory.setProperty(XMLInputFactory.IS_SUPPORTING_EXTERNAL_ENTITIES, false);
+        factory.setProperty(XMLInputFactory.SUPPORT_DTD, false);
     }
 
     private static XMLInputFactory createSharedFactory() {
         XMLInputFactory factory = XMLInputFactory.newInstance();
+        hardenFactory(factory);
         // Woodstox factories are thread-safe after initialization.
         // https://github.com/FasterXML/Woodstox4/blob/master/release-notes/USAGE
         if (factory.getClass().getName().startsWith("com.ctc.wstx.")) {
