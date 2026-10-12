@@ -27,7 +27,7 @@ jobs:
           wget https://raw.githubusercontent.com/entur/ror-maven-settings/master/.m2/settings.xml -O .github/workflows/settings.xml
       - uses: actions/setup-java@v4
         with:
-          java-version: 11
+          java-version: 25
           distribution: liberica
       - name: Cache Maven dependencies
         uses: actions/cache@v4
@@ -52,5 +52,6 @@ jobs:
     uses: entur/gha-maven-central/.github/workflows/maven-publish.yml@v1
     secrets: inherit
     with:
+      java_version: 25
       push_to_repo: true
       snapshot: false

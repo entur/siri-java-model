@@ -53,7 +53,7 @@ Generated sources land in `target/generated-sources`. JAXB binding customization
 ### Key Design Decisions
 
 - **Jakarta EE**: Uses `jakarta.xml.bind` (3.0+), not legacy `javax.xml.bind`.
-- **Java 11** target (source and bytecode).
+- **Java 11** target (source and bytecode) via `<release>` in the compiler plugin; CI builds on JDK 25, and any JDK from 11 to 25 works locally.
 - **JUnit 4** for tests.
 - **JSON support exists only for SIRI 2.1** (`SiriJson`), not 2.0.
 - **SIRI 2.0 utility lives in legacy package** `org.rutebanken.siri20.util` (historical).
