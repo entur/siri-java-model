@@ -17,4 +17,4 @@ jobs:
     name: Code Scan
     uses: entur/gha-security/.github/workflows/code-scan.yml@v2
     with:
-      java_version: "11"
+      java_version: "25"
