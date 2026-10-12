@@ -15,7 +15,10 @@
 
 package org.entur.siri.adapter;
 
-import java.time.*;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Objects;
@@ -28,20 +31,26 @@ public class ZonedDateTimeAdapter {
     /**
      * Parses dateTime to ZonedDateTime with optional zone.
      * If Zone is not provided, local system default is used.
+     * <p>
+     * The common form {@code yyyy-MM-ddTHH:mm:ss[.fffffffff][Z|±HH:MM]} is handled by
+     * {@link FastZonedDateTimeParser}; everything else goes through the full ISO parser.
      *
      * @param dateTime ISO-formatted string
      */
     public static ZonedDateTime parse(String dateTime) {
         Objects.requireNonNull(dateTime, "dateTime");
+        ZonedDateTime fast = FastZonedDateTimeParser.parse(dateTime, DEFAULT_ZONE);
+        return fast != null ? fast : parseFull(dateTime);
+    }
+
+    private static ZonedDateTime parseFull(String dateTime) {
         ZonedDateTime parsed;
         try {
             parsed = ZonedDateTime.parse(dateTime);
         } catch (DateTimeParseException e) {
-            LocalDateTime parse1 = LocalDateTime.parse(dateTime, DateTimeFormatter.ISO_LOCAL_DATE_TIME);
-            parsed = ZonedDateTime.ofLocal(parse1, DEFAULT_ZONE, ZERO_OFFSET);
-
+            LocalDateTime local = LocalDateTime.parse(dateTime, DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+            parsed = ZonedDateTime.ofLocal(local, DEFAULT_ZONE, ZERO_OFFSET);
         }
         return parsed.withZoneSameInstant(DEFAULT_ZONE);
     }
-
 }
