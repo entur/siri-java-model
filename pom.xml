@@ -28,6 +28,7 @@
         <jackson.version>2.18.2</jackson.version>
         <slf4j.version>2.0.7</slf4j.version>
         <jreleaser-maven-plugin.version>1.18.0</jreleaser-maven-plugin.version>
+        <cxf-xjc-plugin.version>4.2.0</cxf-xjc-plugin.version>
         <maven-javadoc-plugin.version>3.11.2</maven-javadoc-plugin.version>
     </properties>
 
@@ -170,10 +171,9 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <version>3.16.0</version>
                 <configuration>
-                    <source>${jdk.version}</source>
-                    <target>${jdk.version}</target>
+                    <release>${jdk.version}</release>
                 </configuration>
             </plugin>
             <plugin>
@@ -187,10 +187,10 @@
             <plugin>
                 <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-xjc-plugin</artifactId>
-                <version>4.0.0</version>
+                <version>${cxf-xjc-plugin.version}</version>
                 <configuration>
                     <extensions>
-                        <extension>org.apache.cxf.xjcplugins:cxf-xjc-dv:4.0.0</extension>
+                        <extension>org.apache.cxf.xjcplugins:cxf-xjc-dv:${cxf-xjc-plugin.version}</extension>
                     </extensions>
                 </configuration>
                 <executions>
@@ -211,6 +211,8 @@
                                 <xsdOption>
                                     <xsd>${basedir}/src/main/resources/siri-2.1/xsd/siri.xsd</xsd>
                                     <bindingFile>${basedir}/src/main/resources/siri-2.1/xjb/jaxb-bindings.xml</bindingFile>
+                                    <!-- Works around the JDK 22+ built-in XML catalog, see the catalog file -->
+                                    <catalog>${basedir}/src/main/xjc/siri-2.1-catalog.xml</catalog>
                                     <extension>true</extension>
                                 </xsdOption>
                             </xsdOptions>

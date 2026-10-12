@@ -27,11 +27,19 @@ import javax.xml.validation.SchemaFactory;
 import java.io.PrintStream;
 import java.io.StringReader;
 import java.net.URL;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 public class SiriValidator {
 
     private static JAXBContext siri20jaxbContext;
     private static JAXBContext siri21jaxbContext;
+
+    /**
+     * One compiled {@link Schema} per version, built on first use. {@link Schema} is immutable
+     * and thread-safe, and compiling the SIRI schema set is expensive.
+     */
+    private static final ConcurrentMap<Version, Schema> schemas = new ConcurrentHashMap<>();
 
     static {
         try {
@@ -76,12 +84,8 @@ public class SiriValidator {
      * @throws SAXException
      */
     public static SiriValidationEventHandler validateAndGetHandler(String xml, Version version) throws JAXBException, SAXException {
-        SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-
-        Schema schema = sf.newSchema(getXsdRelativePath(version));
-
         Unmarshaller unmarshaller = getVersionSpecificUnmarshaller(version);
-        unmarshaller.setSchema(schema);
+        unmarshaller.setSchema(getSchema(version));
         SiriValidationEventHandler handler = new SiriValidationEventHandler();
         unmarshaller.setEventHandler(handler);
         unmarshaller.unmarshal(new StringReader(xml));
@@ -121,6 +125,40 @@ public class SiriValidator {
         });
 
         return handler.events.size() == 0;
+    }
+
+    private static Schema getSchema(Version version) throws SAXException {
+        try {
+            return schemas.computeIfAbsent(version, v -> {
+                try {
+                    SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+                    // Resolve imports between the bundled schemas ourselves: the JDK 24+ built-in XML catalog
+                    // would otherwise shadow siri-2.1/xsd/xml/2009/01/XMLSchema.xsd and break SIRI 2.1 validation.
+                    sf.setResourceResolver(new RelativeSchemaResourceResolver());
+                    return sf.newSchema(getXsdRelativePath(v));
+                } catch (SAXException e) {
+                    throw new UncheckedSchemaException(e);
+                }
+            });
+        } catch (UncheckedSchemaException e) {
+            throw e.getCause();
+        }
+    }
+
+    /**
+     * Carries a {@link SAXException} out of {@link ConcurrentMap#computeIfAbsent}, which does not
+     * allow checked exceptions.
+     */
+    private static final class UncheckedSchemaException extends RuntimeException {
+
+        UncheckedSchemaException(SAXException cause) {
+            super(cause);
+        }
+
+        @Override
+        public synchronized SAXException getCause() {
+            return (SAXException) super.getCause();
+        }
     }
 
     private static Unmarshaller getVersionSpecificUnmarshaller(Version version) throws JAXBException {
