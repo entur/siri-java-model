@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  XML catalog used by XJC when generating the SIRI 2.1 classes.
+
+  The SIRI 2.1 schemas (which are part of the standard and must not be edited) ship the
+  W3C "xml" namespace schema under the file name xml/2009/01/XMLSchema.xsd. Since JDK 24 (JDK-8344800)
+  the JDK has a built-in XML catalog that rewrites every schema location ending in
+  "XMLSchema.xsd" to its own copy of the XML Schema schema-for-schemas, which does not
+  declare xml:lang, so code generation fails with "Cannot resolve the name 'xml:lang'".
+
+  A user catalog takes precedence over the built-in one. This entry maps the SIRI 2.1
+  location back to the file the schema actually refers to.
+-->
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <systemSuffix systemIdSuffix="xml/2009/01/XMLSchema.xsd"
+                  uri="../resources/siri-2.1/xsd/xml/2009/01/XMLSchema.xsd"/>
+</catalog>
