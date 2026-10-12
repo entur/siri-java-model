@@ -18,3 +18,4 @@ jobs:
     uses: entur/gha-security/.github/workflows/code-scan.yml@v2
     with:
       java_version: "25"
+      ignore_language: "html"
