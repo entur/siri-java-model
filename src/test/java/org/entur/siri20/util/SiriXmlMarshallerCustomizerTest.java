@@ -18,7 +18,7 @@ package org.entur.siri20.util;
 import jakarta.xml.bind.Marshaller;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import uk.org.siri.siri20.Siri;
+import org.entur.siri.schema.v20.siri.Siri;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

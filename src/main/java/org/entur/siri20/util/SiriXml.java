@@ -32,7 +32,7 @@ import javax.xml.stream.XMLStreamReader;
 
 
 import org.entur.siri.XmlInputFactoryProvider;
-import uk.org.siri.siri20.Siri;
+import org.entur.siri.schema.v20.siri.Siri;
 
 public class SiriXml {
 

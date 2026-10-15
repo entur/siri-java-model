@@ -18,7 +18,7 @@ package org.entur.siri21.util;
 import org.entur.siri.validator.SiriValidator;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import uk.org.siri.siri21.Siri;
+import org.entur.siri.schema.v21.siri.Siri;
 
 import java.io.IOException;
 import java.io.RandomAccessFile;

@@ -9,14 +9,13 @@ open module org.entur.siri {
     exports org.entur.siri.validator;
     exports org.entur.siri21.util;
     exports org.entur.siri20.util;
-    exports eu.datex2.siri20.schema._2_0rc1._2_0;
-    exports eu.datex2.siri21.schema._2_0rc1._2_0;
-    exports net.opengis.gml.siri;
-    exports org.w3._2001.xmlschema;
-    exports uk.org.acbs.siri20;
-    exports uk.org.acbs.siri21;
-    exports uk.org.ifopt.siri20;
-    exports uk.org.ifopt.siri21;
-    exports uk.org.siri.siri20;
-    exports uk.org.siri.siri21;
+    exports org.entur.siri.schema.v20.acsb;
+    exports org.entur.siri.schema.v20.datex2;
+    exports org.entur.siri.schema.v20.ifopt;
+    exports org.entur.siri.schema.v20.siri;
+    exports org.entur.siri.schema.v21.acsb;
+    exports org.entur.siri.schema.v21.datex2;
+    exports org.entur.siri.schema.v21.gml;
+    exports org.entur.siri.schema.v21.ifopt;
+    exports org.entur.siri.schema.v21.siri;
 }

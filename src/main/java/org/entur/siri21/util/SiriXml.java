@@ -16,7 +16,7 @@
 package org.entur.siri21.util;
 
 import org.entur.siri.XmlInputFactoryProvider;
-import uk.org.siri.siri21.Siri;
+import org.entur.siri.schema.v21.siri.Siri;
 
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;

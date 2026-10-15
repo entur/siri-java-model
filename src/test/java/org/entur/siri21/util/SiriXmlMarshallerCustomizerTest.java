@@ -19,7 +19,7 @@ import jakarta.xml.bind.Marshaller;
 import org.glassfish.jaxb.runtime.marshaller.NamespacePrefixMapper;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import uk.org.siri.siri21.Siri;
+import org.entur.siri.schema.v21.siri.Siri;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

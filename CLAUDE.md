@@ -34,8 +34,8 @@ mvn generate-sources
 ### Code Generation (bulk of the codebase)
 
 The `cxf-xjc-plugin` generates ~1,900 Java classes from XSD schemas during `generate-sources`:
-- **SIRI 2.0** XSDs → `uk.org.siri.siri20.*` (plus `uk.org.ifopt.siri20`, `uk.org.acbs.siri20`, `eu.datex2.siri20`)
-- **SIRI 2.1** XSDs → `uk.org.siri.siri21.*` (plus `uk.org.ifopt.siri21`, `uk.org.acbs.siri21`, `eu.datex2.siri21`)
+- **SIRI 2.0** XSDs → `org.entur.siri.schema.v20.siri` (plus `.ifopt`, `.acsb`, `.datex2`)
+- **SIRI 2.1** XSDs → `org.entur.siri.schema.v21.siri` (plus `.ifopt`, `.acsb`, `.datex2`, `.gml`)
 
 Generated sources land in `target/generated-sources`. JAXB binding customizations are in `src/main/resources/siri-{2.0,2.1}/xjb/jaxb-bindings.xml` — these map `xsd:dateTime`/`xsd:time` to `java.time.ZonedDateTime` and `xsd:duration` to `java.time.Duration`.
 
