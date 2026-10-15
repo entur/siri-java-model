@@ -16,6 +16,7 @@
 package org.entur.siri21.util;
 
 import jakarta.xml.bind.Marshaller;
+import org.glassfish.jaxb.runtime.marshaller.NamespacePrefixMapper;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import uk.org.siri.siri21.Siri;
@@ -54,6 +55,27 @@ public class SiriXmlMarshallerCustomizerTest {
 
         assertEquals(1, calls.get());
         assertTrue("Expected indented output", isIndented(formatted));
+    }
+
+    @Test
+    public void testJaxbRiNamespacePrefixMapperCanBeSetThroughCustomizer() throws Exception {
+        NamespacePrefixMapper mapper = new NamespacePrefixMapper() {
+            @Override
+            public String getPreferredPrefix(String namespaceUri, String suggestion, boolean requirePrefix) {
+                return "http://www.siri.org.uk/siri".equals(namespaceUri) ? "siri" : suggestion;
+            }
+        };
+
+        String xml = toXml(siri, marshaller -> {
+            try {
+                marshaller.setProperty("org.glassfish.jaxb.namespacePrefixMapper", mapper);
+            } catch (Exception e) {
+                throw new IllegalStateException(e);
+            }
+        });
+
+        assertTrue("Expected siri: prefix", xml.contains("<siri:Siri"));
+        assertFalse("Default output should not use a prefix", toXml(siri).contains("<siri:Siri"));
     }
 
     @Test
