@@ -42,7 +42,7 @@ public class XmlInputFactoryProviderTest {
 
     @Test(expected = Exception.class)
     public void testXxeBlockedSiri20() throws Exception {
-        org.rutebanken.siri20.util.SiriXml.parseXml(XXE_XML);
+        org.entur.siri20.util.SiriXml.parseXml(XXE_XML);
     }
 
     @Test(expected = Exception.class)

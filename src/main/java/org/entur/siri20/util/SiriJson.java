@@ -13,7 +13,7 @@
  * limitations under the Licence.
  */
 
-package org.rutebanken.siri20.util;
+package org.entur.siri20.util;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -23,7 +23,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 import com.fasterxml.jackson.databind.util.StdDateFormat;
 import com.fasterxml.jackson.module.jakarta.xmlbind.JakartaXmlBindAnnotationIntrospector;
-import uk.org.siri.siri20.Siri;
+import org.entur.siri.schema.v20.siri.Siri;
 
 import java.io.IOException;
 import java.io.OutputStream;

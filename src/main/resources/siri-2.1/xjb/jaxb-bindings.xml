@@ -20,12 +20,8 @@
 
     <jaxb:globalBindings  >
 
-        <jaxb:javaType name="java.time.ZonedDateTime" xmlType="xsd:dateTime"
-                       printMethod="java.time.format.DateTimeFormatter.ISO_OFFSET_DATE_TIME.format"
-                       parseMethod="org.entur.siri.adapter.ZonedDateTimeAdapter.parse"/>
-        <jaxb:javaType name="java.time.ZonedDateTime" xmlType="xsd:time"
-                       printMethod="java.time.format.DateTimeFormatter.ISO_OFFSET_TIME.format"
-                       parseMethod="org.entur.siri.adapter.ZonedDateTimeAdapter.parse"/>
+        <xjc:javaType name="java.time.ZonedDateTime" xmlType="xsd:dateTime" adapter="org.entur.siri.adapter.ZonedDateTimeXmlAdapter" />
+        <xjc:javaType name="java.time.ZonedDateTime" xmlType="xsd:time" adapter="org.entur.siri.adapter.ZonedTimeXmlAdapter" />
         <xjc:javaType name="java.time.Duration" xmlType="xsd:duration" adapter="org.entur.siri.adapter.DurationXmlAdapter" />
         <xjc:simple/>
         <jaxb:serializable/>
@@ -33,30 +29,30 @@
 
     <jaxb:bindings schemaLocation="../xsd/siri.xsd">
         <jaxb:schemaBindings >
-            <jaxb:package name="uk.org.siri.siri21" />
+            <jaxb:package name="org.entur.siri.schema.v21.siri" />
         </jaxb:schemaBindings>
     </jaxb:bindings>
 
     <jaxb:bindings schemaLocation="../xsd/ifopt/ifopt_administration.xsd">
         <jaxb:schemaBindings >
-            <jaxb:package name="uk.org.ifopt.siri21" />
+            <jaxb:package name="org.entur.siri.schema.v21.ifopt" />
         </jaxb:schemaBindings>
     </jaxb:bindings>
 
     <jaxb:bindings schemaLocation="../xsd/acsb/acsb_all.xsd">
         <jaxb:schemaBindings >
-            <jaxb:package name="uk.org.acbs.siri21" />
+            <jaxb:package name="org.entur.siri.schema.v21.acsb" />
         </jaxb:schemaBindings>
     </jaxb:bindings>
 
     <jaxb:bindings schemaLocation="../xsd/datex2/DATEXIISchema.xsd">
         <jaxb:schemaBindings >
-            <jaxb:package name="eu.datex2.siri21.schema._2_0rc1._2_0" />
+            <jaxb:package name="org.entur.siri.schema.v21.datex2" />
         </jaxb:schemaBindings>
     </jaxb:bindings>
     <jaxb:bindings schemaLocation="../xsd/gml/gml_extract_all_objects.xsd">
         <jaxb:schemaBindings >
-            <jaxb:package name="net.opengis.gml.siri" />
+            <jaxb:package name="org.entur.siri.schema.v21.gml" />
         </jaxb:schemaBindings>
      </jaxb:bindings>
 
