@@ -12,3 +12,40 @@ Source 1.0 - 1.4 http://user47094.vs.easily.co.uk/siri/
 Source 2.0 -> https://www.vdv.de/siri.aspx 
 
 Also provides XML-validation through method `SiriValidator.validate`.
+
+## Java modules (JPMS)
+
+The jar is a named module, `org.entur.siri`. It is an `open module`, because the JAXB runtime that you supply needs reflective access to the generated classes. It requires `jakarta.xml.bind` and Jackson. You must also provide a JAXB implementation, for example `com.sun.xml.bind:jaxb-impl`.
+
+```java
+module my.app {
+    requires org.entur.siri;
+}
+```
+
+## Upgrading to 3.0
+
+**Breaking change: `NamespacePrefixMapper` is removed from `SiriXml`.**
+The overloads `toXml(Siri, NamespacePrefixMapper)` and `toXml(Siri, NamespacePrefixMapper, OutputStream)` in `org.entur.siri21.util.SiriXml` and `org.rutebanken.siri20.util.SiriXml` now take a `Consumer<Marshaller>` instead. The `JAXBNamespacePrefixMapper` dependency is removed, because it shares a package with the JAXB reference implementation and cannot be used on the module path.
+
+Before:
+
+```java
+SiriXml.toXml(siri, myNamespacePrefixMapper);
+```
+
+After: set the property of your own JAXB implementation on the marshaller.
+
+```java
+SiriXml.toXml(siri, marshaller -> {
+    try {
+        marshaller.setProperty("org.glassfish.jaxb.namespacePrefixMapper", myNamespacePrefixMapper);
+    } catch (PropertyException e) {
+        throw new IllegalStateException(e);
+    }
+});
+```
+
+The property name depends on your JAXB implementation. Use the one that your implementation documents. If your own code imports `com.sun.xml.bind.marshaller.NamespacePrefixMapper`, add the dependency that provides it yourself. This library no longer brings it in.
+
+The module name is now explicit (`org.entur.siri`). It was derived from the jar file name (`siri.java.model`) before.
