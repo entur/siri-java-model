@@ -8,7 +8,7 @@ open module org.entur.siri {
     exports org.entur.siri.adapter;
     exports org.entur.siri.validator;
     exports org.entur.siri21.util;
-    exports org.rutebanken.siri20.util;
+    exports org.entur.siri20.util;
     exports eu.datex2.siri20.schema._2_0rc1._2_0;
     exports eu.datex2.siri21.schema._2_0rc1._2_0;
     exports net.opengis.gml.siri;

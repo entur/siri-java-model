@@ -13,7 +13,7 @@
  * limitations under the Licence.
  */
 
-package org.rutebanken.siri20.util;
+package org.entur.siri20.util;
 
 import java.io.IOException;
 import java.io.InputStream;

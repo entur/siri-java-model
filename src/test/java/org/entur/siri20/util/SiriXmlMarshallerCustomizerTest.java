@@ -13,7 +13,7 @@
  * limitations under the Licence.
  */
 
-package org.rutebanken.siri20.util;
+package org.entur.siri20.util;
 
 import jakarta.xml.bind.Marshaller;
 import org.junit.BeforeClass;
@@ -27,8 +27,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static org.rutebanken.siri20.util.SiriXml.parseXml;
-import static org.rutebanken.siri20.util.SiriXml.toXml;
+import static org.entur.siri20.util.SiriXml.parseXml;
+import static org.entur.siri20.util.SiriXml.toXml;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

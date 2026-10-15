@@ -26,7 +26,7 @@ module my.app {
 ## Upgrading to 3.0
 
 **Breaking change: `NamespacePrefixMapper` is removed from `SiriXml`.**
-The overloads `toXml(Siri, NamespacePrefixMapper)` and `toXml(Siri, NamespacePrefixMapper, OutputStream)` in `org.entur.siri21.util.SiriXml` and `org.rutebanken.siri20.util.SiriXml` now take a `Consumer<Marshaller>` instead. The `JAXBNamespacePrefixMapper` dependency is removed, because it shares a package with the JAXB reference implementation and cannot be used on the module path.
+The overloads `toXml(Siri, NamespacePrefixMapper)` and `toXml(Siri, NamespacePrefixMapper, OutputStream)` in `org.entur.siri21.util.SiriXml` and `org.entur.siri20.util.SiriXml` now take a `Consumer<Marshaller>` instead. The `JAXBNamespacePrefixMapper` dependency is removed, because it shares a package with the JAXB reference implementation and cannot be used on the module path.
 
 Before:
 
@@ -47,5 +47,8 @@ SiriXml.toXml(siri, marshaller -> {
 ```
 
 The property name depends on your JAXB implementation. Use the one that your implementation documents. If your own code imports `com.sun.xml.bind.marshaller.NamespacePrefixMapper`, add the dependency that provides it yourself. This library no longer brings it in.
+
+**Breaking change: the SIRI 2.0 utility package is renamed.**
+`org.rutebanken.siri20.util` (`SiriXml`, `SiriJson`) is now `org.entur.siri20.util`, which matches `org.entur.siri21.util`. Update your imports. There are no deprecated forwarders in the old package.
 
 The module name is now explicit (`org.entur.siri`). It was derived from the jar file name (`siri.java.model`) before.

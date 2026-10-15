@@ -13,7 +13,7 @@
  * limitations under the Licence.
  */
 
-package org.rutebanken.siri20.util;
+package org.entur.siri20.util;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.DeserializationFeature;
