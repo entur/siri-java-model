@@ -25,6 +25,18 @@ module my.app {
 
 ## Upgrading to 3.0
 
+**Breaking change: the generated packages are renamed.**
+The XML namespaces and the wire format are unchanged. Update your imports:
+
+| Before | After |
+|---|---|
+| `uk.org.siri.siri20` / `siri21` | `org.entur.siri.schema.v20.siri` / `v21.siri` |
+| `uk.org.ifopt.siri20` / `siri21` | `org.entur.siri.schema.v20.ifopt` / `v21.ifopt` |
+| `uk.org.acbs.siri20` / `siri21` | `org.entur.siri.schema.v20.acsb` / `v21.acsb` |
+| `eu.datex2.siri20.schema._2_0rc1._2_0` / `siri21...` | `org.entur.siri.schema.v20.datex2` / `v21.datex2` |
+| `net.opengis.gml.siri` | `org.entur.siri.schema.v21.gml` |
+
+
 **Breaking change: `NamespacePrefixMapper` is removed from `SiriXml`.**
 The overloads `toXml(Siri, NamespacePrefixMapper)` and `toXml(Siri, NamespacePrefixMapper, OutputStream)` in `org.entur.siri21.util.SiriXml` and `org.entur.siri20.util.SiriXml` now take a `Consumer<Marshaller>` instead. The `JAXBNamespacePrefixMapper` dependency is removed, because it shares a package with the JAXB reference implementation and cannot be used on the module path.
 
