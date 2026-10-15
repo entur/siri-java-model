@@ -1,5 +1,6 @@
 open module org.entur.siri {
     requires transitive jakarta.xml.bind;
+    requires com.fasterxml.jackson.annotation;
     requires com.fasterxml.jackson.databind;
     requires com.fasterxml.jackson.module.jakarta.xmlbind;
 
