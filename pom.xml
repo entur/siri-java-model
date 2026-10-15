@@ -83,6 +83,12 @@
             <groupId>com.fasterxml.jackson.module</groupId>
             <artifactId>jackson-module-jakarta-xmlbind-annotations</artifactId>
             <version>${jackson.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>jakarta.activation</groupId>
+                    <artifactId>jakarta.activation-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>jakarta.xml.bind</groupId>
@@ -100,12 +106,6 @@
             <artifactId>jaxb-impl</artifactId>
             <version>3.0.2</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>jakarta.activation</groupId>
-            <artifactId>jakarta.activation-api</artifactId>
-            <scope>test</scope>
-            <version>2.1.0</version>
         </dependency>
         <!-- Test -->
         <dependency>
