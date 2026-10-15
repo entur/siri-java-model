@@ -20,6 +20,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
+import java.util.function.Consumer;
 
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
@@ -29,7 +30,6 @@ import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 
-import com.sun.xml.bind.marshaller.NamespacePrefixMapper;
 
 import org.entur.siri.XmlInputFactoryProvider;
 import uk.org.siri.siri20.Siri;
@@ -73,12 +73,12 @@ public class SiriXml {
         return toXml(siri, null);
     }
 
-    public static String toXml(Siri siri, NamespacePrefixMapper customNamespacePrefixMapper) throws JAXBException {
+    public static String toXml(Siri siri, Consumer<Marshaller> marshallerCustomizer) throws JAXBException {
 
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
-        if (customNamespacePrefixMapper != null) {
-            jaxbMarshaller.setProperty("com.sun.xml.bind.namespacePrefixMapper", customNamespacePrefixMapper);
+        if (marshallerCustomizer != null) {
+            marshallerCustomizer.accept(jaxbMarshaller);
         }
         StringWriter sw = new StringWriter();
         jaxbMarshaller.marshal(siri, sw);
@@ -86,11 +86,11 @@ public class SiriXml {
         return sw.toString();
     }
 
-    public static void toXml(Siri siri, NamespacePrefixMapper customNamespacePrefixMapper, OutputStream out) throws JAXBException, IOException {
+    public static void toXml(Siri siri, Consumer<Marshaller> marshallerCustomizer, OutputStream out) throws JAXBException, IOException {
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
-        if (customNamespacePrefixMapper != null) {
-            jaxbMarshaller.setProperty("com.sun.xml.bind.namespacePrefixMapper", customNamespacePrefixMapper);
+        if (marshallerCustomizer != null) {
+            marshallerCustomizer.accept(jaxbMarshaller);
         }
         jaxbMarshaller.marshal(siri, out);
     }
