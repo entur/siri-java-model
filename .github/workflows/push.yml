@@ -28,7 +28,7 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           java-version: 25
-          distribution: liberica
+          distribution: temurin
       - name: Cache Maven dependencies
         uses: actions/cache@v4
         with:
@@ -52,6 +52,7 @@ jobs:
     uses: entur/gha-maven-central/.github/workflows/maven-publish.yml@v1
     secrets: inherit
     with:
+      java_distribution: temurin
       java_version: 25
       push_to_repo: true
       snapshot: false
