@@ -20,12 +20,8 @@
 
     <jaxb:globalBindings  >
 
-        <jaxb:javaType name="java.time.ZonedDateTime" xmlType="xsd:dateTime"
-                       printMethod="java.time.format.DateTimeFormatter.ISO_OFFSET_DATE_TIME.format"
-                       parseMethod="org.entur.siri.adapter.ZonedDateTimeAdapter.parse"/>
-        <jaxb:javaType name="java.time.ZonedDateTime" xmlType="xsd:time"
-                       printMethod="java.time.format.DateTimeFormatter.ISO_OFFSET_TIME.format"
-                       parseMethod="org.entur.siri.adapter.ZonedDateTimeAdapter.parse"/>
+        <xjc:javaType name="java.time.ZonedDateTime" xmlType="xsd:dateTime" adapter="org.entur.siri.adapter.ZonedDateTimeXmlAdapter" />
+        <xjc:javaType name="java.time.ZonedDateTime" xmlType="xsd:time" adapter="org.entur.siri.adapter.ZonedTimeXmlAdapter" />
         <xjc:javaType name="java.time.Duration" xmlType="xsd:duration" adapter="org.entur.siri.adapter.DurationXmlAdapter" />
         <xjc:simple/>
         <jaxb:serializable/>
@@ -33,25 +29,25 @@
 
     <jaxb:bindings schemaLocation="../xsd/siri.xsd">
         <jaxb:schemaBindings >
-            <jaxb:package name="uk.org.siri.siri20" />
+            <jaxb:package name="org.entur.siri.schema.v20.siri" />
         </jaxb:schemaBindings>
     </jaxb:bindings>
 
     <jaxb:bindings schemaLocation="../xsd/ifopt/ifopt_administration-v0.3.xsd">
         <jaxb:schemaBindings >
-            <jaxb:package name="uk.org.ifopt.siri20" />
+            <jaxb:package name="org.entur.siri.schema.v20.ifopt" />
         </jaxb:schemaBindings>
     </jaxb:bindings>
 
     <jaxb:bindings schemaLocation="../xsd/acsb/acsb_all-v0.3.xsd">
         <jaxb:schemaBindings >
-            <jaxb:package name="uk.org.acbs.siri20" />
+            <jaxb:package name="org.entur.siri.schema.v20.acsb" />
         </jaxb:schemaBindings>
     </jaxb:bindings>
 
     <jaxb:bindings schemaLocation="../xsd/datex2/DATEXIISchema_2_0RC1_2_0.xsd">
         <jaxb:schemaBindings >
-            <jaxb:package name="eu.datex2.siri20.schema._2_0rc1._2_0" />
+            <jaxb:package name="org.entur.siri.schema.v20.datex2" />
         </jaxb:schemaBindings>
     </jaxb:bindings>
 

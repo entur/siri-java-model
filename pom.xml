@@ -24,9 +24,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jdk.version>11</jdk.version>
-        <slf4j.version>2.0.9</slf4j.version>
         <jackson.version>2.18.11</jackson.version>
-        <slf4j.version>2.0.7</slf4j.version>
         <jreleaser-maven-plugin.version>1.18.0</jreleaser-maven-plugin.version>
         <cxf-xjc-plugin.version>4.2.0</cxf-xjc-plugin.version>
         <maven-javadoc-plugin.version>3.11.2</maven-javadoc-plugin.version>
@@ -72,11 +70,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.googlecode.jaxb-namespaceprefixmapper-interfaces</groupId>
-            <artifactId>JAXBNamespacePrefixMapper</artifactId>
-            <version>6.1.0</version>
-        </dependency>
-        <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
@@ -90,6 +83,12 @@
             <groupId>com.fasterxml.jackson.module</groupId>
             <artifactId>jackson-module-jakarta-xmlbind-annotations</artifactId>
             <version>${jackson.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>jakarta.activation</groupId>
+                    <artifactId>jakarta.activation-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>jakarta.xml.bind</groupId>
@@ -108,28 +107,11 @@
             <version>3.0.2</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>jakarta.activation</groupId>
-            <artifactId>jakarta.activation-api</artifactId>
-            <scope>test</scope>
-            <version>2.1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
         <!-- Test -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.13.2</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>${slf4j.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

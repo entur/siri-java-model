@@ -23,7 +23,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 import com.fasterxml.jackson.databind.util.StdDateFormat;
 import com.fasterxml.jackson.module.jakarta.xmlbind.JakartaXmlBindAnnotationIntrospector;
-import uk.org.siri.siri21.Siri;
+import org.entur.siri.schema.v21.siri.Siri;
 
 import java.io.IOException;
 import java.io.OutputStream;

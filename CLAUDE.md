@@ -27,17 +27,19 @@ mvn generate-sources
 
 **Note:** Tests run with `-Duser.timezone=Europe/Oslo` (configured in surefire plugin).
 
+**Note:** Surefire runs tests on the module path because `module-info.java` exists.
+
 ## Architecture
 
 ### Code Generation (bulk of the codebase)
 
 The `cxf-xjc-plugin` generates ~1,900 Java classes from XSD schemas during `generate-sources`:
-- **SIRI 2.0** XSDs → `uk.org.siri.siri20.*` (plus `uk.org.ifopt.siri20`, `uk.org.acbs.siri20`, `eu.datex2.siri20`)
-- **SIRI 2.1** XSDs → `uk.org.siri.siri21.*` (plus `uk.org.ifopt.siri21`, `uk.org.acbs.siri21`, `eu.datex2.siri21`)
+- **SIRI 2.0** XSDs → `org.entur.siri.schema.v20.siri` (plus `.ifopt`, `.acsb`, `.datex2`)
+- **SIRI 2.1** XSDs → `org.entur.siri.schema.v21.siri` (plus `.ifopt`, `.acsb`, `.datex2`, `.gml`)
 
 Generated sources land in `target/generated-sources`. JAXB binding customizations are in `src/main/resources/siri-{2.0,2.1}/xjb/jaxb-bindings.xml` — these map `xsd:dateTime`/`xsd:time` to `java.time.ZonedDateTime` and `xsd:duration` to `java.time.Duration`.
 
-### Handwritten Code (~9 files)
+### Handwritten Code (~11 files)
 
 | Package | Class | Purpose |
 |---------|-------|---------|
@@ -47,16 +49,18 @@ Generated sources land in `target/generated-sources`. JAXB binding customization
 | `org.entur.siri.validator` | `SiriValidationEventHandler` | Collects validation errors |
 | `org.entur.siri21.util` | `SiriXml` | SIRI 2.1 XML marshalling/unmarshalling (JAXB) |
 | `org.entur.siri21.util` | `SiriJson` | SIRI 2.1 JSON conversion (Jackson + Jakarta XML Bind) |
-| `org.rutebanken.siri20.util` | `SiriXml` | SIRI 2.0 XML marshalling/unmarshalling (legacy package) |
+| `org.entur.siri20.util` | `SiriXml` | SIRI 2.0 XML marshalling/unmarshalling |
+| `org.entur.siri20.util` | `SiriJson` | SIRI 2.0 JSON conversion (Jackson + Jakarta XML Bind) |
 | `org.entur.siri` | `UnsupportedSiriVersionException` | Exception for unsupported SIRI versions |
+| (module root) | `module-info.java` | JPMS descriptor: `open module org.entur.siri` |
 
 ### Key Design Decisions
 
 - **Jakarta EE**: Uses `jakarta.xml.bind` (3.0+), not legacy `javax.xml.bind`.
 - **Java 11** target (source and bytecode) via `<release>` in the compiler plugin; CI builds on JDK 25, and any JDK from 11 to 25 works locally.
+- **JPMS**: `src/main/java/module-info.java` declares `open module org.entur.siri` (open because the consumer's JAXB runtime needs reflective access). When you add a generated or handwritten package, add an `exports` line for it.
+- **No `NamespacePrefixMapper` in the API**: `SiriXml.toXml` takes a `Consumer<Marshaller>` customizer. The `JAXBNamespacePrefixMapper` stub shares a package with the JAXB RI, so it cannot be used on the module path.
 - **JUnit 4** for tests.
-- **JSON support exists only for SIRI 2.1** (`SiriJson`), not 2.0.
-- **SIRI 2.0 utility lives in legacy package** `org.rutebanken.siri20.util` (historical).
 
 ### Test Data
 

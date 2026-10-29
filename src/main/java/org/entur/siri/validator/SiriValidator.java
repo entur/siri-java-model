@@ -51,10 +51,10 @@ public class SiriValidator {
 
     private static void init() throws JAXBException {
         if (siri20jaxbContext == null) {
-            siri20jaxbContext = JAXBContext.newInstance(uk.org.siri.siri20.Siri.class);
+            siri20jaxbContext = JAXBContext.newInstance(org.entur.siri.schema.v20.siri.Siri.class);
         }
         if (siri21jaxbContext == null) {
-            siri21jaxbContext = JAXBContext.newInstance(uk.org.siri.siri21.Siri.class);
+            siri21jaxbContext = JAXBContext.newInstance(org.entur.siri.schema.v21.siri.Siri.class);
         }
     }
     /**
